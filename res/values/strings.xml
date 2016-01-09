@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">擦肩</string>
+    <string name="hello_world">启动页面</string>
+    <string name="str_login">登录</string>
+    <string name="str_sure">确定</string>
+    <string name="str_cancel">取消</string>
+    <string name="str_main_bottom_shared">美图秀</string>
+    <string name="str_main_bottom_order">私信</string>
+    <string name="str_main_bottom_mine">个人</string>
+    <string name="str_refresh_succeed">刷新成功</string>
+    <string name="str_refresh_failed">刷新失败</string>
+    <string name="str_load_succeed">加载成功</string>
+    <string name="str_load_failed">加载失败</string>
+    <string name="str_pull_to_refresh">下拉刷新</string>
+    <string name="str_release_to_refresh">释放立即刷新</string>
+    <string name="str_refreshing">正在刷新...</string>
+    <string name="str_pullup_to_load">上拉加载更多</string>
+    <string name="str_release_to_load">释放立即加载</string>
+    <string name="str_loading">正在加载...</string>
+    <string name="str_network_request">正在网络请求...</string>
+    <string name="str_network_error">网络不稳定,请重试</string>
+    <string name="str_exit">再按一次退出本程序</string>
+    <string name="str_thirdpay_title">包月畅享美女私房视频/私聊</string>
+    <string name="str_thirdpay_msg1">一次购买\t终身拥有</string>
+    <string name="str_thirdpay_msg2">(未满18岁禁入)</string>
+    <string name="str_thirdpay_msg3">单次点播</string>
+    <string name="str_thirdpay_msg4">包月无限</string>
+    <string name="str_thirdpay_money1">5.00元</string>
+    <string name="str_thirdpay_money2">20.00元</string>
+    <string name="str_top_share">推荐</string>
+    <string name="str_top_hot">热门</string>
+    <string name="str_top_last">最新</string>
+    <string name="str_top_msg">私\t信</string>
+    <string name="str_top_per">个\t人</string>
+    <string name="str_top_back">返回</string>
+    <string name="str_top_person">个人主页</string>
+    <string name="str_per_msg">私信</string>
+    <string name="str_per_guanzhu">关注</string>
+    <string name="str_detial_title">美女私房</string>
+    <string name="str_pay_libao">本软件尊重知识产权，如果您认为您的署作权受到侵犯，请以书面方式同时本软件。在接到符合本软件要求的侵权通知后，本软件将删除侵权的材料。如果他人认为版权侵权通知内容有误，可向本软件提交通知。美女视频海量高清视频内容，10元即可获取会员，即可体验，真正卓越视听享受。海量内容每日呈现，伴您共度无聊寂寞时光，畅享视频盛宴。</string>
+
+</resources>

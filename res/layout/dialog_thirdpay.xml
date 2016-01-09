@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dip"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_whitetext"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_dialog_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dip"
+            android:text="@string/str_thirdpay_title"
+            android:textColor="@color/black"
+            android:textSize="16dip"/>
+
+        <ImageView
+            android:id="@+id/img_dialog_close"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="2dip"
+            android:src="@drawable/exit_close_icon" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="3dip"
+        android:text="@string/str_thirdpay_msg1"
+        android:textColor="@color/darkgray"
+        android:textSize="16dip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="3dip"
+        android:text="@string/str_thirdpay_msg2"
+        android:textColor="@color/red"
+        android:textSize="16dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_dialog_one"
+                android:layout_width="75dip"
+                android:layout_height="75dip"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pay_dialog_2" />
+
+            <TextView
+                android:id="@+id/tv_dialog_one"
+                android:layout_width="75dip"
+                android:layout_height="75dip"
+                android:layout_alignBottom="@+id/img_dialog_one"
+                android:layout_alignLeft="@+id/img_dialog_one"
+                android:background="@drawable/pay_dialog_bg"
+                android:gravity="bottom|center"
+                android:padding="5dip"
+                android:text="@string/str_thirdpay_msg3"
+                android:textColor="@color/white"
+                android:textSize="12dip" />
+
+            <ImageView
+                android:id="@+id/img_dialog_oneselect"
+                android:layout_width="13dip"
+                android:layout_height="13dip"
+                android:layout_alignRight="@+id/img_dialog_one"
+                android:layout_alignBottom="@+id/tv_dialog_one"
+                android:src="@drawable/pay_dialog_not_cb" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tv_dialog_mon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_dialog_mon"
+                android:layout_width="75dip"
+                android:layout_height="75dip"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pay_dialog_1" />
+
+            <TextView
+                android:id="@+id/tv_dialog_mon"
+                android:layout_width="75dip"
+                android:layout_height="75dip"
+                android:layout_alignBottom="@+id/img_dialog_mon"
+                android:layout_alignLeft="@+id/img_dialog_mon"
+                android:background="@drawable/pay_dialog_bg"
+                android:gravity="bottom|center"
+                android:padding="5dip"
+                android:text="@string/str_thirdpay_msg4"
+                android:textColor="@color/white"
+                android:textSize="12dip" />
+            <ImageView
+                android:id="@+id/img_dialog_monselect"
+                android:layout_width="13dip"
+                android:layout_height="13dip"
+                android:layout_alignRight="@+id/img_dialog_mon"
+                android:layout_alignBottom="@+id/tv_dialog_mon"
+                android:src="@drawable/pay_dialog_cb" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="5dip">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="@string/str_thirdpay_money1"
+            android:textColor="@color/darkgray"
+            android:textSize="13dip" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="@string/str_thirdpay_money2"
+            android:textColor="@color/darkgray"
+            android:textSize="13dip" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <ImageView
+            android:id="@+id/img_dialog_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/charge_alipay" />
+
+        <View
+            android:layout_width="1dip"
+            android:layout_height="38dip"
+            android:background="@color/gray" />
+
+        <ImageView
+            android:id="@+id/img_dialog_wx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/charge_wx" />
+    </LinearLayout>
+
+</LinearLayout>

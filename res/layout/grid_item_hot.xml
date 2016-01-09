@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_white_select"
+    android:orientation="vertical"
+    android:paddingBottom="5dip" >
+
+    <ImageView
+        android:id="@+id/img_hot_pic"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_avatar_default" />
+
+    <TextView
+        android:id="@+id/tv_hot_say"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/img_hot_pic"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="5dip"
+        android:singleLine="true"
+        android:text="冬天到了你们还能看见大腿吗"
+        android:textColor="@color/black"
+        android:textSize="13dip" />
+
+    <TextView
+        android:id="@+id/tv_hot_nickname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_hot_pic"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/fee_list_user_bottom_bg"
+        android:gravity="bottom"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:text="DJ-CC"
+        android:textColor="@color/white"
+        android:textSize="13dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_hot_say"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <ImageView
+            android:id="@+id/img_hot_buy"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:src="@drawable/topic_feevideo_buy" />
+
+        <TextView
+            android:id="@+id/tv_hot_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="1540人购买"
+            android:textColor="@color/lightred"
+            android:textSize="13dip" />
+
+        <ImageView
+            android:id="@+id/img_hot_receive"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:src="@drawable/topic_list_item_reviews" />
+
+        <TextView
+            android:id="@+id/tv_hot_receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="200"
+            android:textColor="@color/lightred"
+            android:textSize="13dip" />
+    </LinearLayout>
+
+</RelativeLayout>

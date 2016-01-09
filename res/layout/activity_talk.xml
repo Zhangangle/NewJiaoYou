@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+    <include layout="@layout/basic_top" />
+
+    <ListView
+        android:id="@+id/lv_talk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:cacheColorHint="#C0C0C0"
+        android:divider="@null"
+        android:fadingEdgeLength="0dp"
+        android:fastScrollEnabled="false"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:transcriptMode="normal" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_talk_pic"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/btn_chattype_selector" />
+
+        <EditText
+            android:id="@+id/ed_talk"
+            android:layout_width="match_parent"
+            android:layout_height="33dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="5dip"
+            android:layout_weight="1"
+            android:background="@drawable/chat_edit_normal"
+            android:ems="10"
+            android:hint="呵呵"
+            android:padding="6dip"
+            android:textSize="14dip" />
+
+        <Button
+            android:id="@+id/btn_talk_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/shape_redtext"
+            android:padding="8dip"
+            android:text="发送"
+            android:textColor="@color/white" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

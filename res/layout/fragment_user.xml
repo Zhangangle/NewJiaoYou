@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+    <!-- 顶部个人基本信息 -->
+
+    <include layout="@layout/basic_top" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="180dip"
+        android:background="@drawable/mine_head_bg"
+        android:padding="10dip" >
+
+        <com.zmv.zf.view.CircleImageView
+            android:id="@+id/img_user_icon"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dip"
+            android:src="@drawable/ic_avatar_default" />
+
+        <TextView
+            android:id="@+id/tv_user_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_user_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dip"
+            android:paddingBottom="10dip"
+            android:text="单击更换昵称"
+            android:textColor="@color/white"
+            android:textSize="18dip" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_user_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:text="TextView"
+        android:textColor="@color/lightred"
+        android:textSize="15dip" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/gray" />
+
+    <com.zmv.zf.view.PullToRefreshLayout
+        android:id="@+id/refresh_view_shared"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <include layout="@layout/refresh_head" />
+
+        <!-- 支持所有实现Pullable接口的View -->
+
+        <com.zmv.zf.view.PullableListView
+            android:id="@+id/pullLv_shared"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="1dip"
+            android:listSelector="@drawable/btn_transparent_select"
+            android:scrollbars="none" />
+
+        <include
+            layout="@layout/load_more"
+            android:visibility="gone" />
+    </com.zmv.zf.view.PullToRefreshLayout>
+    <!-- 中间三个button  我的跟帖，我的收藏，消息推送 -->
+
+</LinearLayout>

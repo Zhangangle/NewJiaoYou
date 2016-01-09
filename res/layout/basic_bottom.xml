@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="46dip"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dip"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="1dip" >
+
+            <Button
+                android:id="@+id/btn_main_bottom_shared"
+                android:layout_width="wrap_content"
+                android:layout_height="45dip"
+                android:background="@null"
+                android:drawableTop="@drawable/btn_shared_selector"
+                android:gravity="center"
+                android:text="@string/str_main_bottom_shared"
+                android:textColor="@drawable/tv_bottom_color"
+                android:textSize="12dip" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="1dip" >
+
+            <Button
+                android:id="@+id/btn_main_bottom_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:drawableTop="@drawable/btn_listing_selector"
+                android:gravity="center"
+                android:text="@string/str_main_bottom_order"
+                android:textColor="@drawable/tv_bottom_color"
+                android:textSize="12dip" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="1dip" >
+
+            <Button
+                android:id="@+id/btn_main_bottom_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableTop="@drawable/btn_user_selector"
+                android:gravity="center"
+                android:text="@string/str_main_bottom_mine"
+                android:textColor="@drawable/tv_bottom_color"
+                android:textSize="12dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

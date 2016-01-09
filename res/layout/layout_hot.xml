@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+    <com.zmv.zf.view.PullToRefreshLayout
+        android:id="@+id/refresh_view_hot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <include layout="@layout/refresh_head" />
+
+        <!-- 支持所有实现Pullable接口的View -->
+
+        <com.zmv.zf.view.PullableGridView
+            android:id="@+id/pullgv_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llayout_home_selector"
+            android:background="@color/lightgray"
+            android:horizontalSpacing="5dip"
+            android:listSelector="@drawable/btn_transparent_select"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:smoothScrollbar="true"
+            android:soundEffectsEnabled="true"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dip" />
+
+        <include layout="@layout/load_more" />
+    </com.zmv.zf.view.PullToRefreshLayout>
+
+</LinearLayout>

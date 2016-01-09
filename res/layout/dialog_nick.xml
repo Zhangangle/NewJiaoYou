@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#50000000"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="300dip"
+        android:layout_height="130dip"
+        android:background="@drawable/shape_whitetext"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/ed_dialog_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/chat_edit_normal"
+            android:gravity="center_vertical|left"
+            android:hint="请输入昵称"
+            android:maxLength="10"
+            android:padding="15dip"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="18dip" />
+
+        <TextView
+            android:id="@+id/tv_dialog_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:gravity="center_horizontal"
+            android:padding="15dip"
+            android:singleLine="true"
+            android:text="网络未连接,请开启网络!"
+            android:textColor="@color/black"
+            android:textSize="18dip"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5dip" >
+
+            <Button
+                android:id="@+id/btn_dialog_cancle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dip"
+                android:layout_weight="1"
+                android:background="#14220000"
+                android:padding="10dip"
+                android:text="@string/str_cancel"
+                android:textColor="@color/black"
+                android:textSize="15dip" />
+
+            <Button
+                android:id="@+id/btn_dialog_sure"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/lightred"
+                android:padding="10dip"
+                android:text="@string/str_sure"
+                android:textColor="@color/white"
+                android:textSize="15dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

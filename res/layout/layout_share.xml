@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+    <com.zmv.zf.view.PullToRefreshLayout
+        android:id="@+id/refresh_view_share"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <include layout="@layout/refresh_head" />
+
+        <!-- 支持所有实现Pullable接口的View -->
+
+        <com.zmv.zf.view.PullableListView
+            android:id="@+id/pullLv_share"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="0dip"
+            android:listSelector="@drawable/btn_transparent_select"
+            android:scrollbars="none" />
+
+        <include
+            layout="@layout/load_more"
+            android:visibility="gone" />
+    </com.zmv.zf.view.PullToRefreshLayout>
+
+</LinearLayout>

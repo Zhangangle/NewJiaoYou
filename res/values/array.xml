@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>十元专区</item>
+        <item>手机平板</item>
+        <item>电脑办公</item>
+        <item>数码影音</item>
+        <item>女性时尚</item>
+        <item>美食天堂</item>
+        <item>潮流新品</item>
+        <item>网易周边</item>
+        <item>其他奖品</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+
+</resources>

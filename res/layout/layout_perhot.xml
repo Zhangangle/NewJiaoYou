@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical" >
+
+
+        <GridView
+            android:id="@+id/gv_perhot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llayout_home_selector"
+            android:background="@color/lightgray"
+            android:horizontalSpacing="5dip"
+            android:listSelector="@drawable/btn_transparent_select"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:smoothScrollbar="true"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:soundEffectsEnabled="true"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dip" />
+
+
+</LinearLayout>

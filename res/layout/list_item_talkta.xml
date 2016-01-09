@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/tv_talk_tatime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="10-10 23:08"
+        android:textColor="@color/darkgray"
+        android:textSize="12dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip" >
+
+        <ImageView
+            android:id="@+id/img_talk_taicon"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_marginRight="5dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_avatar_default" />
+
+        <LinearLayout
+            android:id="@+id/layout_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatmsg_left"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_talk_tapic"
+                android:layout_width="120dip"
+                android:layout_height="120dip"
+                android:adjustViewBounds="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_avatar_default"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_talk_tamsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:padding="5dip"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="15dip"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

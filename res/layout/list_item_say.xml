@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zmv.zf"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@color/white" >
+
+        <com.zmv.zf.view.CircleImageView
+            android:id="@+id/cimg_detail_cion"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="10dip"
+            android:src="@drawable/ic_avatar_default" />
+
+        <TextView
+            android:id="@+id/tv_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cimg_detail_cion"
+            android:layout_marginLeft="5dip"
+            android:layout_toRightOf="@+id/cimg_detail_cion"
+            android:singleLine="true"
+            android:text="苏菲"
+            android:textColor="@color/black"
+            android:textSize="13dip" />
+
+        <TextView
+            android:id="@+id/tv_detail_say"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cimg_detail_cion"
+            android:layout_alignLeft="@+id/tv_detail_name"
+            android:maxLines="2"
+            android:text="女人应该对自己好一点"
+            android:textColor="@color/black"
+            android:textSize="13dip" />
+    </RelativeLayout>
+
+</LinearLayout>
