@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.R;
+import com.hihi.jy.R;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
@@ -115,15 +115,15 @@ public class ThirdDialog implements OnClickListener {
 			payUtils = new AlipayUtils(context, handler);
 			// payUtils.getHttpData();handler
 			MobclickAgent.onEvent(context, "zfb_request");
-			Date nowTime = new Date(System.currentTimeMillis());
-			SimpleDateFormat sdFormatter = new SimpleDateFormat(
-					"yyyyMMddHHmmssms");
-			if (pay_type == 0)
-				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "单次点播",
-						"单次点播", "5");
-			else
-				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "包月无限",
-						"包月无限", "20");
+//			Date nowTime = new Date(System.currentTimeMillis());
+//			SimpleDateFormat sdFormatter = new SimpleDateFormat(
+//					"yyyyMMddHHmmssms");
+//			if (pay_type == 0)
+//				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "单次点播",
+//						"单次点播", "5");
+//			else
+//				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "包月无限",
+//						"包月无限", "20");
 			break;
 		case R.id.img_dialog_wx:// 微信
 			if (BasicUtils.isInstallApk(context, "com.tencent.mm")) {

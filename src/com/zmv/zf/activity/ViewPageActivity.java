@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.R;
+import com.hihi.jy.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.ExitManager;

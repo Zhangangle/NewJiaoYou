@@ -12,7 +12,7 @@ import android.util.Log;
 
 //import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
 //import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
-import com.zmv.zf.R;
+import com.hihi.jy.R;
 import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
 import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
 import com.zmv.zf.common.Conf;

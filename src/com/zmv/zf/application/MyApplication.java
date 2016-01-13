@@ -82,8 +82,9 @@ public class MyApplication extends Application {
 					// "中国电信";
 					Conf.operators = 3;
 				}
-			} else
-				ConfigUtils.nopay = true;
+			} 
+//			else
+//				ConfigUtils.nopay = true;
 			// Log.e("conf.cid", Conf.CID);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

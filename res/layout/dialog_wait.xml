@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dip"
         android:gravity="center_horizontal"
-        android:text="@string/str_network_request"
+        android:text="@string/str_loading"
         android:textColor="@color/darkgray"
         android:textSize="15dip" />
 

@@ -74,11 +74,11 @@ public class BitmapUtils {
 		try {
 			if (pictureFile.exists()) {
 				pictureFile.delete();
-				Log.e("删除文件", "删除文件84");
+				//Log.e("删除文件", "删除文件84");
 			}
 			if (targetPictureFile.exists()) {
 				targetPictureFile.delete();
-				Log.e("删除文件", "删除文件88");
+				//Log.e("删除文件", "删除文件88");
 			}
 			pictureFile = null;
 			targetPictureFile = null;

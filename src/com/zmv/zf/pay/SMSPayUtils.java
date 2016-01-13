@@ -23,7 +23,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.zmv.zf.R;
+import com.hihi.jy.R;
 import com.dm.ml.MiLiNewApi;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
@@ -56,12 +56,12 @@ public class SMSPayUtils {
 
 	private void getSign() {
 		try {
-			if (ConfigUtils.nopay || !pay_status) {
+			if (!pay_status) {
 				if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
 						&& ConfigUtils.isdownplug) {
 					pluginDialog();
 				} else {
-//					if (!cpname.equals("warning"))
+					if (!cpname.equals("libao"))
 						ThirdDialog.getInstance().makeDialog(context);
 				}
 			}
@@ -139,7 +139,7 @@ public class SMSPayUtils {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)) {
-//					if (!cpname.equals("warning"))
+					if (!cpname.equals("l"))
 						ThirdDialog.getInstance().makeDialog(context);
 					MobclickAgent.onEvent(context, "zb_cancel");
 				} else {
@@ -274,7 +274,12 @@ public class SMSPayUtils {
 
 	public void makeDialog(final Activity activity) {
 		try {
-			MobclickAgent.onEvent(context, "pay_dialog_request");
+			if (cpname.equals("warning"))
+				MobclickAgent.onEvent(context, "pay_dialog_vip");
+			else if (cpname.equals("libao"))
+				MobclickAgent.onEvent(context, "pay_dialog_libao");
+			else
+				MobclickAgent.onEvent(context, "pay_dialog_request");
 			context = activity;
 			payDialog = BasicUtils.showDialog(activity, R.style.BasicDialog);
 			payDialog.setContentView(R.layout.dialog_pay);
@@ -297,8 +302,18 @@ public class SMSPayUtils {
 							// TODO Auto-generated method stub
 							if (payDialog != null)
 								payDialog.dismiss();
-							MobclickAgent.onEvent(context, "pay_dialog_cancel");
-							getSign();
+							if (cpname.equals("warning"))
+								MobclickAgent.onEvent(context,
+										"pay_dialog_vip_cancel");
+							else if (cpname.equals("libao"))
+								MobclickAgent.onEvent(context,
+										"pay_dialog_libao_cancel");
+							else
+								MobclickAgent.onEvent(context,
+										"pay_dialog_cancel");
+//							getSign();
+							handler.sendEmptyMessageDelayed(
+									list_warning.get(posPay), 1000);	
 						}
 					});
 			payDialog.getWindow().findViewById(R.id.btn_pay_submit)
@@ -311,7 +326,15 @@ public class SMSPayUtils {
 								payDialog.dismiss();
 							handler.sendEmptyMessageDelayed(
 									list_warning.get(posPay), 1000);
-							MobclickAgent.onEvent(context, "pay_dialog_sure");
+							if (cpname.equals("warning"))
+								MobclickAgent.onEvent(context,
+										"pay_dialog_vip_sure");
+							else if (cpname.equals("libao"))
+								MobclickAgent.onEvent(context,
+										"pay_dialog_libao_sure");
+							else
+								MobclickAgent.onEvent(context,
+										"pay_dialog_sure");
 						}
 					});
 			payDialog.setOnKeyListener(new OnKeyListener() {

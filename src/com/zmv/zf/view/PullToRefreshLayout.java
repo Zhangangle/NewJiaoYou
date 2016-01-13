@@ -18,7 +18,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.zmv.zf.R;
+import com.hihi.jy.R;
 
 /**
  * 自定义的布局，用来管理三个子控件，其中一个是下拉头，一个是包含内容的pullableView（可以是实现Pullable接口的的任何View），
@@ -153,7 +153,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 				timer.cancel();
 				requestLayout();
 			}
-			Log.d("handle", "handle");
+			//Log.d("handle", "handle");
 			// 刷新布局,会自动调用onLayout
 			requestLayout();
 			// 没有拖拉或者回弹完成
@@ -530,7 +530,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
-		Log.d("Test", "Test");
+	//	Log.d("Test", "Test");
 		if (!isLayout) {
 			// 这里是第一次进来的时候做一些初始化
 			refreshView = getChildAt(0);
