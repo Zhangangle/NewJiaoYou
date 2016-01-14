@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hihi.jy"
     android:versionCode="4"
-    android:versionName="4.6.20160111" >
+    android:versionName="4.6.20160114" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -50,7 +50,7 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="41004" />
+            android:value="41005" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
@@ -95,6 +95,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name="com.zmv.zf.activity.VideoTestActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <!-- 支付宝start -->
         <activity
@@ -226,7 +230,7 @@
         <!-- MILI_PAY_CHANNELID为渠道号，可自行配置，不要写中文和特殊符号 -->
         <meta-data
             android:name="MILI_PAY_CHANNELID"
-            android:value="41004" >
+            android:value="41005" >
         </meta-data>
 
         <!-- 米粒支付  end -->

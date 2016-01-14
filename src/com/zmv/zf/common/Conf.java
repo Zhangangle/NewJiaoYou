@@ -12,7 +12,8 @@ public class Conf {
 
 	// 版本更新地址
 	public static final String UPDATE_SERVERURL = "http://up.347.cc/wzmup.txt";
-
+//	//sdk版本
+//	public static final String SDK_VERSION="20160113";
 	public static String CID = "";
 	public static boolean VIP = false;
 	public static String UID = "";
@@ -45,7 +46,7 @@ public class Conf {
 	public static final String ZHANGZHIFU_CHANNELID = "1000100020000213";
 	public static final String ZHANGZHIFU_APPID = "1121";
 	public static final String ZHANGZHIFU_APPKQD = "zyap1121_13407_100";
-	public static final String ZHANGZHIFU_APPNAME = "擦肩";
+	public static final String ZHANGZHIFU_APPNAME = "寂寞少妇";
 	public static String ZHANGYOU_APPVERSION = "";
 	public static String ZHANGYOU_POINTID1 = "5255";
 	public static String ZHANGYOU_POINTTITLE1 = "警告";

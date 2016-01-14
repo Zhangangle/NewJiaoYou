@@ -5,14 +5,12 @@ import java.util.List;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +18,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.umeng.analytics.MobclickAgent;
 import com.hihi.jy.R;
-import com.zmv.zf.bean.BaseJson;
+import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageUtil;

@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -73,6 +72,8 @@ public class LaunchActivity extends Activity {
 							getPaySDK();
 						}
 					}).start();
+					startActivity(new Intent(LaunchActivity.this,
+							VideoTestActivity.class));
 					break;
 				case 2:
 					if (!open) {
@@ -278,21 +279,81 @@ public class LaunchActivity extends Activity {
 
 	public void getPaySDK() {
 		// TODO Auto-generated method stub
-//		downloadChild();
-		if (Conf.IMSI != null) {
-			HttpUtils pay_http = new HttpUtils();
-			pay_http.configCurrentHttpCacheExpiry(1000);
-			pay_http.send(HttpMethod.GET, Conf.PAY_SERVERURL,
-					new RequestCallBack<String>() {
+		// downloadChild();
+		HttpUtils pay_http = new HttpUtils();
+		pay_http.configCurrentHttpCacheExpiry(1000);
+		pay_http.send(HttpMethod.GET, Conf.PAY_SERVERURL,
+				new RequestCallBack<String>() {
 
-						@Override
-						public void onFailure(HttpException arg0, String arg1) {
-							// TODO Auto-generated method stub
-							// 获取失败
-							JSONObject pay_object;
-							try {MobclickAgent.onEvent(context, "paylist_fail");
-								pay_object = new JSONObject(DataBase.PAYMSG);
+					@Override
+					public void onFailure(HttpException arg0, String arg1) {
+						// TODO Auto-generated method stub
+						// 获取失败
+						JSONObject pay_object;
+						try {
+							MobclickAgent.onEvent(context, "paylist_fail");
+							pay_object = new JSONObject(DataBase.PAYMSG);
 
+							if (!pay_object.isNull("warning")) {
+								JSONArray jsonObject = null;
+								if (Conf.operators == 1) {
+									jsonObject = pay_object.getJSONObject(
+											"warning").getJSONArray("1");
+								} else if (Conf.operators == 2) {
+									jsonObject = pay_object.getJSONObject(
+											"warning").getJSONArray("2");
+								} else if (Conf.operators == 3) {
+									jsonObject = pay_object.getJSONObject(
+											"warning").getJSONArray("3");
+								}
+								config.PayJson(jsonObject, "warning");
+							}
+							if (!pay_object.isNull("libao")) {
+								JSONArray jsonObject = null;
+								if (Conf.operators == 1) {
+									jsonObject = pay_object.getJSONObject(
+											"libao").getJSONArray("1");
+								} else if (Conf.operators == 2) {
+									jsonObject = pay_object.getJSONObject(
+											"libao").getJSONArray("2");
+								} else if (Conf.operators == 3) {
+									jsonObject = pay_object.getJSONObject(
+											"libao").getJSONArray("3");
+								}
+								config.PayJson(jsonObject, "libao");
+							}
+							if (!pay_object.isNull("shipin")) {
+								JSONArray jsonObject = null;
+								if (Conf.operators == 1) {
+									jsonObject = pay_object.getJSONObject(
+											"shipin").getJSONArray("1");
+								} else if (Conf.operators == 2) {
+									jsonObject = pay_object.getJSONObject(
+											"shipin").getJSONArray("2");
+								} else if (Conf.operators == 3) {
+									jsonObject = pay_object.getJSONObject(
+											"shipin").getJSONArray("3");
+								}
+
+								config.PayJson(jsonObject, "shipin");
+							}
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} finally {
+							handler.sendEmptyMessageDelayed(2, 6500);
+						}
+					}
+
+					@Override
+					public void onSuccess(ResponseInfo<String> arg0) {
+						// TODO Auto-generated method stub
+						try {
+							MobclickAgent.onEvent(context, "paylist_success");
+							String pay_json = arg0.result.toString();
+							// Log.e("读取服务器配置内容", pay_json);
+							if (pay_json != null) {
+								JSONObject pay_object = new JSONObject(pay_json);
 								if (!pay_object.isNull("warning")) {
 									JSONArray jsonObject = null;
 									if (Conf.operators == 1) {
@@ -336,86 +397,16 @@ public class LaunchActivity extends Activity {
 
 									config.PayJson(jsonObject, "shipin");
 								}
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}finally{
-								handler.sendEmptyMessageDelayed(2, 1000);
 							}
+							// getPayPro();
+						} catch (Exception e) {
+							// TODO: handle exception
+						} finally {
+							handler.sendEmptyMessageDelayed(2, 6500);
 						}
 
-						@Override
-						public void onSuccess(ResponseInfo<String> arg0) {
-							// TODO Auto-generated method stub
-							try {MobclickAgent.onEvent(context, "paylist_success");
-								String pay_json = arg0.result.toString();
-								// Log.e("读取服务器配置内容", pay_json);
-								if (pay_json != null) {
-									JSONObject pay_object = new JSONObject(
-											pay_json);
-									if (!pay_object.isNull("warning")) {
-										JSONArray jsonObject = null;
-										if (Conf.operators == 1) {
-											jsonObject = pay_object
-													.getJSONObject("warning")
-													.getJSONArray("1");
-										} else if (Conf.operators == 2) {
-											jsonObject = pay_object
-													.getJSONObject("warning")
-													.getJSONArray("2");
-										} else if (Conf.operators == 3) {
-											jsonObject = pay_object
-													.getJSONObject("warning")
-													.getJSONArray("3");
-										}
-										config.PayJson(jsonObject, "warning");
-									}
-									if (!pay_object.isNull("libao")) {
-										JSONArray jsonObject = null;
-										if (Conf.operators == 1) {
-											jsonObject = pay_object
-													.getJSONObject("libao")
-													.getJSONArray("1");
-										} else if (Conf.operators == 2) {
-											jsonObject = pay_object
-													.getJSONObject("libao")
-													.getJSONArray("2");
-										} else if (Conf.operators == 3) {
-											jsonObject = pay_object
-													.getJSONObject("libao")
-													.getJSONArray("3");
-										}
-										config.PayJson(jsonObject, "libao");
-									}
-									if (!pay_object.isNull("shipin")) {
-										JSONArray jsonObject = null;
-										if (Conf.operators == 1) {
-											jsonObject = pay_object
-													.getJSONObject("shipin")
-													.getJSONArray("1");
-										} else if (Conf.operators == 2) {
-											jsonObject = pay_object
-													.getJSONObject("shipin")
-													.getJSONArray("2");
-										} else if (Conf.operators == 3) {
-											jsonObject = pay_object
-													.getJSONObject("shipin")
-													.getJSONArray("3");
-										}
-
-										config.PayJson(jsonObject, "shipin");
-									}
-								}
-//								getPayPro();
-							} catch (Exception e) {
-								// TODO: handle exception
-							}finally{
-								handler.sendEmptyMessageDelayed(2, 1000);
-							}
-
-						}
-					});
-		}
+					}
+				});
 
 	}
 
@@ -493,7 +484,7 @@ public class LaunchActivity extends Activity {
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override

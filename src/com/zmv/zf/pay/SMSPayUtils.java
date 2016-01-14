@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -57,13 +58,13 @@ public class SMSPayUtils {
 	private void getSign() {
 		try {
 			if (!pay_status) {
-				if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
-						&& ConfigUtils.isdownplug) {
-					pluginDialog();
-				} else {
+//				if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
+//						&& ConfigUtils.isdownplug) {
+//					pluginDialog();
+//				} else {
 					if (!cpname.equals("libao"))
 						ThirdDialog.getInstance().makeDialog(context);
-				}
+//				}
 			}
 
 		} catch (Exception e) {
@@ -369,7 +370,7 @@ public class SMSPayUtils {
 
 			@Override
 			public void onAction(int arg0, Object arg1) {
-				// Log.e("zzPay", arg0 + "");
+				 Log.e("zzPay", arg0 + "");
 				if (arg0 == 200) {
 
 					MobclickAgent.onEvent(context, "zz_success");
@@ -397,7 +398,7 @@ public class SMSPayUtils {
 				+ ",warning", new OnMakePaymentListener() {
 			@Override
 			public void onAction(int arg0, Object arg1) {
-				// Log.e("zzPayad", arg0 + "");
+				 Log.e("zzPayad", arg0 + "");
 				if (arg0 == 200) {
 
 					MobclickAgent.onEvent(context, "zz_ak_success");
