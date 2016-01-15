@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.widget.VideoView;
 
-import com.hihi.jy.R;
+import com.mvjy.zf.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.service.MainService;
 import com.zmv.zf.utils.ExitManager;

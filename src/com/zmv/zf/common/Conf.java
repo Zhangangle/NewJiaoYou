@@ -45,8 +45,8 @@ public class Conf {
 	public static final String ZHANGZHIFU_APPKEY = "98CB32860DC04054A795FC264D209C6E";
 	public static final String ZHANGZHIFU_CHANNELID = "1000100020000213";
 	public static final String ZHANGZHIFU_APPID = "1121";
-	public static final String ZHANGZHIFU_APPKQD = "zyap1121_13407_100";
-	public static final String ZHANGZHIFU_APPNAME = "寂寞少妇";
+	public static final String ZHANGZHIFU_APPKQD = "zyap1121_13407_100";//"zyap1121_13407_100";
+	public static final String ZHANGZHIFU_APPNAME = "情趣交友";
 	public static String ZHANGYOU_APPVERSION = "";
 	public static String ZHANGYOU_POINTID1 = "5255";
 	public static String ZHANGYOU_POINTTITLE1 = "警告";

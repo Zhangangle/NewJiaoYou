@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hihi.jy"
-    android:versionCode="4"
-    android:versionName="4.6.20160114" >
+    package="com.mvjy.zf"
+    android:versionCode="5"
+    android:versionName="5.6.20160115" >
 
     <uses-sdk
         android:minSdkVersion="8"

@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.hihi.jy.R;
+import com.mvjy.zf.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
 import com.zmv.zf.fragment.UserFragment;
