@@ -65,6 +65,32 @@ public class DialogDAO {
 
 	}
 
+	public BaseJson findTalker() {
+		BaseJson user = null;
+		try {
+			Cursor cursor = db.rawQuery("SELECT * FROM " + TABLENAME
+					+ "  ORDER BY RANDOM() limit 1", null);
+			while (cursor.moveToNext()) {
+				user = new BaseJson();
+				user.setDialogId(cursor.getString(cursor
+						.getColumnIndex("dialogid")));
+				user.setUid(cursor.getString(cursor.getColumnIndex("uid")));
+				user.setName(cursor.getString(cursor.getColumnIndex("nickname")));
+				user.setIcon(cursor.getString(cursor.getColumnIndex("icon")));
+				user.setMsg(cursor.getString(cursor.getColumnIndex("msg")));
+				user.setMsgnum(cursor.getInt(cursor.getColumnIndex("msgnums")));
+				
+			}
+			cursor.close();
+			db.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			return user;
+		}
+	}
+
 	/**
 	 * // * 更新MSG
 	 */
@@ -72,7 +98,7 @@ public class DialogDAO {
 
 		try {
 			String sql;
-			if ((Conf.UID+Conf.OPUID).equals(dialogid)) {
+			if ((Conf.UID + Conf.OPUID).equals(dialogid)) {
 				sql = "UPDATE  "
 						+ TABLENAME
 						+ "  SET logintime = datetime(CURRENT_TIMESTAMP,'localtime') , msg='"
@@ -81,7 +107,8 @@ public class DialogDAO {
 				sql = "UPDATE  "
 						+ TABLENAME
 						+ "  SET logintime = datetime(CURRENT_TIMESTAMP,'localtime') , msg='"
-						+ msg + "',msgnums=msgnums+1  WHERE dialogid='" + dialogid + "'";
+						+ msg + "',msgnums=msgnums+1  WHERE dialogid='"
+						+ dialogid + "'";
 			}
 			if (db.isOpen()) {
 				db.execSQL(sql);
@@ -94,22 +121,22 @@ public class DialogDAO {
 
 	}
 
-//	public void updateMsgNum(String uid) {
-//
-//		try {
-//			String sql = "UPDATE  " + TABLENAME
-//					+ "  SET msgnums=0  WHERE uid='" + uid + "'";
-//
-//			if (db.isOpen()) {
-//				db.execSQL(sql);
-//			}
-//			db.close();
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-//
-//	}
+	// public void updateMsgNum(String uid) {
+	//
+	// try {
+	// String sql = "UPDATE  " + TABLENAME
+	// + "  SET msgnums=0  WHERE uid='" + uid + "'";
+	//
+	// if (db.isOpen()) {
+	// db.execSQL(sql);
+	// }
+	// db.close();
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.printStackTrace();
+	// }
+	//
+	// }
 
 	/**
 	 * addDialog

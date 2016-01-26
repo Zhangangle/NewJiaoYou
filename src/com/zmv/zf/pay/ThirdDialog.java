@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.mvjy.zf.R;
+import com.zf.jy.mm.R;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;

@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.mvjy.zf.R;
+import com.zf.jy.mm.R;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.PicGridAdapter;
 import com.zmv.zf.bean.BaseJson;

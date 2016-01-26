@@ -33,7 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mvjy.zf.R;
+import com.zf.jy.mm.R;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -46,6 +46,7 @@ import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DataBase;
 import com.zmv.zf.database.UserDAO;
 import com.zmv.zf.pay.ConfigUtils;
+import com.zmv.zf.pay.SMSPayUtils;
 import com.zmv.zf.service.MainService;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.ExitManager;
@@ -57,6 +58,7 @@ public class LaunchActivity extends Activity {
 	private Context context;
 	private boolean open = false;
 	private TextView tv;
+	private Button btn_login;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			try {
@@ -85,6 +87,12 @@ public class LaunchActivity extends Activity {
 					}
 					if (mDialog != null)
 						mDialog.dismiss();
+					break;
+				case 3:
+					if (mDialog != null)
+						mDialog.dismiss();
+					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this, "warning");
+					payUtils.initSDK();
 					break;
 				case 1:
 					networkDialog();
@@ -182,6 +190,15 @@ public class LaunchActivity extends Activity {
 			Conf.height = dm.heightPixels;
 			ExitManager.getScreenManager().pushActivity(this);
 			tv = (TextView) findViewById(R.id.tv_title);
+			btn_login=(Button) findViewById(R.id.btn_login);
+			btn_login.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					handler.sendEmptyMessage(2);
+				}
+			});
 			IntentFilter mFilter = new IntentFilter();
 			mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 			registerReceiver(mReceiver, mFilter);
@@ -341,7 +358,7 @@ public class LaunchActivity extends Activity {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} finally {
-							handler.sendEmptyMessageDelayed(2, 6500);
+							handler.sendEmptyMessageDelayed(3, 2000);
 						}
 					}
 
@@ -402,7 +419,7 @@ public class LaunchActivity extends Activity {
 						} catch (Exception e) {
 							// TODO: handle exception
 						} finally {
-							handler.sendEmptyMessageDelayed(2, 6500);
+							handler.sendEmptyMessageDelayed(3, 2000);
 						}
 
 					}

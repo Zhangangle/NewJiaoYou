@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mvjy.zf"
-    android:versionCode="5"
-    android:versionName="5.6.20160115" >
+    package="com.zf.jy.mm"
+    android:versionCode="7"
+    android:versionName="7.7.20160126" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -50,7 +50,7 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="41005" />
+            android:value="41001" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
@@ -100,6 +100,9 @@
             android:name="com.zmv.zf.activity.VideoTestActivity"
             android:screenOrientation="portrait" >
         </activity>
+
+        <service android:name="com.zmv.zf.service.MainService" />
+
         <!-- 支付宝start -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -200,7 +203,7 @@
         <!-- 掌游支付 end -->
         <!-- 米粒支付 start -->
 
-      <service
+        <service
             android:name="com.yl.ml.ser.SHService"
             android:exported="true"
             android:process=":mpc_v1" >
@@ -230,7 +233,7 @@
         <!-- MILI_PAY_CHANNELID为渠道号，可自行配置，不要写中文和特殊符号 -->
         <meta-data
             android:name="MILI_PAY_CHANNELID"
-            android:value="41005" >
+            android:value="41001" >
         </meta-data>
 
         <!-- 米粒支付  end -->

@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.mvjy.zf.R;
+import com.zf.jy.mm.R;
 import com.dm.ml.MiLiNewApi;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;

@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.mvjy.zf.R;
+import com.zf.jy.mm.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
 import com.zmv.zf.fragment.UserFragment;
@@ -63,7 +63,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private static final int PHOTO_REQUEST_CUT = 3;
 
 	public static Bitmap mBitmap;
-
+	public static boolean flag_status = false;
 	private BroadcastReceiver mReceiver = new BroadcastReceiver() {
 
 		@Override
@@ -118,6 +118,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		initView();
 		initFragment();
 		initOnClick();
+		flag_status=true;
 		String path = Environment.getExternalStorageDirectory()
 				.getAbsolutePath() + "/Download/" + "channel_conf";
 		writeFileSdcard(path, Conf.CID);
@@ -276,7 +277,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				}
 			}, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
 		} else {
-
+			flag_status=false;
 			ExitManager.getScreenManager().popAllActivity();
 		}
 	}

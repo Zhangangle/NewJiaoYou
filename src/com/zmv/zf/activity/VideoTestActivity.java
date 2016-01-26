@@ -1,19 +1,17 @@
 package com.zmv.zf.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import android.widget.VideoView;
 
-import com.mvjy.zf.R;
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.service.MainService;
+import com.zf.jy.mm.R;
 import com.zmv.zf.utils.ExitManager;
+import com.zmv.zf.view.MyVideoView;
 
 /**
  * 
@@ -23,7 +21,7 @@ import com.zmv.zf.utils.ExitManager;
  */
 public class VideoTestActivity extends FragmentActivity {
 
-	VideoView video;
+	MyVideoView video;
 
 	private Context context;
 
@@ -35,8 +33,7 @@ public class VideoTestActivity extends FragmentActivity {
 		setContentView(R.layout.activity_video);
 		ExitManager.getScreenManager().pushActivity(this);
 		context = VideoTestActivity.this;
-		video = (VideoView) findViewById(R.id.video);
-		ExitManager.getScreenManager().pushActivity(this);
+		video = (MyVideoView) findViewById(R.id.video);
 		String uri = "android.resource://" + getPackageName() + "/" + R.raw.ok;
 		video.setVideoURI(Uri.parse(uri));
 		video.start();
