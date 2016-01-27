@@ -200,15 +200,15 @@ public class SMSPayUtils {
 
 	private void SiKaiPay() {
 		// 计费价格，以分为单位
-		String price = "1000";
+		String price = "2000";
 		// 计费点编号
 		String payPoint;
 		if (cpname.equals("warning")) {
-			payPoint = "1";
+			payPoint = "4";
 		} else if (cpname.equals("libao")) {
-			payPoint = "2";
+			payPoint = "5";
 		} else {
-			payPoint = "3";
+			payPoint = "6";
 		}
 		SiKaiPayUtils.pay(context, payPoint, price, cpname, handler, true);
 

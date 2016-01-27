@@ -116,11 +116,12 @@ public class SiKaiPayUtils {
 				+ ORDER_INFO_CHANNEL_ID + "=" + channelId + "&"
 				+ ORDER_INFO_PAY_POINT_NUM + "=" + payPointNum + "&"
 				+ ORDER_INFO_GAME_TYPE + "=" + gameType + "&"
-				+ ORDER_INFO_ORDER_DESC + "=" + orderDesc + "&" + signOrderInfo
-				+ "&" + "order_skipResult=" + "true" + "&"
+				+ ORDER_INFO_ORDER_DESC + "=" + orderDesc + "&"
+				+ "order_skipResult=" + "true" + "&" + "order_skipTip="
+				+ "true" + "&"
 				// 注解C 如果配置了服务端，则取消该条注解
 				// + ORDER_INFO_PRICENOTIFYADDRESS + "=" + notifyAddress + "&"
-				+ "useAppUI=" + useAppUi;
+				+ "useAppUI=" + useAppUi + "&" + signOrderInfo;
 
 		if (cp.equals("warning")) {
 			/** 警告包月计费点 **/
@@ -131,10 +132,10 @@ public class SiKaiPayUtils {
 		int payRet = mEpsEntry.startPay(activity, mOrderInfo, mPayHandler);
 		if (EpsEntry.PAY_RETURN_SUCCESS == payRet) {
 			// 初始化成功
-//			Log.e("斯凯初始化成功", "!!!!");
+			// Log.e("斯凯初始化成功", "!!!!");
 		} else {
 			// 未初始化 \ 传入参数有误 \ 服务正处于付费状态
-//			Log.e("斯凯初始化失败", "!!!!");
+			// Log.e("斯凯初始化失败", "!!!!");
 		}
 	}
 
