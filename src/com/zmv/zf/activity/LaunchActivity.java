@@ -33,7 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -58,40 +58,46 @@ public class LaunchActivity extends Activity {
 	private Context context;
 	private boolean open = false;
 	private TextView tv;
-	private Button btn_login;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			try {
 
 				switch (msg.what) {
 				case 0:// 请求网络
-					setDialogView(context);
-					new Thread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							getPaySDK();
-						}
-					}).start();
-					startActivity(new Intent(LaunchActivity.this,
-							VideoTestActivity.class));
-					break;
-				case 2:
 					if (!open) {
 						open = true;
-						startService(new Intent(context, MainService.class));
-						startActivity(new Intent(LaunchActivity.this,
-								MainActivity.class));
-						finish();
+						setDialogView(context);
+						new Thread(new Runnable() {
+
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								try {
+								getPaySDK();
+								Thread.sleep(50000);
+								handler.sendEmptyMessage(2);
+								
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+							}
+						}).start();
 					}
+					break;
+				case 2:
 					if (mDialog != null)
 						mDialog.dismiss();
+					startService(new Intent(context, MainService.class));
+					startActivity(new Intent(LaunchActivity.this,
+							MainActivity.class));
+					finish();
+
 					break;
 				case 3:
 					if (mDialog != null)
 						mDialog.dismiss();
-					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this, "warning");
+					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this,
+							"warning");
 					payUtils.initSDK();
 					break;
 				case 1:
@@ -190,17 +196,9 @@ public class LaunchActivity extends Activity {
 			Conf.height = dm.heightPixels;
 			ExitManager.getScreenManager().pushActivity(this);
 			tv = (TextView) findViewById(R.id.tv_title);
-			btn_login=(Button) findViewById(R.id.btn_login);
-			btn_login.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-					handler.sendEmptyMessage(2);
-				}
-			});
 			IntentFilter mFilter = new IntentFilter();
 			mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+			mFilter.addAction("com.zmv.login.action");
 			registerReceiver(mReceiver, mFilter);
 			// 初始化数据
 			new Thread(new Runnable() {
@@ -234,7 +232,7 @@ public class LaunchActivity extends Activity {
 						// Thread.sleep(500);
 						// VideoDAO video = new VideoDAO(context);
 						// video.addvideo();
-
+						
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -276,6 +274,8 @@ public class LaunchActivity extends Activity {
 				} else {
 					handler.sendEmptyMessageDelayed(1, 1000);
 				}
+			}else if(action.equals("com.zmv.login.action")){
+				handler.sendEmptyMessage(2);
 			}
 		}
 	};
@@ -358,7 +358,7 @@ public class LaunchActivity extends Activity {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} finally {
-							handler.sendEmptyMessageDelayed(3, 2000);
+							handler.sendEmptyMessageDelayed(3, 0);
 						}
 					}
 
@@ -419,7 +419,7 @@ public class LaunchActivity extends Activity {
 						} catch (Exception e) {
 							// TODO: handle exception
 						} finally {
-							handler.sendEmptyMessageDelayed(3, 2000);
+							handler.sendEmptyMessageDelayed(3,0);
 						}
 
 					}

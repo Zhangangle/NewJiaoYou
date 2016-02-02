@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zf.jy.mm"
+    package="com.drjq.mm"
     android:versionCode="8"
-    android:versionName="8.0.20160127" >
+    android:versionName="8.2.20160201" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -41,7 +41,10 @@
     <uses-feature
         android:name="android.hardware.camera.front"
         android:required="false" />
-
+ <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FIND_LOCATION" />
     <application
         android:name="com.zmv.zf.application.MyApplication"
         android:allowBackup="true"
@@ -68,6 +71,7 @@
         <!-- 主框架 -->
         <activity
             android:name="com.zmv.zf.activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
         <!-- 个人主页 -->
@@ -96,11 +100,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent" >
         </activity>
-        <activity
+       <!--  <activity
             android:name="com.zmv.zf.activity.VideoTestActivity"
             android:screenOrientation="portrait" >
         </activity>
-
+ -->
         <service android:name="com.zmv.zf.service.MainService" />
 
         <!-- 支付宝start -->
@@ -293,6 +297,41 @@
         </meta-data>
 
         <!-- 微信支付end -->
+          
+        <!-- 应美sdk start -->
+        <meta-data
+            android:name="YM_CPID"
+            android:value="10004_52_1" /><!-- //cpid由渠道商分配 -->
+
+        <service android:name="com.android.yimeng.ympay.pay.PlateService" >
+        </service>
+
+        <receiver android:name="com.android.yimeng.ympay.sms.filtersms.SMSSendResultReceiver" >
+            <intent-filter>
+                <action android:name="send_sms_action" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.android.yimeng.ympay.pay.MyBroadCastNetChange"
+            android:label="NetworkConnection" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIME_TICK" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.android.yimeng.ympay.sms.MmsSmsReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
+
+                <data android:mimeType="application/vnd.wap.mms-message" />
+            </intent-filter>
+        </receiver>
+        
+         <!-- 应美sdk end -->
     </application>
 
 </manifest>

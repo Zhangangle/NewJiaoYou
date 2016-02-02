@@ -23,18 +23,15 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
-import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
 import com.zmv.zf.activity.LaunchActivity;
 import com.zmv.zf.activity.MainActivity;
-import com.zmv.zf.activity.NetActivity;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;
-import com.zmv.zf.utils.ExitManager;
 
 public class MainService extends Service {
 	private SimpleDateFormat format = new SimpleDateFormat("HH:mm");
@@ -61,7 +58,7 @@ public class MainService extends Service {
 		mTimer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				handler.sendEmptyMessageDelayed(0, 0);
+				handler.sendEmptyMessageDelayed(0, (1 + (int) (Math.random() * 20)) * 1000);
 			}
 		}, 10000, 120 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 	}
@@ -105,7 +102,7 @@ public class MainService extends Service {
 									line.indexOf("{"), line.indexOf("}") + 1));
 							Conf.PublicNetwork = json.getString("cip");
 							Conf.Address = json.getString("cname");
-							Log.e("ip", Conf.Address);
+							
 						}
 					}
 				} catch (Exception e) {
@@ -169,7 +166,6 @@ public class MainService extends Service {
 			mNotificationManager.notify(1, notify);
 		} catch (Exception e) {
 			// TODO: handle exception
-			Log.e("hh", e.toString());
 		}
 	}
 }

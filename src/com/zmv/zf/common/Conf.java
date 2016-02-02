@@ -28,7 +28,7 @@ public class Conf {
 	public static String OPUID = "";
 	public static int OPEN = 0;
 
-	public static int operators = 0;
+	public static int operators = 1;
 	public static String filename = "";
 	// 屏幕密度
 	public static int width = 0;

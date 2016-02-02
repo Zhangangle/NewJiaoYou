@@ -1,5 +1,5 @@
 package com.zmv.zf.view;
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

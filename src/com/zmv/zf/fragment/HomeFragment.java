@@ -25,7 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
 import com.zmv.zf.activity.DetailActivity;
 import com.zmv.zf.activity.PersonActivity;
 import com.zmv.zf.adapter.HotGridAdapter;

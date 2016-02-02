@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zf.jy.mm.R;
+import com.drjq.mm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -94,7 +94,7 @@ public class TalkActivity extends FragmentActivity implements OnClickListener {
 			@Override
 			public void run() {
 				handler.sendEmptyMessageDelayed(0,
-						(1 + (int) (Math.random() * 10)) * 1000);
+						(1 + (int) (Math.random() * 3)) * 1000);
 			}
 		}, 1000, 5 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 
