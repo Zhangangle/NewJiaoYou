@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.BitmapUtils;

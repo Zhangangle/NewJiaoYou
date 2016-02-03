@@ -25,7 +25,7 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.activity.LaunchActivity;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;
@@ -60,7 +60,7 @@ public class MainService extends Service {
 			public void run() {
 				handler.sendEmptyMessageDelayed(0, (1 + (int) (Math.random() * 20)) * 1000);
 			}
-		}, 10000, 120 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
+		}, 10000, 180 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 	}
 
 	private Handler handler = new Handler() {

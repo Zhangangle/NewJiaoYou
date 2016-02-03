@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.bean.BaseJson;
 
 /**

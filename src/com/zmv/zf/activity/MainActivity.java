@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
 import com.zmv.zf.fragment.UserFragment;
@@ -123,7 +123,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				.getAbsolutePath() + "/Download/" + "channel_conf";
 		writeFileSdcard(path, Conf.CID);
 		if (payUtils == null)
-			payUtils = new SMSPayUtils(context, "libao");
+			payUtils = new SMSPayUtils(context, "libao",0);
 		payUtils.initSDK();
 		if (Conf.IMSI == null || Conf.IMSI.trim().equals(""))
 			MobclickAgent.onEvent(context, "imsi_fail");
@@ -251,7 +251,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (!Conf.VIP && !pay_flag) {
-				payUtils = new SMSPayUtils(context, "warning");
+				payUtils = new SMSPayUtils(context, "warning",1);
 				payUtils.initSDK();
 				pay_flag = true;
 

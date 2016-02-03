@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
@@ -110,8 +110,8 @@ public class ThirdDialog implements OnClickListener {
 				payDialog.dismiss();
 				payDialog = null;
 			}
-			Intent intent = new Intent("com.zmv.login.action");
-			context.sendBroadcast(intent);
+//			Intent intent = new Intent("com.zmv.login.action");
+//			context.sendBroadcast(intent);
 			break;
 		case R.id.img_dialog_alipay:// 支付宝
 			payUtils = new AlipayUtils(context, handler);
@@ -120,12 +120,12 @@ public class ThirdDialog implements OnClickListener {
 //			Date nowTime = new Date(System.currentTimeMillis());
 //			SimpleDateFormat sdFormatter = new SimpleDateFormat(
 //					"yyyyMMddHHmmssms");
-//			if (pay_type == 0)
-//				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "单次点播",
-//						"单次点播", "5");
-//			else
-//				payUtils.pay(sdFormatter.format(nowTime) + Conf.CID, "包月无限",
-//						"包月无限", "20");
+			if (pay_type == 0)
+				payUtils.payInfo( "单次点播",
+						"单次点播", "5");
+			else
+				payUtils.payInfo( "包月无限",
+						"包月无限", "20");
 			break;
 		case R.id.img_dialog_wx:// 微信
 			if (BasicUtils.isInstallApk(context, "com.tencent.mm")) {
@@ -244,8 +244,8 @@ public class ThirdDialog implements OnClickListener {
 					else
 						MobclickAgent.onEvent(context, "wx_success");
 					Toast.makeText(context, "支付成功", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent("com.zmv.login.action");
-					context.sendBroadcast(intent);
+//					Intent intent = new Intent("com.zmv.login.action");
+//					context.sendBroadcast(intent);
 					break;
 				case 1:// 支付失败
 				case 3:

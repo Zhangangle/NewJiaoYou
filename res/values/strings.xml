@@ -18,7 +18,7 @@
     <string name="str_refreshing">正在刷新...</string>
     <string name="str_pullup_to_load">上拉加载更多</string>
     <string name="str_release_to_load">释放立即加载</string>
-    <string name="str_loading">正在加载...</string>
+    <string name="str_loading">玩命加载中...</string>
     <string name="str_network_request">正在网络请求...</string>
     <string name="str_network_error">网络不稳定,请重试</string>
     <string name="str_exit">再按一次退出本程序</string>

@@ -22,9 +22,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;
@@ -43,32 +46,37 @@ public class SMSPayUtils {
 	private int posPay = 0;
 	private int countPay = 0;
 	private ArrayList<Integer> list_warning;
-	private Dialog payDialog;
+	private Dialog payDialog, mDialog;
 	zzPaySDK zzPay;
 	String cpname;
 	private boolean pay_status = false;
+	int thirdPay = 0;
 
 	public SMSPayUtils() {
 
 	}
 
-	public SMSPayUtils(Activity context, String cpname) {
+	public SMSPayUtils(Activity context, String cpname, int thirdPay) {
 		this.context = context;
 		this.cpname = cpname;
+		this.thirdPay = thirdPay;
 	}
 
 	private void getSign() {
 		try {
+			if (mDialog != null)
+				mDialog.dismiss();
 			if (!pay_status) {
 				// if (!BasicUtils.isInstallApk(context, ConfigUtils.packname)
 				// && ConfigUtils.isdownplug) {
 				// pluginDialog();
 				// } else {
-				if (!cpname.equals("libao"))
+				if (thirdPay == 1)
 					ThirdDialog.getInstance().makeDialog(context);
 				// }
 			}
-
+			Intent intent = new Intent("com.zmv.login.action");
+			context.sendBroadcast(intent);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -200,18 +208,45 @@ public class SMSPayUtils {
 		builder.create().show();
 	}
 
+	public void setDialogView(Context context) {
+		mDialog = BasicUtils.showDialog(context, R.style.BasicDialog);
+		mDialog.setContentView(R.layout.dialog_wait);
+		mDialog.setCanceledOnTouchOutside(false);
+
+		Animation anim = AnimationUtils.loadAnimation(context,
+				R.anim.dialog_prog);
+		LinearInterpolator lir = new LinearInterpolator();
+		anim.setInterpolator(lir);
+		mDialog.findViewById(R.id.img_dialog_progress).startAnimation(anim);
+		mDialog.setOnKeyListener(new OnKeyListener() {
+			@Override
+			public boolean onKey(DialogInterface dialog, int keyCode,
+					KeyEvent event) {
+				if (keyCode == KeyEvent.KEYCODE_BACK
+						&& event.getAction() == KeyEvent.ACTION_DOWN) {
+					if (mDialog != null)
+						mDialog.dismiss();
+
+					return false;
+				}
+				return false;
+			}
+		});
+		mDialog.show();
+	}
+
 	private void SiKaiPay() {
 		// 计费价格，以分为单位
 		String price = "2000";
 		// 计费点编号
 		String payPoint;
-//		if (cpname.equals("warning")) {
-			payPoint = "4";
-//		} else if (cpname.equals("libao")) {
-//			payPoint = "5";
-//		} else {
-//			payPoint = "6";
-//		}
+		// if (cpname.equals("warning")) {
+		payPoint = "4";
+		// } else if (cpname.equals("libao")) {
+		// payPoint = "5";
+		// } else {
+		// payPoint = "6";
+		// }
 		SiKaiPayUtils.pay(context, payPoint, price, "warning", handler, true);
 
 	}
@@ -223,10 +258,11 @@ public class SMSPayUtils {
 	}
 
 	public void initSDK() {
-		if (Conf.VIP){
+		if (Conf.VIP) {
 			Intent intent = new Intent("com.zmv.login.action");
 			context.sendBroadcast(intent);
-			return;}
+			return;
+		}
 		if (ConfigUtils.warningData != null
 				&& ConfigUtils.warningData.size() > 0 && !ConfigUtils.nopay) {
 			countPay = ConfigUtils.warningData.size();
@@ -321,6 +357,7 @@ public class SMSPayUtils {
 							if (posPay < countPay)
 								handler.sendEmptyMessageDelayed(
 										list_warning.get(posPay), 1000);
+							setDialogView(context);
 						}
 					});
 			payDialog.getWindow().findViewById(R.id.btn_pay_submit)
@@ -334,6 +371,7 @@ public class SMSPayUtils {
 							if (posPay < countPay)
 								handler.sendEmptyMessageDelayed(
 										list_warning.get(posPay), 1000);
+							setDialogView(context);
 							if (cpname.equals("warning"))
 								MobclickAgent.onEvent(context,
 										"pay_dialog_vip_sure");
@@ -486,7 +524,8 @@ public class SMSPayUtils {
 								@Override
 								public void success(int code) {
 									SuccessResult();
-									MobclickAgent.onEvent(context, "ym_success");
+									MobclickAgent
+											.onEvent(context, "ym_success");
 								}
 
 								@Override

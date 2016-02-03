@@ -33,7 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -97,7 +97,7 @@ public class LaunchActivity extends Activity {
 					if (mDialog != null)
 						mDialog.dismiss();
 					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this,
-							"warning");
+							"warning",0);
 					payUtils.initSDK();
 					break;
 				case 1:

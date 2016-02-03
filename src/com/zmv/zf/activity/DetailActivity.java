@@ -39,7 +39,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.DetailListAdapter;
 import com.zmv.zf.adapter.HotGridAdapter;
@@ -542,7 +542,7 @@ public class DetailActivity extends FragmentActivity implements
 			} else {
 				MobclickAgent.onEvent(context, "video_request");
 				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "shipin");
+					payUtils = new SMSPayUtils(context, "shipin",1);
 				payUtils.initSDK();
 			}
 			// if (Conf.user_VIP.equals("1") && !Conf.userID.equals("122312")) {

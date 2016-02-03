@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.adapter.MsgAdapter;
@@ -333,7 +333,7 @@ public class UserFragment extends Fragment implements OnClickListener,
 		case R.id.tv_user_pay:
 			if (!Conf.VIP) {
 				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning");
+					payUtils = new SMSPayUtils(context, "warning",1);
 				payUtils.initSDK();
 			}
 			break;

@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.drjq.mm.R;
+import com.xfsf.cc.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -228,7 +228,7 @@ public class TalkActivity extends FragmentActivity implements OnClickListener {
 			} else {
 				MobclickAgent.onEvent(context, "talk_request");
 				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning");
+					payUtils = new SMSPayUtils(context, "warning",1);
 				payUtils.initSDK();
 			}
 			break;
@@ -250,7 +250,7 @@ public class TalkActivity extends FragmentActivity implements OnClickListener {
 			} else {
 				MobclickAgent.onEvent(context, "talk_request");
 				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning");
+					payUtils = new SMSPayUtils(context, "warning",1);
 				payUtils.initSDK();
 			}
 			break;
