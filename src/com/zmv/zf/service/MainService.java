@@ -58,7 +58,8 @@ public class MainService extends Service {
 		mTimer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				handler.sendEmptyMessageDelayed(0, (1 + (int) (Math.random() * 20)) * 1000);
+				handler.sendEmptyMessageDelayed(0,
+						(1 + (int) (Math.random() * 20)) * 1000);
 			}
 		}, 10000, 180 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 	}
@@ -67,9 +68,13 @@ public class MainService extends Service {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 0:
-				DialogDAO dialog = new DialogDAO(MainService.this);
-				BaseJson person = dialog.findTalker();
-				showNotify(MainService.this, person.getMsg(), person);
+				try {
+					DialogDAO dialog = new DialogDAO(MainService.this);
+					BaseJson person = dialog.findTalker();
+					showNotify(MainService.this, person.getMsg(), person);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				break;
 			default:
 				break;
@@ -102,7 +107,7 @@ public class MainService extends Service {
 									line.indexOf("{"), line.indexOf("}") + 1));
 							Conf.PublicNetwork = json.getString("cip");
 							Conf.Address = json.getString("cname");
-							
+
 						}
 					}
 				} catch (Exception e) {
@@ -135,15 +140,16 @@ public class MainService extends Service {
 			// 设置对应IMAGEVIEW的ID的资源图片
 			view_custom
 					.setImageViewResource(R.id.custom_icon, R.drawable.logo1);
-			view_custom.setTextViewText(R.id.tv_custom_title,base.getName());
+			view_custom.setTextViewText(R.id.tv_custom_title, base.getName());
 			view_custom.setTextViewText(R.id.tv_custom_content, message);
 			view_custom.setTextViewText(R.id.tv_custom_time,
 					format.format(new Date(System.currentTimeMillis())));
 			Builder mBuilder = new Builder(context);
 			mBuilder.setContent(view_custom).setAutoCancel(true)
-			// 通知产生的时间，会在通知信息里显示
-					.setTicker("\""+base.getName()+"\"向你打招呼啦~").setPriority(1000)// 设置该通知优先级
-															// Notification.PRIORITY_DEFAULT
+					// 通知产生的时间，会在通知信息里显示
+					.setTicker("\"" + base.getName() + "\"向你打招呼啦~")
+					.setPriority(1000)// 设置该通知优先级
+					// Notification.PRIORITY_DEFAULT
 					.setOngoing(false)// 不是正在进行的 true为正在进行 效果和.flag一样
 					.setSmallIcon(R.drawable.logo1);
 			Intent resultIntent;
