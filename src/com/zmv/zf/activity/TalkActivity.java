@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;

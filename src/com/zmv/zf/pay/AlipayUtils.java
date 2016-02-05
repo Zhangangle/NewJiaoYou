@@ -39,7 +39,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.umeng.analytics.MobclickAgent;
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.zmv.zf.alipay.Result;
 import com.zmv.zf.alipay.SignUtils;
 import com.zmv.zf.common.Conf;

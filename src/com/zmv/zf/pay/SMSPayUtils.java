@@ -27,7 +27,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;

@@ -33,7 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -58,6 +58,7 @@ public class LaunchActivity extends Activity {
 	private Context context;
 	private boolean open = false;
 	private TextView tv;
+	private boolean goIn = false;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			try {
@@ -73,13 +74,13 @@ public class LaunchActivity extends Activity {
 							public void run() {
 								// TODO Auto-generated method stub
 								try {
-								getPaySDK();
-								Thread.sleep(50000);
-								handler.sendEmptyMessage(2);
-								
-							} catch (Exception e) {
-								// TODO: handle exception
-							}
+									getPaySDK();
+									Thread.sleep(50000);
+									handler.sendEmptyMessage(2);
+
+								} catch (Exception e) {
+									// TODO: handle exception
+								}
 							}
 						}).start();
 					}
@@ -87,17 +88,20 @@ public class LaunchActivity extends Activity {
 				case 2:
 					if (mDialog != null)
 						mDialog.dismiss();
-					startService(new Intent(context, MainService.class));
-					startActivity(new Intent(LaunchActivity.this,
-							MainActivity.class));
-					finish();
+					if (!goIn) {
+						goIn = true;
+						startService(new Intent(context, MainService.class));
+						startActivity(new Intent(LaunchActivity.this,
+								MainActivity.class));
+						finish();
+					}
 
 					break;
 				case 3:
 					if (mDialog != null)
 						mDialog.dismiss();
 					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this,
-							"warning",0);
+							"warning", 0);
 					payUtils.initSDK();
 					break;
 				case 1:
@@ -232,7 +236,7 @@ public class LaunchActivity extends Activity {
 						// Thread.sleep(500);
 						// VideoDAO video = new VideoDAO(context);
 						// video.addvideo();
-						
+
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -274,7 +278,7 @@ public class LaunchActivity extends Activity {
 				} else {
 					handler.sendEmptyMessageDelayed(1, 1000);
 				}
-			}else if(action.equals("com.zmv.login.action")){
+			} else if (action.equals("com.zmv.login.action")) {
 				handler.sendEmptyMessage(2);
 			}
 		}
@@ -419,7 +423,7 @@ public class LaunchActivity extends Activity {
 						} catch (Exception e) {
 							// TODO: handle exception
 						} finally {
-							handler.sendEmptyMessageDelayed(3,0);
+							handler.sendEmptyMessageDelayed(3, 0);
 						}
 
 					}

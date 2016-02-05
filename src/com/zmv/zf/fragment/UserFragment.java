@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.adapter.MsgAdapter;

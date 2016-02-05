@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;
 

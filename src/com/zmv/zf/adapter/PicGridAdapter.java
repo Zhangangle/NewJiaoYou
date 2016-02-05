@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.xfsf.cc.R;
+import com.hhad.ss.R;
 import com.zmv.zf.utils.ImageUtil;
 import com.zmv.zf.utils.ImageUtil.ImageCallback;
 
