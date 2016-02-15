@@ -103,7 +103,7 @@ public class VideoDAO {
 
 	// 获取推荐列表数据
 	public List<BaseJson> playData() {
-		List<BaseJson> list = new ArrayList<>();
+		List<BaseJson> list = new ArrayList<BaseJson>();
 		BaseJson user;
 		try {
 			String sql = "UPDATE  " + TABLENAME + "  SET reviews=reviews+"

@@ -1,13 +1,11 @@
 package com.zmv.zf.activity;
 
 import java.io.FileOutputStream;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,17 +27,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
 import com.zmv.zf.fragment.UserFragment;
 import com.zmv.zf.pay.SMSPayUtils;
-import com.zmv.zf.service.MainService;
-import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.BitmapUtils;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;

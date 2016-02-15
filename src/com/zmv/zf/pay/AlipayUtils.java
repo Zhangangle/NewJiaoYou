@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +24,6 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -33,17 +31,10 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
+import com.qqjy.zm.R;
 import com.zmv.zf.alipay.Result;
 import com.zmv.zf.alipay.SignUtils;
 import com.zmv.zf.common.Conf;
-import com.zmv.zf.database.DataBase;
 import com.zmv.zf.utils.BasicUtils;
 
 @SuppressLint("HandlerLeak")

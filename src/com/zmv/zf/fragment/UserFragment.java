@@ -18,7 +18,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,8 +31,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.adapter.MsgAdapter;

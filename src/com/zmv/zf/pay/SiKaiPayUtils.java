@@ -8,15 +8,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 
-import android.util.Log;
-
-//import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
-//import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
-import com.hhad.ss.R;
+import com.qqjy.zm.R;
 import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
 import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.BasicUtils;
+//import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
+//import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
 
 public class SiKaiPayUtils {
 

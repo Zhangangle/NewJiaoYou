@@ -1,6 +1,4 @@
 package com.zmv.zf.view;
-import com.hhad.ss.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -16,6 +14,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import com.qqjy.zm.R;
 public class CircleImageView extends ImageView {
 
 	  private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

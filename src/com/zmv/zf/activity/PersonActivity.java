@@ -26,8 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.PicGridAdapter;
 import com.zmv.zf.bean.BaseJson;

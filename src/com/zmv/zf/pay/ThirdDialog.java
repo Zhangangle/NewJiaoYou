@@ -1,32 +1,23 @@
 package com.zmv.zf.pay;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
-import com.zmv.zf.activity.TalkActivity;
-import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.UserDAO;
 import com.zmv.zf.utils.BasicUtils;

@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.hhad.ss.R;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;
 

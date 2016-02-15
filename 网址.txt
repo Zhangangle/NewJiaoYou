@@ -1,0 +1,571 @@
+﻿http://api.347.cc/install/imei
+http://api.347.cc/login/imei
+
+Keep-Alive模式
+http://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html
+2088601174005516
+捷通华声 科大讯飞 语音
+
+XrLosbjBEp!2JfFuydkblmqWPevvB0
+智游推送
+http://www.zypush.com/
+个推、极光、百度推送比较
+http://www.niwozhi.net/demo_c446_i79293.html
+ddpush任意门
+
+http://bugly.qq.com/  BUG测试
+
+http://bs.baidu.com/evadata/cqc-offline/data/dd3ef6abd052c60f1697a8ea4be9c37f1416312669.pdf 高危漏洞
+https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.1.0.tar.gz#md5=70f63a429b7dd7c3e10f6af09ed32554
+https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz#md5=edb51693fe22c53cee5403775c71a99e
+laoshu@xjnmaidi.com abcabc1
+
+APP ID:1103468475
+APP KEY:90k9DQO5oCEckQR9
+
+{"libao": {"upay": 3, "zonst": 5, "heju": 2, "pzhi": 1,"weipai":4}, "shipin": {"upay": 3, "zonst": 5, "heju": 2, "pzhi": 1,"weipai":4}, "warning": {"upay": 3, "zonst": 5, "heju": 2, "pzhi": 1,"weipai":4}}
+
+阿里云
+346433@qq.com
+CCnimei99.#
+----laoshu1215----
+https://oss.console.aliyun.com/index#/bucket/hangzhou/datingvideo/object/?path=c2hpcGlueGl1Lw%3D%3D&keyword=
+
+datingvideo  shipinxiu
+
+艾德斯奇：http://mobi.adsage.cn/    lizi@tonnn.com  tonnn123
+万普： http://www.waps.cn/  帐号：caca  密码tonnn123
+
+
+http://open.12114.org.cn/
+
+尊敬的用户：您好！
+您申请的信息名址(江西MobTech)已经注册成功。
+服务开始日期2015-08-20，服务结束日期2017-08-20。
+
+信息名址：江西MobTech
+维护密码：B2h0f6w1（ 用于登录应用产品平台及名址的续费、过户等事宜）
+您可以使用用户名（您注册的信息名址）和维护密码，登录网站http://open.12114.org.cn进入个人空间，使用免费产品进行内容相关设置或选择、购买收费产品。信息名址基础服务为系统默认的，由信息名址服务管理中心免费提供的“名址通”服务。您也可以在注册成功五日后根据您的使用需求，依据信息名址应用平台规则，自主选择并切换应用产品平台http://open.12114.org.cn上的其他产品或服务。
+信息名址应用服务平台（http://open.12114.org.cn），是信息名址服务管理中心对信息名址应用的官方管理平台。所有基于信息名址应用的服务或产品均需得到信息名址服务管理中心的授权，并在此平台的产品商城上上展现。凡未在产品商城中列明的产品或服务，信息名址服务管理中心不承担任何使用上的责任。
+
+
+http://admin.paysdk.zonst.net
+账号 admin
+密码paysdk123456 /123456sdkpay
+
+这个是我们自己SDK的账号密码
+
+http://g.juzixiangshui.com/ng   app@tonnn.com    zm#meibo 
+
+本地路径
+C:\Users\Administrator\AppData\Roaming\yijie\games\{025C6162-2620B85A}\payDialg\res\drawable-hdpi
+慕课网-学习
+http://www.imooc.com/
+
+SP优托-20
+http://pcdj.ettbuy.com/index.php
+账号：admin
+密码：111111
+
+睿盟
+http://www.soua.com
+用户名：中至
+密码：123456
+ 
+Unity3D游戏开发工程师职业学习路线图
+http://edu.51cto.com/roadmap/view/id-39.html
+
+Android MVP模式
+http://blog.csdn.net/vector_yi/article/details/24719873
+
+http://121.40.121.23:5050/
+用户名：JXZZ888
+密码：JXZZ888
+
+Unity3D游戏制作入门教程
+http://www.51zxw.net/list.aspx?cid=454
+
+熟练掌握NDK JNI方式的开发良好的编程思想
+
+图灵机器人
+http://www.tuling123.com/openapi/cloud/home.jsp
+
+开源中国
+http://git.oschina.net/kymjs/KJFrameForAndroid
+
+百度统计
+laoshu@xinmaidi.com abcabc1
+
+友盟统计
+app2217@163.com  #123123  
+denghua512@126.com
+@meibo99
+
+== 米粒==
+http://www.milicenter.com/MLWorld/index.jsp
+帐号zhongzhi  密码tonnn123
+zzcajian    tonnn123
+
+//豆豆
+后台http://union.raintu.com/public/login账户dsdk密码123456
+
+叉叉调序
+http://g.juzixiangshui.com/sdk/priority_v2
+app@tonnn.com
+zm#meibo
+
+艾麒计费
+http://chansso.ringteck.com/chanbms/login.htm
+账户：JXZZ
+密码：123456
+
+
+http://192.168.1.68:8080/code/modify/30280
+
+http://192.168.1.68:5005/secondorder?trade_id=815090114225797475101&verifycode=123321&code_id=30280&app_id=1004&user_id=50004&imsi=460006120739375&order_id=8150901142257974751&point_id=20009
+http://api.347.cc/install/imei?models=LA2-T&sim=%22%22&os_version=4.2.2&cid=410001&imei=863308023335634&version=81.4.20150612&city=%22%22&longitude=%22%22&latitude=%22%22&ip=%22%22&address=%22%22
+
+飞鸽手机设备id
+0c7dcf7c4f1fa0e849d995bb418d9545ec98a2a2
+
+0c7dcf7c4f1fa0e849d995bb418d9545ec98a2a2
+http://bbs.dospy.com/thread-12333558-1-454-1.html
+
+Description	Resource	Path	Location	Type
+Conversion to Dalvik format failed: Unable to execute dex: Multiple dex files define Lcom/baidu/android/pushservice/BasicPushNotificationBuilder$1;	PushDemo		Unknown	Android Packaging Problem
+
+http://cjroot.347.cc  用户名：laoshu 密码：laoshu ，可以手动回复app端用户发来的消息。
+
+Android开发-Android源码下载-Android游戏源码下载-安卓开发
+http://demo.apkbus.com/
+
+https://www.zybuluo.com/ 网页版文档编辑器  cmd-markdown
+
+如何成功的开发一个app
+http://www.w3cfuns.com/forum.php?mod=viewthread&tid=5596894&from=portal
+
+开发者服务
+http://www.devstore.cn/
+
+移动开发者服务联盟
+http://mdsa.51cto.com/
+
+PY工具
+http://automationtesting.sinaapp.com/blog/python_ide
+
+必须Mark！43个优秀的Swift开源项目推荐
+http://www.csdn.net/article/2015-01-09/2823502-swift-open-source-libs
+
+游戏开发
+http://www.csdn.net/article/2014-12-18/2823211-what-we-use-to-make-2d-games
+
+蒲公英内测平台
+http://www.pgyer.com/
+
+微米SDK，http://121.40.121.23:5050/
+用户名JXZZ888 密码一样
+
+易接支付 AppId:
+{025C6162-2620B85A} 
+lizi@tonnn.com
+lizi123456
+
+微派
+http://www.wiipay.cn/dev/login.jsp
+17885  	 jxzz2015
+
+http://api.347.cc/user_query/sp_perm?cur_user=133840
+
+Base 64---UTF-8编码
+http://tools.jb51.net/tools/base64_decode-utf8.php
+
+﻿http://wzmdown.oss-cn-hangzhou.aliyuncs.com/meibo.9.3.20141201.apk, http://up.347.cc/wzm.apk
+
+-----BEGIN PRIVATE KEY-----
+MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAKibIS41+bs1H+IF
+Cyw3NYebDiVYalEIIhxosQ7pTYeW5IlIGo0/Eb0ZKiB/G6S630VaesPt6vG8yDgb
+M05uI+gMfUUbqJBFm73zaroHYPhZexTb1+M1uC0CWV3H8nJzW2nItmjizP1hfOqy
+g0bWi1lGo30+KrfOpAFjevYh9DdtAgMBAAECgYEAg6eOgyz2ce4LlUtm7AG4NMko
+hJTDf76gFBrTltcqCOQUU/YPdZd33HaX5IQcK8cXrGn4TqGqwVQt61GiAG4Ubkp/
+hsYyI+50eYvGihR193WoQ0mokwSGTU64z8RT5fZgqWhelf5YpLPyXNUfliYpDLL9
+Qt4ma37cY5ROP6UsC4ECQQDe6jnXmSijFeFc4BCRYtbcJk7UFdeIMOlB7gI5aXuy
+zACSHXjeCuKc3xoLcQ0ZmXRJEf3woiN5Cb312VskCfcxAkEAwaFnqgcCimDsQ8d5
+Oz4dG/aNDUBgWvhIazxKkox5ZavBpyyzZzR8xlytll7gy05jHUZPT7pqoHYQFCWN
+fOas/QJAWsBu5ghTk/mfc0lBVX8wzBXId+2gfrCy9gVo4GjCVGtbPCFFiNhTo9vs
+ZYYT+D0SK4FoqePIn0lJDeL8iPKJsQJBALzSDgojXdndnGiYS+N2teI/8traTVxI
+xC42lC4G6Jc5/9VrZOOerpKta+W4ThRUM5knqE4CZtplZ1aOLESBmm0CQQCSEsj0
+HaIK0bQzb8JX+oZdeintF/X10cdMuqsW4xulNZ/JnLYRgGqmE47B2aZC0NZ3mphB
+kHjpGNY4mMZpp3PH
+-----END PRIVATE KEY-----
+
+java.security.spec.InvalidKeySpecException: java.lang.RuntimeException: error:0D0680A8:asn1 encoding routines:ASN1_CHECK_TLEN:wrong tag
+
+http://bbs.csdn.net/topics/390948162 资源网址
+
+
+短信验证：
+Appkey 32f31eff6157
+App Secret d3b11bc0661b33924e81eec447723582
+
+MarkDown;//文本编辑器
+
+Git地址
+http://git.xq5.com/   123456a
+
+擦肩打包
+以后能统一改成  JiaoYou_xxx.apk
+
+UPay
+后台http://admin.upay360.cn    账号tangmen2  密码cj123789
+
+平治SDK
+APPID号：183	密钥：089D3412D89FE44
+回调地址:http://api2.347.cc/pay/pzhi/callback
+
+彗星支付
+appid:64
+我们的同步地址:api.347.cc/pay/huixing/callback
+
+禹迪SDK
+www.yushikejisdk.com   账号：zhongzhikeji 密码123456
+
+豆豆果计费
+http://union.raintu.com/public/login账户是dsdk2  密码123456
+
+广告sdk 是BDM这个后台：
+http://bdm.zmadsdk.wauee.com/ 
+插件是这个：
+http://admin.zmadsdk.wauee.com/
+
+掌游
+http://www.51zpay.cn
+账号密码：caca    tonnn123
+渠道：zyap1121_13407_100（推广包-不开二次）
+      zyap1121_11875_100（备注包-开二次）
+
+应美支付
+http://www.ymei-inc.com/sdkcp/login.jsp
+zzkj  123321
+
+== 斯凯==
+http://dev.mopo.com/
+帐号dreamy@tonnn.com
+密码www.wauee.com
+
+支付宝
+http://smsadmin.ejamad.com/
+账号zzwechat  密码 zzwechat!123 
+
+微信
+后台地址：http://mg.71pay.cn/Login.aspx
+用户名：nanchang
+密码：nanchang123
+
+同步后台
+http://g.paysdk.zonst.com/func/qyzf_list
+chacha
+chacha123456
+
+和聚的http://www.hejupay.com/
+帐号：srzz
+密码：srzz123 
+
+艾斯通：
+http://42.96.169.232:8081/sdkht/indexProducts.jsp
+用户名userjxzz     密码123456
+
+http://up.347.cc/ccpaysdk0831_zyou.txt
+手游
+账号：momo1   密码：123456    链接：http://58.64.143.245:8000
+
+	// 泡妞恋爱终极教程
+		public static final String READ_ICON = "http://img.347.cc/app/material/paoniulogo.jpg";
+		public static final String READ_MSG = "http://img.347.cc/app/material/paoniujiaocheng.png";
+== 易讯==
+
+http://epay.caike.com:8880/login 
+帐号 zzkj  密码：123456
+
+渠道打包:
+http://www.anysdk.com/
+
+Android开发新“神器”：模拟器之王genymotion
+http://www.genymotion.net/
+
+Android 开发设计指南
+http://www.cocoachina.com/specialhthorid=24897
+
+鸿鹄论坛
+http://bbs.hh010.com/forum.php?mod=viewthread&tid=35845&page=1&authorid=24897
+
+短信后台http://admin.upay360.cn    账号tangmen2  密码cj123789
+
+程序指南
+http://www.cocoachina.com/special/design/
+
+图标库github
+https://github.com/xcltapestry/XCL-Charts
+
+友盟推送
+http://dev.umeng.com/message/android/integration-guide
+
+信鸽
+1751976634  ctmd.xmd
+
+SDK网址
+http://www.sdk123.cn/
+
+Android 50个开源源码：
+http://bbs.51cto.com/thread-935541-1.html
+
+Android Studio 配色方案
+http://dbwang.iteye.com/blog/1871955
+
+1. 或远不是处理简单Spannable手动š，因为你没有说你想要的背景突出，只是文字：
+String styledText = "This is <font color='red'>simple</font>.";
+textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
+
+2. 这可以是一个Spannable字符串。您将需要导入以下
+import android.text.SpannableString; 
+import android.text.style.BackgroundColorSpan; 
+import android.text.style.StyleSpan;
+然后你可以改变的，如以下背景：
+TextView text = (TextView) findViewById(R.id.text_login);
+text.setText("13817885403");
+text.append("Add all your funky text in here");
+Spannable sText = (Spannable) text.getText();
+sText.setSpan(new BackgroundColorSpan(Color.RED), 1, 4, 0);
+凡本会underline：字元在POS 1-4采用了红色。希望这会有所帮助！ 
+3. 使用颜色值从XML资源：
+int сolor = getResources().getColor(R.color.label_color);
+String сolorString = String.format("%X", labelColor).substring(2); // !!strip alpha value!!
+Html.fromHtml(String.format("<font color=\"#%s\">text</font>", сolorString), TextView.BufferType.SPANNABLE); 
+
+4. 另一种解决方案：使用的WebView代替。 HTML是容易的工作。
+WebView webview = new WebView(this);
+String summary = "<html><body>Sorry, <span style=\"background: red;\">Madonna</span> gave no results</body></html>";
+webview.loadData(summary, "text/html", "utf-8");
+
+
+
+Git帮助文档
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+
+$ git --help
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+The most commonly used git commands are:
+   add        Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty Git repository or reinitialize an existing one
+   log        Show commit logs
+   merge      Join two or more development histories together
+   mv         Move or rename a file, a directory, or a symlink
+   pull       Fetch from and integrate with another repository or a local branch
+
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+'git help -a' and 'git help -g' lists available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+
+收到消息:XGPushShowedResult [title=, content=, customContent={"sender":"111949","charm":10,"sender_age":"19","time":1421046061,"format_time":"今天 15:01","flag":"2","sender_height":"161","dialog_id":1421046061447,"coin":30,"name":"你好美","img":"http:\/\/img.347.cc\/app\/liwu\/1.jpg","sender_nick":"cindy森蝶","sender_icon":"http:\/\/q.qlogo.cn\/qqapp\/1103468475\/A95AD46072C982F33C4B9B6E14ABACDA\/100@160w_90Q_1x.jpg"}]
+
+Installation=ece793f1-8988-4358-b44f-47c0b4a87407 //117146  第一次安装
+Installation=6c6e084d-512f-48b7-8d9e-c319c8afd960 //117146  卸载后重装
+
+
+git stash
+git pull 
+git stash pop
+解决冲突
+
+方法一：使用Looper类判断
+
+Looper.myLooper() == Looper.getMainLooper()
+方法二：通过查看Thread类的当前线程
+
+Thread.currentThread() == Looper.getMainLooper().getThread()
+
+中至后台
+http://admin.paysdk.zonst.net
+admin paysdk123456
+
+SDK支付
+擦肩：
+user_id:50003
+app_id:1003
+试用：20006
+观看：20007
+退出：20008
+
+测试：
+user_id:50004
+app_id:1004
+point_id:20009 
+
+http://order.u1them.com/order/get?device_type=TCL&app_id=1004&user_id=50004&sim=89860057141381131547&imei=863518010653423&imsi=460006120739375&sign=abcdefg&phone=&point_id=20009&callback_args=test
+http://order.u1them.com/order/get?device_type=TCL&app_id=1003&user_id=50003&sim=89860057141381131547&imei=863518010653423&imsi=460006120739375&sign=abcdefg&phone=&point_id=20006&callback_args=test
+{"order_id": "8150618115545194026", "status": "200", "codes": [{"code_money": 500, "trade_id": "815061811554519402601", "command": "admin", "code_request_type": 0, "code_id": 30036, "filter_word": ["key"], "confirm_msg": "", "filter_no": ["13970992815"], "long_no": "13970992815"}], "user_id": "50004"}
+
+
+http://report.u1them.com/report/msg?sign=abcdefg&trade_id=815061916094186380401&code_id=30036&app_id=1004&user_id=50004&order_id=8150619160941863804&code_request_type=0&point_id=20009
+
+http://report.u1them.com/report/msg?sign=gogogogogo&trade_id=815061916212212249101&code_id=30036&app_id=1004&user_id=50004&order_id=8150619162122122491&code_request_type=0&point_id=20009
+http://order.u1them.com/order/get?sign=gogogogogo&phone=&device_type=YUSUN&imei=863308023335634&sim=89860057141381131547&callback_args=122312%2C41004%2Cwarning&app_id=1003&user_id=50003&imsi=460006120739375&point_id=20006
+
+
+
+SDK支付后台
+http://redmine.xq5.com/projects/smspaysdk/wiki
+AngleZhang MM123123
+
+叉叉后台
+http://corp.347.cc/login?next=%2F
+laoshu@tonnn.com  laoshu
+
+git后台
+zc
+123456a
+
+SVN后台
+https://192.168.1.124/svn/PAYSDK/  
+zhangchao zhangchao
+
+
+	JSONArray array = object
+//											.getJSONArray("province");
+//									if (array != null && array.length() > 0) {
+//										int size = array.length();
+//										for (int i = 0; i < size; i++) {
+//											JSONObject proJson = new JSONObject(array.getString(i));
+//											if (!proJson.isNull(Conf.province)){
+//												String priv=proJson.getString(Conf.province);
+//											}
+//											if (Conf.province.equals(array
+//													.getString(i))) {
+//												ConfigUtils.isdownplug = false;
+//												break;
+//											}
+//										}
+//									}
+
+
+// 获取公网IP地址
+		private void getPublicNetwork() {
+			// TODO Auto-generated method stub
+
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						String url = "http://pv.sohu.com/cityjson?ie=utf-8";
+						URL infoUrl = new URL(url);
+						URLConnection connection = infoUrl.openConnection();
+						HttpURLConnection httpConnection = (HttpURLConnection) connection;
+						int responseCode = httpConnection.getResponseCode();
+						if (responseCode == HttpURLConnection.HTTP_OK) {
+							InputStream inStream = httpConnection.getInputStream();
+							BufferedReader reader = new BufferedReader(
+									new InputStreamReader(inStream, "utf-8"));
+							String line = null;
+							while ((line = reader.readLine()) != null) {
+								JSONObject json = new JSONObject(line.substring(
+										line.indexOf("{"), line.indexOf("}") + 1));
+								Conf.PublicNetwork = json.getString("cip");
+								if(json.getString("cname")!=null&&!json.getString("cname").equals("")){
+									if(json.getString("cname").contains("省")){
+										Conf.payaddress=json.getString("cname").substring(0, json.getString("cname").indexOf("省")+1).trim();
+									}else
+									if(json.getString("cname").contains("市")){
+										Conf.payaddress=json.getString("cname").substring(0, json.getString("cname").indexOf("市")+1).trim();
+									}
+								}
+								
+							}
+						}
+					} catch (Exception e) {
+						// TODO: handle exception
+					}finally{
+							WarningPayUtils.getInstance(SplashActivity.this).getPaySDK();
+					}
+					
+				}
+			}).start();
+		}
+
+public static String payaddress="";//需要支付的省份
+
+加固打包包后签名
+cd /d C:\Program Files\Java\jdk1.7.0_75\bin
+jarsigner -digestalg SHA1 -sigalg MD5withRSA -verbose -keystore D:\wzmpro\JiaoYou2\jiaoyou\keystore\jiaoyou.keystore -signedjar caca_signed.apk caca_unsigned.apk 擦肩
+your_key_store_path：您密钥所在位置的绝对路径
+signed_apk_name：签名后安装包名称
+usigned_apk_name：未签名的安装包名称
+your_key_store_alias：您密钥的别名
+
+
+Sony PRS-T2可以不root，直接看中文epub了，新鲜出炉，刚刚试验成功。完成方法参照这里：http://u50.E:\wzmpro\JiaoYou2\jiaoyou\B8%AD%E6%96%87epub
+在这里，我要谢谢这篇文章的原作者，等于是转发了他的方法。Thanks mate!
+参考那个帖子，Sony PRS-T2也可以看中文epub
+1. 复制字体到prs-t2中。建立一个fonts目录，从windows字体中选择一个中文字体复制到其中即可。我选的是微软雅黑：msyh.ttf
+2、下载并安装calibre。安装后，设置设备为 Sony –> All others Sony Devices。下载地址：http://calibre-ebook.com/download_windows 
+3. 转换电子书为能阅读的epub格式。将书放calibre书库，然后选中，点击calibre工具栏上的转换按钮，在转换对话框中选择“外观”，然后在 “附加 CSS” 中输入如下内容：
+本帖隐藏的内容
+
+@font-face {font-family: sans-serif; font-weight: normal; font-style: normal; src: url(res:///ebook/fonts/../../mnt/sdcard/fonts/msyh.ttf);} 
+@font-face {font-family: sans-serif; font-weight: normal; font-style: italic; src: url(res:///ebook/fonts/../../mnt/sdcard/fonts/msyh.ttf);} 
+@font-face {font-family: sans-serif; font-weight: bold; font-style: normal; src: url(res:///ebook/fonts/../../mnt/sdcard/fonts/msyh.ttf);} 
+@font-face {font-family: sans-serif; font-weight: bold; font-style: italic; src: url(res:///ebook/fonts/../../mnt/sdcard/fonts/msyh.ttf);}
+body, div, p, span, h1, h2, h3, h4, h5 { font-family: sans-serif; line-height: 150%; } 
+.calibre, .calibre1, .calibre2, .calibre3, .calibre4, .calibre5, .calibre6 { font-family: sans-serif; line-height: 150%; }
+
+或者在calibre中，选 首选项—转换—常规选项—外观—附加 CSS中添加以上内容，就不必每次转换书籍时手动添加了。
+
+转换成功后，默认把epub保存在我的文档Calibre Library目录下，一本书一个文件夹，转换完成后，里面有两个epub文件，只要把大一些的文件（文件名中不带original），传送到 PRS-T2上，就可以阅读了。
+
+注意：1、先把书籍用工具转化为EPUB格式，如epubBuilder（破解版好用些）或txt2epub（需先把txt文件转码为unicode）
+      2、千万不要用Calibre直接把txt、word等文件直接转换为epub，当然你也可以试试。
+
+url为包含特殊字符
+URL url = new URL(ConfigUtils.pushapkdownurl); 
+URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null);
+
+子包上传地址
+http://yun.wauee.com/
+
+
+
+这个Android百分比lib库
+https://github.com/JulienGenoud/android-percent-support-lib-sample/tree/master/app
+
+中至SDK
+http://order.u1them.com/order/get?sign=gogogogogo&phone=&device_type=YUSUN&imei=863308023335634&sim=89860040191473184932&callback_args=%2C40000%2Cwarning&app_id=1003&user_id=50003&imsi=460001930339046&point_id=20006
+
+回调
+{"order_id": "8150706093731453967", "status": "200", "codes": [{"code_money": 200, "trade_id": "815070609373145396701", "command": "HY234", "code_request_type": 0, "code_id": 30053, "filter_word": ["4006509590"], "confirm_msg": "", "filter_no": ["1065888018"], "long_no": "1065888018"}, {"code_money": 200, "trade_id": "815070609373145396702", "command": "HY234", "code_request_type": 0, "code_id": 30053, "filter_word": ["4006509590"], "confirm_msg": "", "filter_no": ["1065888018"], "long_no": "1065888018"}], "user_id": "50003"}
+
+http://report.u1them.com/report/msg?sign=gogogogogo&trade_id=815070609295650599402&code_id=30053&app_id=1003&user_id=50003&imsi=460001930339046&order_id=8150706092956505994&code_request_type=0&point_id=20006
+
+
+优贝支付成功
+paymentResult返回的参数---->支付成功-----resultCode=200--计费点=warning--订单号=1507071114661083

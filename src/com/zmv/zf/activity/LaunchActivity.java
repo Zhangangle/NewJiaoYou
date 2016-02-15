@@ -33,13 +33,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.hhad.ss.R;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
