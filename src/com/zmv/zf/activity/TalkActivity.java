@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qqjy.zm.R;
+import com.zjy.zf.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -239,6 +239,7 @@ public class TalkActivity extends FragmentActivity implements OnClickListener {
 				return;
 			} else if (msg.equals("")) {
 				Toast.makeText(context, "不能输入空", Toast.LENGTH_SHORT).show();
+				return;
 			}
 			closeInputMethod();
 			send = new SendDAO(context);
