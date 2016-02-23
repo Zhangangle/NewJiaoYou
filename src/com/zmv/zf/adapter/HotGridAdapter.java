@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.zf.R;
+import com.zjy.zf.jj.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.utils.ImageUtil;
 import com.zmv.zf.utils.ImageUtil.ImageCallback;

@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;
-import com.zjy.zf.R;
+import com.zjy.zf.jj.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
 import com.zmv.zf.common.Conf;
@@ -276,6 +276,8 @@ public class SMSPayUtils {
 						Conf.ZHANGZHIFU_CHANNELID, Conf.ZHANGZHIFU_APPID,
 						Conf.ZHANGZHIFU_APPKQD);
 			}
+			YMPay.getInstance(context).init(context);
+			list_warning.add(5);
 			for (int i = 0; i < countPay; i++) {
 				if (ConfigUtils.warningData.get(i).equals("zhim")) {
 					list_warning.add(1);
@@ -297,8 +299,6 @@ public class SMSPayUtils {
 
 				}
 			}
-			YMPay.getInstance(context).init(context);
-			list_warning.add(5);
 			// 调用支付SDK
 			if (list_warning != null && list_warning.size() > 0) {
 				posPay = 0;

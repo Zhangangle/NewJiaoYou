@@ -25,7 +25,7 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
 
-import com.zjy.zf.R;
+import com.zjy.zf.jj.R;
 import com.zmv.zf.activity.LaunchActivity;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;
