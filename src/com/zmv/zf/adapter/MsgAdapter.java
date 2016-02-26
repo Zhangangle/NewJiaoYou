@@ -3,7 +3,6 @@ package com.zmv.zf.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,19 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.zmv.zf.bean.BaseJson;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 public class MsgAdapter extends BaseAdapter {
 	List<BaseJson> list_msg;
 	Context context;
-
+	private ImageLoader mImageLoader;
 	public MsgAdapter(Context context, List<BaseJson> list_msg) {
 		this.context = context;
 		this.list_msg = list_msg;
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -68,21 +68,21 @@ public class MsgAdapter extends BaseAdapter {
 			else
 				tv_inbox_nums.setText(list_msg.get(pos).getMsgnum()+"");
 			String url = list_msg.get(pos).getIcon();
-
-			ImageUtil.loadImage(
-					ImageUtil.getCacheImgPath()
-							+ url.substring(url.lastIndexOf("com/") + 4,
-									url.lastIndexOf(".")).replace("/", "-"), url,
-					new ImageCallback() {
-
-						@Override
-						public void loadImage(Bitmap bitmap, String imagePath) {
-							// TODO Auto-generated method stub
-							if (bitmap != null) {
-								img_icon.setImageBitmap(bitmap);
-							}
-						}
-					});
+			mImageLoader.loadImage(url, img_icon, true);
+//			ImageUtil.loadImage(
+//					ImageUtil.getCacheImgPath()
+//							+ url.substring(url.lastIndexOf("com/") + 4,
+//									url.lastIndexOf(".")).replace("/", "-"), url,
+//					new ImageCallback() {
+//
+//						@Override
+//						public void loadImage(Bitmap bitmap, String imagePath) {
+//							// TODO Auto-generated method stub
+//							if (bitmap != null) {
+//								img_icon.setImageBitmap(bitmap);
+//							}
+//						}
+//					});
 		} catch (Exception e) {
 			// TODO: handle exception
 

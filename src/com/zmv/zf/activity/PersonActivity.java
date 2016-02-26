@@ -6,7 +6,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
@@ -26,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.PicGridAdapter;
@@ -35,8 +34,8 @@ import com.zmv.zf.database.PersonDAO;
 import com.zmv.zf.database.VideoDAO;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.ExitManager;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 @SuppressLint("ResourceAsColor")
 public class PersonActivity extends FragmentActivity implements
@@ -61,7 +60,8 @@ public class PersonActivity extends FragmentActivity implements
 	int type = 0;
 	private Button btn_per_msg, btn_per_guanzhu;
 	private BaseJson base_user;
-
+	private ImageLoader mImageLoader;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,6 +69,7 @@ public class PersonActivity extends FragmentActivity implements
 		context = PersonActivity.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 		initView();
 		setVaule();
 		initViewPager();
@@ -324,21 +325,22 @@ public class PersonActivity extends FragmentActivity implements
 		tv_per_videos.setText(base_user.getVideonums() + "个视频");
 		tv_per_fans.setText(base_user.getFans() + "个关注");
 		tv_per_times.setText(base_user.getOnline());
-		ImageUtil.loadImage(
-				ImageUtil.getCacheImgPath()
-						+ base_user.getBigicon().substring(
-								base_user.getBigicon().lastIndexOf("/") + 1,
-								base_user.getBigicon().lastIndexOf(".")),
-				base_user.getBigicon(), new ImageCallback() {
-
-					@Override
-					public void loadImage(Bitmap bitmap, String imagePath) {
-						// TODO Auto-generated method stub
-						if (bitmap != null) {
-							cimg_per_icon.setImageBitmap(bitmap);
-						}
-					}
-				});
+		mImageLoader.loadImage(base_user.getBigicon(), cimg_per_icon, true);
+//		ImageUtil.loadImage(
+//				ImageUtil.getCacheImgPath()
+//						+ base_user.getBigicon().substring(
+//								base_user.getBigicon().lastIndexOf("/") + 1,
+//								base_user.getBigicon().lastIndexOf(".")),
+//				base_user.getBigicon(), new ImageCallback() {
+//
+//					@Override
+//					public void loadImage(Bitmap bitmap, String imagePath) {
+//						// TODO Auto-generated method stub
+//						if (bitmap != null) {
+//							cimg_per_icon.setImageBitmap(bitmap);
+//						}
+//					}
+//				});
 	}
 
 	@Override

@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.activity.MainActivity;
 import com.zmv.zf.activity.TalkActivity;

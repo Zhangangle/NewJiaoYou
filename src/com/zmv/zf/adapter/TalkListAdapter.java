@@ -11,12 +11,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
+import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.BitmapUtils;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 /**
  * @author
@@ -25,10 +26,10 @@ public class TalkListAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<BaseJson> list_talk;
-
+	private ImageLoader mImageLoader;
 	public TalkListAdapter(Context context, List<BaseJson> list_talk) {
 		this.context = context;
-		this.list_talk = list_talk;
+		this.list_talk = list_talk;mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -92,51 +93,53 @@ public class TalkListAdapter extends BaseAdapter {
 						R.id.tv_talk_tamsg);
 				String url = user.getIcon();
 				// Log.e("url", pos + "=" + url);
-				ImageUtil.loadImage(
-						ImageUtil.getCacheImgPath()
-								+ url.substring(url.lastIndexOf("/") + 1,
-										url.lastIndexOf(".")), url,
-						new ImageCallback() {
-
-							@Override
-							public void loadImage(Bitmap bitmap,
-									String imagePath) {
-								// TODO Auto-generated method stub
-								if (bitmap != null) {
-									img_icon.setImageBitmap(bitmap);
-								}
-							}
-						});
+				mImageLoader.loadImage(url, img_icon, true);
+//				ImageUtil.loadImage(
+//						ImageUtil.getCacheImgPath()
+//								+ url.substring(url.lastIndexOf("/") + 1,
+//										url.lastIndexOf(".")), url,
+//						new ImageCallback() {
+//
+//							@Override
+//							public void loadImage(Bitmap bitmap,
+//									String imagePath) {
+//								// TODO Auto-generated method stub
+//								if (bitmap != null) {
+//									img_icon.setImageBitmap(bitmap);
+//								}
+//							}
+//						});
 				if (user.getBigicon() != null && !user.getBigicon().equals(""))
-					ImageUtil
-							.loadImage(
-									ImageUtil.getCacheImgPath()
-											+ user.getBigicon()
-													.substring(
-															user.getBigicon()
-																	.lastIndexOf(
-																			"/") + 1,
-															user.getBigicon()
-																	.lastIndexOf(
-																			".")),
-									user.getBigicon(), new ImageCallback() {
-
-										@Override
-										public void loadImage(Bitmap bitmap,
-												String imagePath) {
-											// TODO Auto-generated method stub
-											if (bitmap != null) {
-												img_pic.setImageBitmap(bitmap);
-												int height = (int) (0.5
-														* Conf.width
-														* bitmap.getHeight() / bitmap
-														.getWidth());
-												img_pic.setLayoutParams(new android.widget.LinearLayout.LayoutParams(
-														(int) (0.5 * Conf.width),
-														height));
-											}
-										}
-									});
+					mImageLoader.loadImage(user.getBigicon(), img_pic, true);
+//					ImageUtil
+//							.loadImage(
+//									ImageUtil.getCacheImgPath()
+//											+ user.getBigicon()
+//													.substring(
+//															user.getBigicon()
+//																	.lastIndexOf(
+//																			"/") + 1,
+//															user.getBigicon()
+//																	.lastIndexOf(
+//																			".")),
+//									user.getBigicon(), new ImageCallback() {
+//
+//										@Override
+//										public void loadImage(Bitmap bitmap,
+//												String imagePath) {
+//											// TODO Auto-generated method stub
+//											if (bitmap != null) {
+//												img_pic.setImageBitmap(bitmap);
+//												int height = (int) (0.5
+//														* Conf.width
+//														* bitmap.getHeight() / bitmap
+//														.getWidth());
+//												img_pic.setLayoutParams(new android.widget.LinearLayout.LayoutParams(
+//														(int) (0.5 * Conf.width),
+//														height));
+//											}
+//										}
+//									});
 				else
 					img_pic.setVisibility(View.GONE);
 				tv_talk_time.setText(user.getFormat_time());

@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.activity.DetailActivity;
 import com.zmv.zf.activity.PersonActivity;
@@ -393,7 +393,7 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 			// lv_share.requestLayout();// 页面添加更快
 			// shareAdapter.notifyDataSetChanged();
 		} else {
-			if (type == 1 && hotpage <= 3) {
+			if (type == 1 && hotpage <= 5) {
 				List<BaseJson> newitem = new ArrayList<BaseJson>();
 				VideoDAO video = new VideoDAO(context);
 				newitem = video.playData();
@@ -405,7 +405,7 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 					}
 				}
 			}
-			if (type == 2 && lastpage <= 3) {
+			if (type == 2 && lastpage <= 5) {
 				List<BaseJson> newitem = new ArrayList<BaseJson>();
 				VideoDAO video = new VideoDAO(context);
 				newitem = video.playData();

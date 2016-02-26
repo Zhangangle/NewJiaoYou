@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +30,7 @@ import android.widget.ImageView;
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
 import com.zmv.zf.common.Conf;
@@ -517,7 +518,7 @@ public class SMSPayUtils {
 						pointID = 384;
 					else
 						pointID = 386;
-					YMPay.getInstance(context).pay("-1", pointID, 2000,
+					YMPay.getInstance(context).pay( pointID, Conf.CID,
 							context, new PayCalBackListener() {
 
 								@Override

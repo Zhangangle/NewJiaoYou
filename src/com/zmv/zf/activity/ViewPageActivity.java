@@ -16,14 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.ExitManager;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 /**
  * 滑动引导页面
@@ -38,7 +36,7 @@ public class ViewPageActivity extends FragmentActivity {
 	private int bmpw;
 	private String[] list;
 	private int pos;
-
+	private ImageLoader mImageLoader;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,6 +47,7 @@ public class ViewPageActivity extends FragmentActivity {
 		Intent intent = getIntent();
 		list = (String[]) getIntent().getSerializableExtra("image");
 		pos = intent.getIntExtra("pos", 0);
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 		IntiViewPager();
 
 	}
@@ -74,26 +73,27 @@ public class ViewPageActivity extends FragmentActivity {
 					.findViewById(R.id.img_viewpage_icon);
 			try {
 				String url = list[i];
-				ImageUtil.loadImage(
-						ImageUtil.getCacheImgPath()
-								+ url.substring(url.lastIndexOf("/") + 1,
-										url.lastIndexOf(".")), url,
-						new ImageCallback() {
-
-							@Override
-							public void loadImage(Bitmap bitmap,
-									String imagePath) {
-								// TODO Auto-generated method stub
-								if (bitmap != null) {
-									img.setImageBitmap(bitmap);
-									int height = (Conf.width * bitmap
-											.getHeight()) / bitmap.getWidth();
-									img.setLayoutParams(new LinearLayout.LayoutParams(
-											android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
-											height));
-								}
-							}
-						});
+				mImageLoader.loadImage(url, img, true);
+//				ImageUtil.loadImage(
+//						ImageUtil.getCacheImgPath()
+//								+ url.substring(url.lastIndexOf("/") + 1,
+//										url.lastIndexOf(".")), url,
+//						new ImageCallback() {
+//
+//							@Override
+//							public void loadImage(Bitmap bitmap,
+//									String imagePath) {
+//								// TODO Auto-generated method stub
+//								if (bitmap != null) {
+//									img.setImageBitmap(bitmap);
+//									int height = (Conf.width * bitmap
+//											.getHeight()) / bitmap.getWidth();
+//									img.setLayoutParams(new LinearLayout.LayoutParams(
+//											android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+//											height));
+//								}
+//							}
+//						});
 
 			} catch (Exception e) {
 				// TODO: handle exception

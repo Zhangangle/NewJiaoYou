@@ -1,16 +1,15 @@
 package com.zmv.zf.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.zjy.zf.jj.R;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zjy.qqjy.zm.R;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 /**
  * @author
@@ -19,10 +18,10 @@ public class PicGridAdapter extends BaseAdapter {
 
 	private Context context;
 	private String[] list_pic;
-
+	private ImageLoader mImageLoader;
 	public PicGridAdapter(Context context, String[] list_pic) {
 		this.context = context;
-		this.list_pic = list_pic;
+		this.list_pic = list_pic;mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -54,20 +53,21 @@ public class PicGridAdapter extends BaseAdapter {
 		final ImageView img_icon = BaseAdapterHelper.get(convertView,
 				R.id.img_per_pic);
 		String url = list_pic[position];
-		ImageUtil.loadImage(
-				ImageUtil.getCacheImgPath()
-						+ url.substring(url.lastIndexOf("com/") + 4,
-								url.lastIndexOf(".")).replace("/", "-"), url,
-				new ImageCallback() {
-
-					@Override
-					public void loadImage(Bitmap bitmap, String imagePath) {
-						// TODO Auto-generated method stub
-						if (bitmap != null) {
-							img_icon.setImageBitmap(bitmap);
-						}
-					}
-				});
+		mImageLoader.loadImage(url, img_icon, true);
+//		ImageUtil.loadImage(
+//				ImageUtil.getCacheImgPath()
+//						+ url.substring(url.lastIndexOf("com/") + 4,
+//								url.lastIndexOf(".")).replace("/", "-"), url,
+//				new ImageCallback() {
+//
+//					@Override
+//					public void loadImage(Bitmap bitmap, String imagePath) {
+//						// TODO Auto-generated method stub
+//						if (bitmap != null) {
+//							img_icon.setImageBitmap(bitmap);
+//						}
+//					}
+//				});
 		return convertView;
 	}
 }

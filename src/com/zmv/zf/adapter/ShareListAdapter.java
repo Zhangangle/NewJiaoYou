@@ -3,7 +3,6 @@ package com.zmv.zf.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.zmv.zf.bean.BaseJson;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 import com.zmv.zf.view.CircleImageView;
 
 /**
@@ -24,10 +23,10 @@ public class ShareListAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<BaseJson> list_share;
-
+	private ImageLoader mImageLoader;
 	public ShareListAdapter(Context context, List<BaseJson> list_share) {
 		this.context = context;
-		this.list_share = list_share;
+		this.list_share = list_share;mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -102,41 +101,43 @@ public class ShareListAdapter extends BaseAdapter {
 			else
 				tv_share_message.setText(list_share.get(pos).getMsgnum()
 						+ "人私信");
-			ImageUtil.loadImage(
-					ImageUtil.getCacheImgPath()
-							+ list_share
-									.get(pos)
-									.getBigicon()
-									.substring(
-											list_share.get(pos).getBigicon()
-													.lastIndexOf("/") + 1,
-											list_share.get(pos).getBigicon()
-													.lastIndexOf(".")),
-					list_share.get(pos).getBigicon(), new ImageCallback() {
-
-						@Override
-						public void loadImage(Bitmap bitmap, String imagePath) {
-							// TODO Auto-generated method stub
-							if (bitmap != null) {
-								img_share_pic.setImageBitmap(bitmap);
-							}
-						}
-					});
-			String url = list_share.get(pos).getBigicon();
-			ImageUtil.loadImage(
-					ImageUtil.getCacheImgPath()
-							+ url.substring(url.lastIndexOf("/") + 1,
-									url.lastIndexOf(".")), url,
-					new ImageCallback() {
-
-						@Override
-						public void loadImage(Bitmap bitmap, String imagePath) {
-							// TODO Auto-generated method stub
-							if (bitmap != null) {
-								cimg_share_icon.setImageBitmap(bitmap);
-							}
-						}
-					});
+			mImageLoader.loadImage(list_share.get(pos).getBigicon(), img_share_pic, true);
+//			ImageUtil.loadImage(
+//					ImageUtil.getCacheImgPath()
+//							+ list_share
+//									.get(pos)
+//									.getBigicon()
+//									.substring(
+//											list_share.get(pos).getBigicon()
+//													.lastIndexOf("/") + 1,
+//											list_share.get(pos).getBigicon()
+//													.lastIndexOf(".")),
+//					list_share.get(pos).getBigicon(), new ImageCallback() {
+//
+//						@Override
+//						public void loadImage(Bitmap bitmap, String imagePath) {
+//							// TODO Auto-generated method stub
+//							if (bitmap != null) {
+//								img_share_pic.setImageBitmap(bitmap);
+//							}
+//						}
+//					});
+			String url = list_share.get(pos).getIcon();
+			mImageLoader.loadImage(url, cimg_share_icon, true);
+//			ImageUtil.loadImage(
+//					ImageUtil.getCacheImgPath()
+//							+ url.substring(url.lastIndexOf("/") + 1,
+//									url.lastIndexOf(".")), url,
+//					new ImageCallback() {
+//
+//						@Override
+//						public void loadImage(Bitmap bitmap, String imagePath) {
+//							// TODO Auto-generated method stub
+//							if (bitmap != null) {
+//								cimg_share_icon.setImageBitmap(bitmap);
+//							}
+//						}
+//					});
 
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -29,7 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;

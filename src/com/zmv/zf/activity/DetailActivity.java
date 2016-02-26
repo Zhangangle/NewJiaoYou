@@ -39,8 +39,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.umeng.analytics.MobclickAgent;
+import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.adapter.DetailListAdapter;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -51,8 +52,8 @@ import com.zmv.zf.database.VideoDAO;
 import com.zmv.zf.pay.SMSPayUtils;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.ExitManager;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 import com.zmv.zf.view.CircleImageView;
 import com.zmv.zf.view.MyGridView;
 import com.zmv.zf.view.MyListView;
@@ -86,7 +87,7 @@ public class DetailActivity extends FragmentActivity implements
 	private BaseJson base_user;
 	int pay = 0;
 	SMSPayUtils payUtils;
-
+	private ImageLoader mImageLoader;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,6 +95,7 @@ public class DetailActivity extends FragmentActivity implements
 		context = DetailActivity.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 		initView();
 		setvaule();
 		initOnClick();
@@ -228,36 +230,38 @@ public class DetailActivity extends FragmentActivity implements
 		else
 			base_user.setIcon(base_user.getVideoimg());
 		// Log.e("pic", base_user.getIcon());
-		ImageUtil.loadImage(
-				ImageUtil.getCacheImgPath()
-						+ base_user.getIcon().substring(
-								base_user.getIcon().lastIndexOf("/") + 1,
-								base_user.getIcon().lastIndexOf(".")),
-				base_user.getIcon(), new ImageCallback() {
-
-					@Override
-					public void loadImage(Bitmap bitmap, String imagePath) {
-						// TODO Auto-generated method stub
-						if (bitmap != null) {
-							cimg_per_icon.setImageBitmap(bitmap);
-						}
-					}
-				});
-		ImageUtil.loadImage(
-				ImageUtil.getCacheImgPath()
-						+ base_user.getVideoimg().substring(
-								base_user.getVideoimg().lastIndexOf("/") + 1,
-								base_user.getVideoimg().lastIndexOf(".")),
-				base_user.getVideoimg(), new ImageCallback() {
-
-					@Override
-					public void loadImage(Bitmap bitmap, String imagePath) {
-						// TODO Auto-generated method stub
-						if (bitmap != null) {
-							img_select_icon.setImageBitmap(bitmap);
-						}
-					}
-				});
+		mImageLoader.loadImage(base_user.getIcon(), cimg_per_icon, true);
+		mImageLoader.loadImage(base_user.getVideoimg(), img_select_icon, true);
+//		ImageUtil.loadImage(
+//				ImageUtil.getCacheImgPath()
+//						+ base_user.getIcon().substring(
+//								base_user.getIcon().lastIndexOf("/") + 1,
+//								base_user.getIcon().lastIndexOf(".")),
+//				base_user.getIcon(), new ImageCallback() {
+//
+//					@Override
+//					public void loadImage(Bitmap bitmap, String imagePath) {
+//						// TODO Auto-generated method stub
+//						if (bitmap != null) {
+//							cimg_per_icon.setImageBitmap(bitmap);
+//						}
+//					}
+//				});
+//		ImageUtil.loadImage(
+//				ImageUtil.getCacheImgPath()
+//						+ base_user.getVideoimg().substring(
+//								base_user.getVideoimg().lastIndexOf("/") + 1,
+//								base_user.getVideoimg().lastIndexOf(".")),
+//				base_user.getVideoimg(), new ImageCallback() {
+//
+//					@Override
+//					public void loadImage(Bitmap bitmap, String imagePath) {
+//						// TODO Auto-generated method stub
+//						if (bitmap != null) {
+//							img_select_icon.setImageBitmap(bitmap);
+//						}
+//					}
+//				});
 		tv_top_title.setVisibility(View.VISIBLE);
 		llayout_top_back.setVisibility(View.VISIBLE);
 		tv_top_title

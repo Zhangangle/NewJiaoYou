@@ -3,7 +3,6 @@ package com.zmv.zf.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.zf.jj.R;
+import com.zjy.qqjy.zm.R;
 import com.zmv.zf.bean.BaseJson;
-import com.zmv.zf.utils.ImageUtil;
-import com.zmv.zf.utils.ImageUtil.ImageCallback;
+import com.zmv.zf.utils.ImageLoader;
+import com.zmv.zf.utils.ImageLoader.Type;
 
 /**
  * @author Angle Function:热门/最新适配器
@@ -24,10 +23,12 @@ public class HotGridAdapter extends BaseAdapter {
 	private Context context;
 	private List<BaseJson> list_hot;
 	private String surplus;// 剩余
-
+	private ImageLoader mImageLoader;
+	
 	public HotGridAdapter(Context context, List<BaseJson> list_hot) {
 		this.context = context;
 		this.list_hot = list_hot;
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -70,20 +71,21 @@ public class HotGridAdapter extends BaseAdapter {
 		TextView tv_hot_receive = BaseAdapterHelper.get(convertView,
 				R.id.tv_hot_receive);
 		String url = hot.getVideoimg();
-		ImageUtil.loadImage(
-				ImageUtil.getCacheImgPath()
-						+ url.substring(url.lastIndexOf("com/") + 4,
-								url.lastIndexOf(".")).replace("/", "-"), url,
-				new ImageCallback() {
-
-					@Override
-					public void loadImage(Bitmap bitmap, String imagePath) {
-						// TODO Auto-generated method stub
-						if (bitmap != null) {
-							img_hot_pic.setImageBitmap(bitmap);
-						}
-					}
-				});
+		mImageLoader.loadImage(url, img_hot_pic, true);
+//		ImageUtil.loadImage(
+//				ImageUtil.getCacheImgPath()
+//						+ url.substring(url.lastIndexOf("com/") + 4,
+//								url.lastIndexOf(".")).replace("/", "-"), url,
+//				new ImageCallback() {
+//
+//					@Override
+//					public void loadImage(Bitmap bitmap, String imagePath) {
+//						// TODO Auto-generated method stub
+//						if (bitmap != null) {
+//							img_hot_pic.setImageBitmap(bitmap);
+//						}
+//					}
+//				});
 
 		tv_hot_say.setText(hot.getIntro());
 		tv_hot_nickname.setText(hot.getName());
