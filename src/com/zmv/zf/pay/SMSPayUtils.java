@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
 import com.dm.ml.MiLiNewApi;
-import com.zjy.qqjy.zm.R;
+import com.zjy.jy.mm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
 import com.zmv.zf.common.Conf;

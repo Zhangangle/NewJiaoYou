@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.zjy.qqjy.zm.R;
+import com.zjy.jy.mm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.activity.DetailActivity;
 import com.zmv.zf.activity.PersonActivity;
