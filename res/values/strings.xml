@@ -29,6 +29,7 @@
     <string name="str_thirdpay_msg4">包月无限</string>
     <string name="str_thirdpay_money1">5.00元</string>
     <string name="str_thirdpay_money2">20.00元</string>
+    <string name="str_thirdpay_result">微信支付结果</string>
     <string name="str_top_share">推荐</string>
     <string name="str_top_hot">热门</string>
     <string name="str_top_last">最新</string>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dip"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_whitetext"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dip"
+        android:text="@string/str_thirdpay_result"
+        android:textColor="@color/black"
+        android:textSize="16dip"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/img_result_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:src="@drawable/progress" />
+
+    <TextView
+        android:id="@+id/tv_result_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dip"
+        android:gravity="center_horizontal"
+        android:text="@string/str_loading"
+        android:textColor="@color/darkgray"
+        android:textSize="15dip" />
+
+    <ImageView
+        android:id="@+id/img_result_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_pay_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dip"
+        android:src="@drawable/btn_sure"
+        android:visibility="gone" />
+
+</LinearLayout>

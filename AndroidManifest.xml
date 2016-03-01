@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zjy.jy.mm"
+    package="com.wsug.zjy.mm"
     android:versionCode="9"
-    android:versionName="9.2.20160226" >
+    android:versionName="9.3.20160301" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -260,7 +260,7 @@
         <!-- 米粒支付  end -->
         <!-- 微信支付 -->
         <!-- SDK　start -->
-        <activity
+       <!--  <activity
             android:name="com.hft.wechat.HftWeChatActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
@@ -289,17 +289,17 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.NoDisplay" />
-        <!-- SDK end -->
-        <!-- APP_ID -->
+        SDK end
+        APP_ID
         <meta-data
             android:name="HFT_APP_ID"
             android:value="1871" >
         </meta-data>
-        <!-- APP_Key -->
+        APP_Key
         <meta-data
             android:name="HFT_APP_KEY"
             android:value="4e7d66d09e564b2ba199dc7fb8556356" >
-        </meta-data>
+        </meta-data> -->
 
         <!-- 微信支付end -->
 

@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.zjy.jy.mm.R;
+import com.wsug.zjy.mm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageLoader;

@@ -39,7 +39,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zjy.jy.mm.R;
+import com.wsug.zjy.mm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.adapter.DetailListAdapter;
