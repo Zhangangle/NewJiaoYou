@@ -31,7 +31,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.wsug.zjy.mm.R;
+import com.wsfg.zd.R;
 import com.zmv.zf.alipay.Result;
 import com.zmv.zf.alipay.SignUtils;
 import com.zmv.zf.common.Conf;

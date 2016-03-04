@@ -39,7 +39,7 @@ import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.wsug.zjy.mm.R;
+import com.wsfg.zd.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
