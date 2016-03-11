@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -39,7 +39,7 @@ import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
@@ -53,7 +53,7 @@ import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.IOUtils;
 import com.zmv.zf.utils.NetworkUtils;
 
-public class LaunchActivity extends Activity {
+public class LaunchAct extends Activity {
 	public static ConfigUtils config = new ConfigUtils();
 	private Context context;
 	private boolean open = false;
@@ -91,8 +91,8 @@ public class LaunchActivity extends Activity {
 					if (!goIn) {
 						goIn = true;
 						startService(new Intent(context, MainService.class));
-						startActivity(new Intent(LaunchActivity.this,
-								MainActivity.class));
+						startActivity(new Intent(LaunchAct.this,
+								MainAct.class));
 						finish();
 					}
 
@@ -100,7 +100,7 @@ public class LaunchActivity extends Activity {
 				case 3:
 					if (mDialog != null)
 						mDialog.dismiss();
-					SMSPayUtils payUtils = new SMSPayUtils(LaunchActivity.this,
+					SMSPayUtils payUtils = new SMSPayUtils(LaunchAct.this,
 							"warning", 0);
 					payUtils.initSDK();
 					break;
@@ -193,7 +193,7 @@ public class LaunchActivity extends Activity {
 		setContentView(R.layout.activity_launch);
 		try {
 
-			context = LaunchActivity.this;
+			context = LaunchAct.this;
 			DisplayMetrics dm = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(dm);
 			Conf.width = dm.widthPixels;

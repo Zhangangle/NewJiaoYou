@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;

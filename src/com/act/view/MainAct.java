@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.io.FileOutputStream;
 import java.util.Timer;
@@ -29,7 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
@@ -40,7 +40,7 @@ import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;
 
 @SuppressLint("ResourceAsColor")
-public class MainActivity extends FragmentActivity implements OnClickListener {
+public class MainAct extends FragmentActivity implements OnClickListener {
 	private Button btn_shared, btn_user;
 
 	private Fragment homeFragment, userFragment;
@@ -88,7 +88,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			switch (msg.what) {
 			case 0:
 				net_error = true;
-				startActivity(new Intent(context, NetActivity.class));
+				startActivity(new Intent(context, NetWorkAct.class));
 				break;
 			case 1:
 				ExitManager.getScreenManager().popAllActivity();
@@ -104,7 +104,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		context = MainActivity.this;
+		context = MainAct.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		IntentFilter mFilter = new IntentFilter();
 		mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);

@@ -24,10 +24,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
+import com.act.view.DetailAct;
+import com.act.view.PersonAct;
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.activity.DetailActivity;
-import com.zmv.zf.activity.PersonActivity;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.ShareListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -453,15 +453,15 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 	public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
 		// TODO Auto-generated method stub
 		if (type == 0) {
-			Intent intent = new Intent(context, PersonActivity.class);
+			Intent intent = new Intent(context, PersonAct.class);
 			intent.putExtra("person", shareAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else if (type == 1) {
-			Intent intent = new Intent(context, DetailActivity.class);
+			Intent intent = new Intent(context, DetailAct.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else {
-			Intent intent = new Intent(context, DetailActivity.class);
+			Intent intent = new Intent(context, DetailAct.class);
 			intent.putExtra("person", lastAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		}

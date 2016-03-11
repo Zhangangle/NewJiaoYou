@@ -15,7 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 public class CircleImageView extends ImageView {
 
 	  private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

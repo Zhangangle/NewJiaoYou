@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageLoader;
@@ -29,7 +29,7 @@ import com.zmv.zf.utils.ImageLoader.Type;
  * @author admin
  * 
  */
-public class ViewPageActivity extends FragmentActivity {
+public class ViewPageAct extends FragmentActivity {
 	private ViewPager mPager;
 	private List<View> listViews;
 	private int offset = 0;

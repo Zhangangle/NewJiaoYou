@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -45,7 +45,7 @@ import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.IOUtils;
 
 @SuppressLint("ResourceAsColor")
-public class TalkActivity extends FragmentActivity implements OnClickListener {
+public class TalkAct extends FragmentActivity implements OnClickListener {
 
 	private Activity context;
 	private TextView tv_top_title;
@@ -81,7 +81,7 @@ public class TalkActivity extends FragmentActivity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_talk);
-		context = TalkActivity.this;
+		context = TalkAct.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		Conf.OPUID = base_user.getUid();

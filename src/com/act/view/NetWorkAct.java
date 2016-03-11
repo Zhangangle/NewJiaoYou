@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;
 
-public class NetActivity extends FragmentActivity {
+public class NetWorkAct extends FragmentActivity {
 
 	private Button sure;
 	private EditText ed_dialog_msg;
@@ -30,7 +30,7 @@ public class NetActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.dialog_nick);
-		context = NetActivity.this;
+		context = NetWorkAct.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		initView();
 		setOnclick();

@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.adapter.DetailListAdapter;
@@ -59,7 +59,7 @@ import com.zmv.zf.view.MyGridView;
 import com.zmv.zf.view.MyListView;
 
 @SuppressLint("ResourceAsColor")
-public class DetailActivity extends FragmentActivity implements
+public class DetailAct extends FragmentActivity implements
 		OnClickListener, OnItemClickListener {
 
 	private TextView tv_top_title, tv_detail_nick, tv_detail_msg;
@@ -92,7 +92,7 @@ public class DetailActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail);
-		context = DetailActivity.this;
+		context = DetailAct.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
@@ -526,7 +526,7 @@ public class DetailActivity extends FragmentActivity implements
 			}
 			break;
 		case R.id.btn_detail_msg:
-			Intent intent = new Intent(context, TalkActivity.class);
+			Intent intent = new Intent(context, TalkAct.class);
 			intent.putExtra("person", base_user);
 			context.startActivity(intent);
 			break;
@@ -611,7 +611,7 @@ public class DetailActivity extends FragmentActivity implements
 				postSize = mediaPlayer.getCurrentPosition();
 				img_video_play.setVisibility(View.VISIBLE);
 			}
-			Intent intent = new Intent(context, DetailActivity.class);
+			Intent intent = new Intent(context, DetailAct.class);
 			intent.putExtra("person", moreAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.zmv.zf.activity;
+package com.act.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.PicGridAdapter;
@@ -38,7 +38,7 @@ import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;
 
 @SuppressLint("ResourceAsColor")
-public class PersonActivity extends FragmentActivity implements
+public class PersonAct extends FragmentActivity implements
 		OnClickListener, OnItemClickListener {
 
 	private TextView tv_top_title, tv_per_name, tv_per_age, tv_per_say,
@@ -66,7 +66,7 @@ public class PersonActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_person);
-		context = PersonActivity.this;
+		context = PersonAct.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
@@ -383,7 +383,7 @@ public class PersonActivity extends FragmentActivity implements
 			Toast.makeText(context, "关注成功", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.btn_per_msg:
-			Intent intent = new Intent(context, TalkActivity.class);
+			Intent intent = new Intent(context, TalkAct.class);
 			base_user.setIcon(base_user.getBigicon());
 			intent.putExtra("person", base_user);
 			context.startActivity(intent);
@@ -410,15 +410,15 @@ public class PersonActivity extends FragmentActivity implements
 	public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
 		// TODO Auto-generated method stub
 		if (type == 0) {
-			Intent intent = new Intent(context, DetailActivity.class);
+			Intent intent = new Intent(context, DetailAct.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else if (type == 1) {
-			Intent intent = new Intent(context, DetailActivity.class);
+			Intent intent = new Intent(context, DetailAct.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else {
-			Intent intent = new Intent(context, ViewPageActivity.class);
+			Intent intent = new Intent(context, ViewPageAct.class);
 			intent.putExtra("image", base_pic.getBigPics().split(";"));
 			intent.putExtra("pos", pos);
 			context.startActivity(intent);

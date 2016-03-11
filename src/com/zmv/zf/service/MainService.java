@@ -25,10 +25,10 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
 
-import com.wsfg.zd.R;
-import com.zmv.zf.activity.LaunchActivity;
-import com.zmv.zf.activity.MainActivity;
-import com.zmv.zf.activity.TalkActivity;
+import com.act.view.LaunchAct;
+import com.act.view.MainAct;
+import com.act.view.TalkAct;
+import com.wbvideo.dm.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;
@@ -153,10 +153,10 @@ public class MainService extends Service {
 					.setOngoing(false)// 不是正在进行的 true为正在进行 效果和.flag一样
 					.setSmallIcon(R.drawable.logo1);
 			Intent resultIntent;
-			if (!MainActivity.flag_status) {
-				resultIntent = new Intent(context, LaunchActivity.class);
+			if (!MainAct.flag_status) {
+				resultIntent = new Intent(context, LaunchAct.class);
 			} else {
-				resultIntent = new Intent(context, TalkActivity.class);
+				resultIntent = new Intent(context, TalkAct.class);
 				resultIntent.putExtra("person", base);
 
 			}

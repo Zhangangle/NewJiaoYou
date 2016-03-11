@@ -31,10 +31,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wsfg.zd.R;
+import com.wbvideo.dm.R;
+import com.act.view.MainAct;
+import com.act.view.TalkAct;
 import com.umeng.analytics.MobclickAgent;
-import com.zmv.zf.activity.MainActivity;
-import com.zmv.zf.activity.TalkActivity;
 import com.zmv.zf.adapter.MsgAdapter;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
@@ -189,7 +189,7 @@ public class UserFragment extends Fragment implements OnClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(context, TalkActivity.class);
+		Intent intent = new Intent(context, TalkAct.class);
 		intent.putExtra("person", list_dialog.get(pos));
 		context.startActivity(intent);
 	}
@@ -349,8 +349,8 @@ public class UserFragment extends Fragment implements OnClickListener,
 			String action = arg1.getAction();
 			try {
 				if (action.equals("com.zmv.myicon.action")) {
-					if (img_icon != null && MainActivity.mBitmap != null)
-						img_icon.setImageBitmap(MainActivity.mBitmap);
+					if (img_icon != null && MainAct.mBitmap != null)
+						img_icon.setImageBitmap(MainAct.mBitmap);
 					BitmapUtils.getCompressImage(BitmapUtils.targetPictureFile,
 							100, 100);
 					BitmapUtils.targetPictureFile
