@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.zmv.zf.bean.BaseJson;
 
 /**

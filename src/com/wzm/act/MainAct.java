@@ -1,4 +1,4 @@
-package com.act.view;
+package com.wzm.act;
 
 import java.io.FileOutputStream;
 import java.util.Timer;
@@ -29,7 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;

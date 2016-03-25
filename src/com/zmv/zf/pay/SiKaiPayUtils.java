@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.skymobi.pay.sdk.normal.zimon.EpsEntry;
 import com.skymobi.pay.sdk.normal.zimon.util.SkyPaySignerInfo;
 import com.zmv.zf.common.Conf;

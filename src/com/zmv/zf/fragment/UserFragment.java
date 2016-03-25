@@ -31,10 +31,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wbvideo.dm.R;
-import com.act.view.MainAct;
-import com.act.view.TalkAct;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
+import com.wzm.act.MainAct;
+import com.wzm.act.TalkAct;
 import com.zmv.zf.adapter.MsgAdapter;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;

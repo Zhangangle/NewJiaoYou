@@ -24,10 +24,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.wbvideo.dm.R;
-import com.act.view.DetailAct;
-import com.act.view.PersonAct;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
+import com.wzm.act.DetailAct;
+import com.wzm.act.PersonAct;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.ShareListAdapter;
 import com.zmv.zf.bean.BaseJson;

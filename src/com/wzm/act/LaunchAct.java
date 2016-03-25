@@ -1,4 +1,4 @@
-package com.act.view;
+package com.wzm.act;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -39,7 +39,7 @@ import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;

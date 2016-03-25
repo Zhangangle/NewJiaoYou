@@ -1,4 +1,4 @@
-package com.act.view;
+package com.wzm.act;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -195,6 +195,7 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 		if (list_talk != null && list_talk.size() > 0) {
 			talkAdapter = new TalkListAdapter(context, list_talk);
 			lv_talk.setAdapter(talkAdapter);
+			lv_talk.setSelection(lv_talk.getCount() - 1);
 		}
 	}
 

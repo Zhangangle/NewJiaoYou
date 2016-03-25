@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.UserDAO;
 import com.zmv.zf.utils.BasicUtils;

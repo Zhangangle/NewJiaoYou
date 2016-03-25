@@ -25,10 +25,10 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
 
-import com.act.view.LaunchAct;
-import com.act.view.MainAct;
-import com.act.view.TalkAct;
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
+import com.wzm.act.LaunchAct;
+import com.wzm.act.MainAct;
+import com.wzm.act.TalkAct;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;

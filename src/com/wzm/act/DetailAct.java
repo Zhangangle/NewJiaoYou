@@ -1,4 +1,4 @@
-package com.act.view;
+package com.wzm.act;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.adapter.DetailListAdapter;

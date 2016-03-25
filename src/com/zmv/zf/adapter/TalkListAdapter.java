@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
@@ -79,10 +79,16 @@ public class TalkListAdapter extends BaseAdapter {
 		BaseJson user = list_talk.get(pos);
 
 		if (convertView == null) {
-			// 通过ItemType设置不同的布局
-			if (getItemViewType(pos) == 0) {
+			if (getItemViewType(pos) == 0) 
 				convertView = LayoutInflater.from(context).inflate(
 						R.layout.list_item_talkta, parent, false);
+				else convertView = LayoutInflater.from(context).inflate(
+						R.layout.list_item_talkme, parent, false);
+		}
+			// 通过ItemType设置不同的布局
+			if (getItemViewType(pos) == 0) {
+//				convertView = LayoutInflater.from(context).inflate(
+//						R.layout.list_item_talkta, parent, false);
 				final ImageView img_icon = BaseAdapterHelper.get(convertView,
 						R.id.img_talk_taicon);
 				final ImageView img_pic = BaseAdapterHelper.get(convertView,
@@ -109,8 +115,10 @@ public class TalkListAdapter extends BaseAdapter {
 //								}
 //							}
 //						});
-				if (user.getBigicon() != null && !user.getBigicon().equals(""))
+				if (user.getBigicon() != null && !user.getBigicon().equals("")){
 					mImageLoader.loadImage(user.getBigicon(), img_pic, true);
+					img_pic.setVisibility(View.VISIBLE);
+					}
 //					ImageUtil
 //							.loadImage(
 //									ImageUtil.getCacheImgPath()
@@ -149,8 +157,8 @@ public class TalkListAdapter extends BaseAdapter {
 				} else
 					tv_talk_msg.setVisibility(View.GONE);
 			} else {
-				convertView = LayoutInflater.from(context).inflate(
-						R.layout.list_item_talkme, parent, false);
+//				convertView = LayoutInflater.from(context).inflate(
+//						R.layout.list_item_talkme, parent, false);
 				ImageView img_icon = BaseAdapterHelper.get(convertView,
 						R.id.img_talk_meicon);
 				ImageView img_pic = BaseAdapterHelper.get(convertView,
@@ -184,7 +192,7 @@ public class TalkListAdapter extends BaseAdapter {
 					tv_talk_msg.setVisibility(View.VISIBLE);
 				} else
 					tv_talk_msg.setVisibility(View.GONE);
-			}
+//			}
 		}
 		return convertView;
 	}

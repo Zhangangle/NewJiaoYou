@@ -1,4 +1,4 @@
-package com.act.view;
+package com.wzm.act;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.wbvideo.dm.R;
+import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageLoader;
