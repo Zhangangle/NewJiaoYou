@@ -31,16 +31,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.umeng.analytics.MobclickAgent;
-import com.wzm.act.MainAct;
-import com.wzm.act.TalkAct;
+import com.yunkl.os.Main;
+import com.yunkl.os.Talk;
 import com.zmv.zf.adapter.MsgAdapter;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;
 import com.zmv.zf.database.UserDAO;
-import com.zmv.zf.pay.SMSPayUtils;
+import com.zmv.zf.make.OrderUtils;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.BitmapUtils;
 import com.zmv.zf.view.PullToRefreshLayout;
@@ -67,8 +67,6 @@ public class UserFragment extends Fragment implements OnClickListener,
 	private int index;
 	private String title;
 	private MsgAdapter msgAdapter;
-	SMSPayUtils payUtils;
-
 	@Override
 	public void onAttach(Activity activity) {
 
@@ -189,7 +187,11 @@ public class UserFragment extends Fragment implements OnClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(context, TalkAct.class);
+		if (Main.net_error) {
+			Toast.makeText(context, "网络未连接...", 1000).show();
+			return;
+		}
+		Intent intent = new Intent(context, Talk.class);
 		intent.putExtra("person", list_dialog.get(pos));
 		context.startActivity(intent);
 	}
@@ -314,32 +316,55 @@ public class UserFragment extends Fragment implements OnClickListener,
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (refreshBroadcastReceiver != null) {
-			context.unregisterReceiver(refreshBroadcastReceiver);
+		try {
+			if (refreshBroadcastReceiver != null) {
+				context.unregisterReceiver(refreshBroadcastReceiver);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
-		switch (view.getId()) {
-		case R.id.img_user_icon:
-			showChoiceDialog();
-			break;
-		case R.id.tv_user_username:
-			showNickDialog();
-			break;
-		case R.id.tv_user_pay:
-			if (!Conf.VIP) {
-				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning",1);
-				payUtils.initSDK();
-			}
-			break;
-		default:
-			break;
-		}
+		try {
 
+			switch (view.getId()) {
+			case R.id.img_user_icon:
+				showChoiceDialog();
+				break;
+			case R.id.tv_user_username:
+				showNickDialog();
+				break;
+			case R.id.tv_user_pay:
+				if (!Conf.VIP) {
+					OrderUtils.getInstance().initOrder(context, "shiyong", new Handler() {
+						public void handleMessage(Message msg) {
+							try {
+								switch (msg.what) {
+								case 0:// 失败
+									break;
+								case 1:// 成功
+									UserDAO user = new UserDAO(context);
+									user.updateVIP(2);
+									break;
+								default:
+									break;
+								}
+							} catch (Exception e) {
+							}
+						}
+					});
+				}
+				break;
+			default:
+				break;
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	private BroadcastReceiver refreshBroadcastReceiver = new BroadcastReceiver() {
@@ -349,8 +374,8 @@ public class UserFragment extends Fragment implements OnClickListener,
 			String action = arg1.getAction();
 			try {
 				if (action.equals("com.zmv.myicon.action")) {
-					if (img_icon != null && MainAct.mBitmap != null)
-						img_icon.setImageBitmap(MainAct.mBitmap);
+					if (img_icon != null && Main.mBitmap != null)
+						img_icon.setImageBitmap(Main.mBitmap);
 					BitmapUtils.getCompressImage(BitmapUtils.targetPictureFile,
 							100, 100);
 					BitmapUtils.targetPictureFile

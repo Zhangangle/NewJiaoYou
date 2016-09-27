@@ -25,10 +25,10 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
 
-import com.junho.mu.R;
-import com.wzm.act.LaunchAct;
-import com.wzm.act.MainAct;
-import com.wzm.act.TalkAct;
+import com.wangm.ncj.R;
+import com.main.activity.MainLaunchActivity;
+import com.main.activity.MainActivity;
+import com.main.activity.MainTalkActivity;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;
@@ -61,7 +61,7 @@ public class MainService extends Service {
 				handler.sendEmptyMessageDelayed(0,
 						(1 + (int) (Math.random() * 20)) * 1000);
 			}
-		}, 10000, 180 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
+		}, 10000, 300 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 	}
 
 	private Handler handler = new Handler() {
@@ -153,10 +153,10 @@ public class MainService extends Service {
 					.setOngoing(false)// 不是正在进行的 true为正在进行 效果和.flag一样
 					.setSmallIcon(R.drawable.logo1);
 			Intent resultIntent;
-			if (!MainAct.flag_status) {
-				resultIntent = new Intent(context, LaunchAct.class);
+			if (!MainActivity.flag_status) {
+				resultIntent = new Intent(context, MainLaunchActivity.class);
 			} else {
-				resultIntent = new Intent(context, TalkAct.class);
+				resultIntent = new Intent(context, MainTalkActivity.class);
 				resultIntent.putExtra("person", base);
 
 			}

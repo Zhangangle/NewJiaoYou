@@ -23,11 +23,13 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.umeng.analytics.MobclickAgent;
-import com.wzm.act.DetailAct;
-import com.wzm.act.PersonAct;
+import com.yunkl.os.Detail;
+import com.yunkl.os.Main;
+import com.yunkl.os.Person;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.ShareListAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -358,23 +360,32 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 	@Override
 	public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
 		// TODO Auto-generated method stub
-		if (type == 0) {
-			setShareVaule();
-		} else if (type == 1) {
-			hotpage = 1;
-			setHotVaule();
-		} else {
-			lastpage = 1;
-			setLastVaule();
-		}
-		// 下拉刷新操作
-		new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				// 千万别忘了告诉控件刷新完毕了哦！
-				pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+		try {
+			if (Main.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+
+			} else if (type == 0) {
+				setShareVaule();
+			} else if (type == 1) {
+				hotpage = 1;
+				setHotVaule();
+			} else {
+				lastpage = 1;
+				setLastVaule();
 			}
-		}.sendEmptyMessageDelayed(0, 1000);
+			// 下拉刷新操作
+			new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					// 千万别忘了告诉控件刷新完毕了哦！
+					pullToRefreshLayout
+							.refreshFinish(PullToRefreshLayout.SUCCEED);
+				}
+			}.sendEmptyMessageDelayed(0, 1000);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		/*
 		 * pullscroll_home.post(new Runnable() {
 		 * 
@@ -387,42 +398,49 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 	@Override
 	public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
 		// TODO Auto-generated method stub
-
-		if (type == 0) {
-			// shareAdapter.insertData(newitem);
-			// lv_share.requestLayout();// 页面添加更快
-			// shareAdapter.notifyDataSetChanged();
-		} else {
-			if (type == 1 && hotpage <= 5) {
-				List<BaseJson> newitem = new ArrayList<BaseJson>();
-				VideoDAO video = new VideoDAO(context);
-				newitem = video.playData();
-				if (newitem != null && newitem.size() > 0) {
-					if (type == 1) {
-						hotpage += 1;
-						hotAdapter.insertData(newitem);
-						gv_hot.requestLayout();
+		try {
+			if (Main.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+			} else if (type == 0) {
+				// shareAdapter.insertData(newitem);
+				// lv_share.requestLayout();// 页面添加更快
+				// shareAdapter.notifyDataSetChanged();
+			} else {
+				if (type == 1 && hotpage <= 5) {
+					List<BaseJson> newitem = new ArrayList<BaseJson>();
+					VideoDAO video = new VideoDAO(context);
+					newitem = video.playData();
+					if (newitem != null && newitem.size() > 0) {
+						if (type == 1) {
+							hotpage += 1;
+							hotAdapter.insertData(newitem);
+							gv_hot.requestLayout();
+						}
 					}
 				}
-			}
-			if (type == 2 && lastpage <= 5) {
-				List<BaseJson> newitem = new ArrayList<BaseJson>();
-				VideoDAO video = new VideoDAO(context);
-				newitem = video.playData();
-				lastpage += 1;
-				lastAdapter.insertData(newitem);
-				gv_last.requestLayout();
-			}
+				if (type == 2 && lastpage <= 5) {
+					List<BaseJson> newitem = new ArrayList<BaseJson>();
+					VideoDAO video = new VideoDAO(context);
+					newitem = video.playData();
+					lastpage += 1;
+					lastAdapter.insertData(newitem);
+					gv_last.requestLayout();
+				}
 
-		}
-		// 加载操作
-		new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				// 千万别忘了告诉控件加载完毕了哦！
-				pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
 			}
-		}.sendEmptyMessageDelayed(0, 1000);
+			// 加载操作
+			new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					// 千万别忘了告诉控件加载完毕了哦！
+					pullToRefreshLayout
+							.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+				}
+			}.sendEmptyMessageDelayed(0, 1000);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	@Override
@@ -452,16 +470,20 @@ public class HomeFragment extends Fragment implements OnRefreshListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
 		// TODO Auto-generated method stub
+		if (Main.net_error) {
+			Toast.makeText(context, "网络未连接...", 1000).show();
+			return;
+		}
 		if (type == 0) {
-			Intent intent = new Intent(context, PersonAct.class);
+			Intent intent = new Intent(context, Person.class);
 			intent.putExtra("person", shareAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else if (type == 1) {
-			Intent intent = new Intent(context, DetailAct.class);
+			Intent intent = new Intent(context, Detail.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else {
-			Intent intent = new Intent(context, DetailAct.class);
+			Intent intent = new Intent(context, Detail.class);
 			intent.putExtra("person", lastAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		}

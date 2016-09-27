@@ -1,17 +1,20 @@
-package com.wzm.act;
+package com.yunkl.os;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,11 +22,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -31,21 +34,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.junho.mu.R;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.Mei.sdl.wpkg.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.TalkListAdapter;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DialogDAO;
 import com.zmv.zf.database.SendDAO;
-import com.zmv.zf.pay.SMSPayUtils;
+import com.zmv.zf.database.UserDAO;
+import com.zmv.zf.make.OrderUtils;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.BitmapUtils;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.IOUtils;
 
 @SuppressLint("ResourceAsColor")
-public class TalkAct extends FragmentActivity implements OnClickListener {
+public class Talk extends FragmentActivity implements OnClickListener {
 
 	private Activity context;
 	private TextView tv_top_title;
@@ -67,21 +76,20 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 	private TalkListAdapter talkAdapter;
 	Timer mTimer;
 	String[] talk_msg = new String[] { "好寂寞，想找个男朋友", "想领养我么，我会乖乖滴...",
-			"喜欢我就发消息给我哟^^", "亲，在么？", "发个联系方式呗？", "天气好冷哟...", "我可爱不？", "你的职业是？",
+			"喜欢我就发消息给我哟^^", "亲，在么？", "发个联系方式呗？", "求关注^_^", "我可爱不？", "你的职业是？",
 			"我是上班白领，你呢？", "好多人都是我不美，你说呢", "欧巴觉得妹子怎么样", "想找个欧巴回家过年",
-			"想知道你家里的情况？", "有空一起旅行吗？", "户外运动喜欢哪种？", "我喜欢游泳，你呢？", "我喜欢锤锤哪种类型的",
-			"呜呜呜呜，我这要下雨", "上的厨房下的厅堂的我，没有男盆友..", "有什么好电影推荐的吗？" };
+			"想知道你家里的情况？", "有空一起旅行吗？", "户外运动喜欢哪种？", "我喜欢游泳，你呢？", "呜呜呜呜，我这要下雨",
+			"上的厨房下的厅堂的我，没有男盆友..", "有什么好电影推荐的吗？" };
 	SendDAO send;
 	SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyyMMddHHmmss");
 
 	SimpleDateFormat sd = new SimpleDateFormat("MM-dd HH:mm");
-	SMSPayUtils payUtils;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_talk);
-		context = TalkAct.this;
+		context = Talk.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		Conf.OPUID = base_user.getUid();
@@ -89,14 +97,14 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 		dialog.addDialog(base_user);
 		initView();
 		initOnClick();
-		mTimer = new Timer();
-		mTimer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				handler.sendEmptyMessageDelayed(0,
-						(1 + (int) (Math.random() * 3)) * 1000);
-			}
-		}, 1000, 5 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
+		// mTimer = new Timer();
+		// mTimer.schedule(new TimerTask() {
+		// @Override
+		// public void run() {
+		handler.sendEmptyMessageDelayed(0,
+				(1 + (int) (Math.random() * 3)) * 1000);
+		// }
+		// }, 1000, 5 * 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
 
 		Intent intent = new Intent("com.zmv.mymsg.action");
 		context.sendBroadcast(intent);
@@ -118,6 +126,53 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 					sendMsg(base_user.getUid(), base_user.getIcon(),
 							talk_msg[(int) (Math.random() * talk_msg.length)],
 							"");
+				break;
+			case 1:
+				try {
+					final String message = (String) msg.obj;
+					new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							try {
+								if (message.length() > 60)
+									Thread.sleep(20000);
+								else if (message.length() > 50)
+									Thread.sleep(18000);
+								else if (message.length() > 40)
+									Thread.sleep(15000);
+								else if (message.length() > 30)
+									Thread.sleep(12000);
+								else if (message.length() > 20)
+									Thread.sleep(10000);
+								else if (message.length() > 10)
+									Thread.sleep(8000);
+								else
+									Thread.sleep(5000);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							Message meg = handler.obtainMessage();
+							meg.what = 2;
+							meg.obj = message;
+							handler.sendMessage(meg);
+						}
+					}).start();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 2:
+				try {
+					sendMsg(base_user.getUid(), base_user.getIcon(),
+							(String) msg.obj, "");
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				break;
 			default:
 				break;
 			}
@@ -128,10 +183,10 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 	DialogDAO dialogDao;
 	boolean refresh = false;
 
-	private void sendMsg(String id, String icon, String msg, String img) {
+	private void sendMsg(String id, String icon, final String msg, String img) {
 		user = new BaseJson();
 
-		if (id.equals(Conf.UID) & !msg.equals(""))
+		if (id.equals(Conf.UID) && !msg.equals(""))
 			ed_talk.setText("");
 		int type = 0;
 		if (id.equals(Conf.UID))
@@ -166,6 +221,109 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 			Intent intent = new Intent("com.zmv.mymsg.action");
 			context.sendBroadcast(intent);
 		}
+		// 请求图灵机器人
+		if (id.equals(Conf.UID) && !msg.equals(""))
+			try {
+				if (msg.equals("是的") || msg.contains("机器人"))
+					return;
+				talkReceiver(msg);
+				// new Thread(new Runnable() {
+				//
+				// @Override
+				// public void run() {
+				// // TODO Auto-generated method stub
+				// try {
+				// Thread.sleep((int) (Math.random() * 10) * 1000 + 2000);
+				// } catch (InterruptedException e) {
+				// // TODO Auto-generated catch block
+				// e.printStackTrace();
+				// }
+				// Message meg = handler.obtainMessage();
+				// meg.what = 1;
+				// meg.obj = msg;
+				// handler.sendMessage(meg);
+				// }
+				// }).start();
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
+	}
+
+	// talkReceiver
+	private void talkReceiver(String info) throws UnsupportedEncodingException {
+
+		HttpUtils https = new HttpUtils();
+		https.configCurrentHttpCacheExpiry(1000);
+		https.send(
+				HttpMethod.GET,
+				"http://www.tuling123.com/openapi/api?key=2dc0cd70bc8c4a24511851226a519e5f&userid="
+						+ base_user.getUid()
+						+ "&info="
+						+ URLEncoder.encode(info, "utf-8"),
+				new RequestCallBack<String>() {
+
+					@Override
+					public void onFailure(HttpException arg0, String arg1) {
+						// TODO Auto-generated method stub
+					}
+
+					@Override
+					public void onSuccess(ResponseInfo<String> arg0) {
+						// TODO Auto-generated method stub
+						String say_json = arg0.result.toString();
+						// Log.e("读取服务器配置内容", pay_json);
+						if (say_json != null) {
+							JSONObject pay_object;
+							try {
+								pay_object = new JSONObject(say_json);
+								String code = null, text = null, url = null;
+								if (!pay_object.isNull("code")) {
+									code = pay_object.getString("code").trim();
+								}
+								if (!pay_object.isNull("text")) {
+									text = pay_object.getString("text").trim();
+								}
+								if (!pay_object.isNull("url")) {
+									url = pay_object.getString("url").trim();
+								}
+								if (code != null && code.equals("100000")
+										&& text != null && text.length() > 0) {
+									Message meg = handler.obtainMessage();
+									meg.what = 1;
+									meg.obj = text
+											.replace("小美", base_user.getName())
+											.replace("<br>", "")
+											.replace("机器人", "")
+											.replace("图灵", "");
+									handler.sendMessage(meg);
+								}
+								// sendMsg(base_user.getUid(),
+								// base_user.getIcon(),
+								// text.replace("小美",
+								// base_user.getName())
+								// .replace("<br>", "")
+								// .replace("机器人", "")
+								// .replace("图灵", ""), "");
+								else if (code != null && code.equals("200000")
+										&& text != null && text.length() > 0
+										&& url != null && url.length() > 0) {
+									String pic = url.substring(url
+											.lastIndexOf("."));
+									if (pic != null
+											&& (pic.contains("png") || pic
+													.contains("jpg"))) {
+										sendMsg(base_user.getUid(),
+												base_user.getIcon(), "", url);
+									}
+								}
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
+				});
 	}
 
 	// 单击事件
@@ -228,12 +386,31 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 				ShowChoiceDialog();
 			} else {
 				MobclickAgent.onEvent(context, "talk_request");
-				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning",1);
-				payUtils.initSDK();
+				OrderUtils.getInstance().initOrder(context, "shiyong",
+						new Handler() {
+							public void handleMessage(Message msg) {
+								try {
+									switch (msg.what) {
+									case 0:// 失败
+										break;
+									case 1:// 成功
+										UserDAO user = new UserDAO(context);
+										user.updateVIP(2);
+										break;
+									default:
+										break;
+									}
+								} catch (Exception e) {
+								}
+							}
+						});
 			}
 			break;
 		case R.id.btn_talk_send:
+			if (Main.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+				return;
+			}
 			String msg = ed_talk.getText().toString().trim();
 			if (BasicUtils.containsEmoji(msg)) {
 				Toast.makeText(context, "不能输入特殊符号", Toast.LENGTH_SHORT).show();
@@ -242,7 +419,7 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 				Toast.makeText(context, "不能输入空", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			closeInputMethod();
+			// closeInputMethod();
 			send = new SendDAO(context);
 			int sendTime = send.sendTime(Conf.UID + base_user.getUid(),
 					Conf.UID);
@@ -251,9 +428,24 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 				sendMsg(Conf.UID, "", msg, "");
 			} else {
 				MobclickAgent.onEvent(context, "talk_request");
-				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "warning",1);
-				payUtils.initSDK();
+				OrderUtils.getInstance().initOrder(context, "shiyong",
+						new Handler() {
+							public void handleMessage(Message msg) {
+								try {
+									switch (msg.what) {
+									case 0:// 失败
+										break;
+									case 1:// 成功
+										UserDAO user = new UserDAO(context);
+										user.updateVIP(2);
+										break;
+									default:
+										break;
+									}
+								} catch (Exception e) {
+								}
+							}
+						});
 			}
 			break;
 		default:
@@ -261,15 +453,16 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 		}
 	}
 
-	private void closeInputMethod() {
-		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		boolean isOpen = imm.isActive();
-
-		if (isOpen) {
-			imm.hideSoftInputFromWindow(ed_talk.getWindowToken(), 0);
-		}
-
-	}
+	// private void closeInputMethod() {
+	// InputMethodManager imm = (InputMethodManager)
+	// getSystemService(Context.INPUT_METHOD_SERVICE);
+	// boolean isOpen = imm.isActive();
+	//
+	// if (isOpen) {
+	// imm.hideSoftInputFromWindow(ed_talk.getWindowToken(), 0);
+	// }
+	//
+	// }
 
 	@Override
 	protected void onDestroy() {
@@ -279,6 +472,10 @@ public class TalkAct extends FragmentActivity implements OnClickListener {
 			if (mBitmap != null && !mBitmap.isRecycled()) {
 				mBitmap.recycle();
 				mBitmap = null;
+			}
+			if (mTimer != null) {
+				mTimer.cancel();
+				mTimer = null;
 			}
 			Conf.OPUID = "";
 			ExitManager.getScreenManager().pullActivity(this);

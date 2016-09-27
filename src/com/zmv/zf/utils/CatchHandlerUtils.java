@@ -9,7 +9,6 @@ import java.util.Date;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 
 /**
  * <h3>用作系统抛出FC错误时,进行处理</h3><br/>

@@ -11,10 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.junho.mu.R;
-import com.zhangzhifu.sdk.util.ImageUtil;
+import com.Mei.sdl.wpkg.R;
 import com.zmv.zf.bean.BaseJson;
-import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.BitmapUtils;
 import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;
@@ -27,9 +25,11 @@ public class TalkListAdapter extends BaseAdapter {
 	private Context context;
 	private List<BaseJson> list_talk;
 	private ImageLoader mImageLoader;
+
 	public TalkListAdapter(Context context, List<BaseJson> list_talk) {
 		this.context = context;
-		this.list_talk = list_talk;mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
+		this.list_talk = list_talk;
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -77,18 +77,20 @@ public class TalkListAdapter extends BaseAdapter {
 	@Override
 	public View getView(final int pos, View convertView, ViewGroup parent) {
 		BaseJson user = list_talk.get(pos);
+		try {
 
-		if (convertView == null) {
-			if (getItemViewType(pos) == 0) 
-				convertView = LayoutInflater.from(context).inflate(
-						R.layout.list_item_talkta, parent, false);
-				else convertView = LayoutInflater.from(context).inflate(
-						R.layout.list_item_talkme, parent, false);
-		}
+			if (convertView == null) {
+				if (getItemViewType(pos) == 0)
+					convertView = LayoutInflater.from(context).inflate(
+							R.layout.list_item_talkta, parent, false);
+				else
+					convertView = LayoutInflater.from(context).inflate(
+							R.layout.list_item_talkme, parent, false);
+			}
 			// 通过ItemType设置不同的布局
 			if (getItemViewType(pos) == 0) {
-//				convertView = LayoutInflater.from(context).inflate(
-//						R.layout.list_item_talkta, parent, false);
+				// convertView = LayoutInflater.from(context).inflate(
+				// R.layout.list_item_talkta, parent, false);
 				final ImageView img_icon = BaseAdapterHelper.get(convertView,
 						R.id.img_talk_taicon);
 				final ImageView img_pic = BaseAdapterHelper.get(convertView,
@@ -100,65 +102,75 @@ public class TalkListAdapter extends BaseAdapter {
 				String url = user.getIcon();
 				// Log.e("url", pos + "=" + url);
 				mImageLoader.loadImage(url, img_icon, true);
-//				ImageUtil.loadImage(
-//						ImageUtil.getCacheImgPath()
-//								+ url.substring(url.lastIndexOf("/") + 1,
-//										url.lastIndexOf(".")), url,
-//						new ImageCallback() {
-//
-//							@Override
-//							public void loadImage(Bitmap bitmap,
-//									String imagePath) {
-//								// TODO Auto-generated method stub
-//								if (bitmap != null) {
-//									img_icon.setImageBitmap(bitmap);
-//								}
-//							}
-//						});
-				if (user.getBigicon() != null && !user.getBigicon().equals("")){
+				// ImageUtil.loadImage(
+				// ImageUtil.getCacheImgPath()
+				// + url.substring(url.lastIndexOf("/") + 1,
+				// url.lastIndexOf(".")), url,
+				// new ImageCallback() {
+				//
+				// @Override
+				// public void loadImage(Bitmap bitmap,
+				// String imagePath) {
+				// // TODO Auto-generated method stub
+				// if (bitmap != null) {
+				// img_icon.setImageBitmap(bitmap);
+				// }
+				// }
+				// });
+				if (user.getBigicon() != null && !user.getBigicon().equals("")) {
 					mImageLoader.loadImage(user.getBigicon(), img_pic, true);
 					img_pic.setVisibility(View.VISIBLE);
-					}
-//					ImageUtil
-//							.loadImage(
-//									ImageUtil.getCacheImgPath()
-//											+ user.getBigicon()
-//													.substring(
-//															user.getBigicon()
-//																	.lastIndexOf(
-//																			"/") + 1,
-//															user.getBigicon()
-//																	.lastIndexOf(
-//																			".")),
-//									user.getBigicon(), new ImageCallback() {
-//
-//										@Override
-//										public void loadImage(Bitmap bitmap,
-//												String imagePath) {
-//											// TODO Auto-generated method stub
-//											if (bitmap != null) {
-//												img_pic.setImageBitmap(bitmap);
-//												int height = (int) (0.5
-//														* Conf.width
-//														* bitmap.getHeight() / bitmap
-//														.getWidth());
-//												img_pic.setLayoutParams(new android.widget.LinearLayout.LayoutParams(
-//														(int) (0.5 * Conf.width),
-//														height));
-//											}
-//										}
-//									});
+				}
+				// ImageUtil
+				// .loadImage(
+				// ImageUtil.getCacheImgPath()
+				// + user.getBigicon()
+				// .substring(
+				// user.getBigicon()
+				// .lastIndexOf(
+				// "/") + 1,
+				// user.getBigicon()
+				// .lastIndexOf(
+				// ".")),
+				// user.getBigicon(), new ImageCallback() {
+				//
+				// @Override
+				// public void loadImage(Bitmap bitmap,
+				// String imagePath) {
+				// // TODO Auto-generated method stub
+				// if (bitmap != null) {
+				// img_pic.setImageBitmap(bitmap);
+				// int height = (int) (0.5
+				// * Conf.width
+				// * bitmap.getHeight() / bitmap
+				// .getWidth());
+				// img_pic.setLayoutParams(new
+				// android.widget.LinearLayout.LayoutParams(
+				// (int) (0.5 * Conf.width),
+				// height));
+				// }
+				// }
+				// });
 				else
 					img_pic.setVisibility(View.GONE);
-				tv_talk_time.setText(user.getFormat_time());
+				if (pos == 0) {
+					tv_talk_time.setText(user.getFormat_time());
+					tv_talk_time.setVisibility(View.VISIBLE);
+				} else if (pos > 0
+						&& !list_talk.get(pos - 1).getFormat_time()
+								.equals(user.getFormat_time())) {
+					tv_talk_time.setText(user.getFormat_time());
+					tv_talk_time.setVisibility(View.VISIBLE);
+				} else
+					tv_talk_time.setVisibility(View.GONE);
 				if (user.getMsg() != null && !user.getMsg().equals("")) {
 					tv_talk_msg.setText(user.getMsg());
 					tv_talk_msg.setVisibility(View.VISIBLE);
 				} else
 					tv_talk_msg.setVisibility(View.GONE);
 			} else {
-//				convertView = LayoutInflater.from(context).inflate(
-//						R.layout.list_item_talkme, parent, false);
+				// convertView = LayoutInflater.from(context).inflate(
+				// R.layout.list_item_talkme, parent, false);
 				ImageView img_icon = BaseAdapterHelper.get(convertView,
 						R.id.img_talk_meicon);
 				ImageView img_pic = BaseAdapterHelper.get(convertView,
@@ -177,7 +189,7 @@ public class TalkListAdapter extends BaseAdapter {
 					Bitmap bit2 = BitmapUtils
 							.getCompressImage(
 									BitmapUtils.getPicPath(user.getBigicon()),
-									150, 150);
+									200, 200);
 					if (bit2 != null) {
 						img_pic.setImageBitmap(bit2);
 						img_pic.setVisibility(View.VISIBLE);
@@ -185,14 +197,25 @@ public class TalkListAdapter extends BaseAdapter {
 				} else {
 					img_pic.setVisibility(View.GONE);
 				}
-
-				tv_talk_time.setText(user.getFormat_time());
+				if (pos == 0) {
+					tv_talk_time.setText(user.getFormat_time());
+					tv_talk_time.setVisibility(View.VISIBLE);
+				} else if (pos > 0
+						&& !list_talk.get(pos - 1).getFormat_time()
+								.equals(user.getFormat_time())) {
+					tv_talk_time.setText(user.getFormat_time());
+					tv_talk_time.setVisibility(View.VISIBLE);
+				} else
+					tv_talk_time.setVisibility(View.GONE);
 				if (user.getMsg() != null && !user.getMsg().equals("")) {
 					tv_talk_msg.setText(user.getMsg());
 					tv_talk_msg.setVisibility(View.VISIBLE);
 				} else
 					tv_talk_msg.setVisibility(View.GONE);
-//			}
+				// }
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return convertView;
 	}

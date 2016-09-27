@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
+import com.zmv.zf.common.Conf;
 import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;
 
@@ -19,9 +20,11 @@ public class PicGridAdapter extends BaseAdapter {
 	private Context context;
 	private String[] list_pic;
 	private ImageLoader mImageLoader;
+
 	public PicGridAdapter(Context context, String[] list_pic) {
 		this.context = context;
-		this.list_pic = list_pic;mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
+		this.list_pic = list_pic;
+		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
 	}
 
 	@Override
@@ -53,21 +56,24 @@ public class PicGridAdapter extends BaseAdapter {
 		final ImageView img_icon = BaseAdapterHelper.get(convertView,
 				R.id.img_per_pic);
 		String url = list_pic[position];
-		mImageLoader.loadImage(url, img_icon, true);
-//		ImageUtil.loadImage(
-//				ImageUtil.getCacheImgPath()
-//						+ url.substring(url.lastIndexOf("com/") + 4,
-//								url.lastIndexOf(".")).replace("/", "-"), url,
-//				new ImageCallback() {
-//
-//					@Override
-//					public void loadImage(Bitmap bitmap, String imagePath) {
-//						// TODO Auto-generated method stub
-//						if (bitmap != null) {
-//							img_icon.setImageBitmap(bitmap);
-//						}
-//					}
-//				});
+		if (Conf.VIP || position < 3)
+			mImageLoader.loadImage(url, img_icon, true);
+		else
+			img_icon.setImageResource(R.drawable.img_burn_defult);
+		// ImageUtil.loadImage(
+		// ImageUtil.getCacheImgPath()
+		// + url.substring(url.lastIndexOf("com/") + 4,
+		// url.lastIndexOf(".")).replace("/", "-"), url,
+		// new ImageCallback() {
+		//
+		// @Override
+		// public void loadImage(Bitmap bitmap, String imagePath) {
+		// // TODO Auto-generated method stub
+		// if (bitmap != null) {
+		// img_icon.setImageBitmap(bitmap);
+		// }
+		// }
+		// });
 		return convertView;
 	}
 }

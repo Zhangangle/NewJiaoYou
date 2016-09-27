@@ -1,4 +1,4 @@
-package com.wzm.act;
+package com.main.activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-import com.junho.mu.R;
+import com.wangm.ncj.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageLoader;
@@ -29,7 +31,7 @@ import com.zmv.zf.utils.ImageLoader.Type;
  * @author admin
  * 
  */
-public class ViewPageAct extends FragmentActivity {
+public class MainViewPageActivity extends FragmentActivity {
 	private ViewPager mPager;
 	private List<View> listViews;
 	private int offset = 0;
@@ -37,6 +39,7 @@ public class ViewPageAct extends FragmentActivity {
 	private String[] list;
 	private int pos;
 	private ImageLoader mImageLoader;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -48,8 +51,9 @@ public class ViewPageAct extends FragmentActivity {
 		list = (String[]) getIntent().getSerializableExtra("image");
 		pos = intent.getIntExtra("pos", 0);
 		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
-		IntiViewPager();
 
+		IntiViewPager();
+		
 	}
 
 	/**
@@ -74,27 +78,34 @@ public class ViewPageAct extends FragmentActivity {
 			try {
 				String url = list[i];
 				mImageLoader.loadImage(url, img, true);
-//				ImageUtil.loadImage(
-//						ImageUtil.getCacheImgPath()
-//								+ url.substring(url.lastIndexOf("/") + 1,
-//										url.lastIndexOf(".")), url,
-//						new ImageCallback() {
-//
-//							@Override
-//							public void loadImage(Bitmap bitmap,
-//									String imagePath) {
-//								// TODO Auto-generated method stub
-//								if (bitmap != null) {
-//									img.setImageBitmap(bitmap);
-//									int height = (Conf.width * bitmap
-//											.getHeight()) / bitmap.getWidth();
-//									img.setLayoutParams(new LinearLayout.LayoutParams(
-//											android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
-//											height));
-//								}
-//							}
-//						});
+				// ImageUtil.loadImage(
+				// ImageUtil.getCacheImgPath()
+				// + url.substring(url.lastIndexOf("/") + 1,
+				// url.lastIndexOf(".")), url,
+				// new ImageCallback() {
+				//
+				// @Override
+				// public void loadImage(Bitmap bitmap,
+				// String imagePath) {
+				// // TODO Auto-generated method stub
+				// if (bitmap != null) {
+				// img.setImageBitmap(bitmap);
+				// int height = (Conf.width * bitmap
+				// .getHeight()) / bitmap.getWidth();
+				// img.setLayoutParams(new LinearLayout.LayoutParams(
+				// android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+				// height));
+				// }
+				// }
+				// });
+				img.setOnClickListener(new OnClickListener() {
 
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						finish();
+					}
+				});
 			} catch (Exception e) {
 				// TODO: handle exception
 			} catch (OutOfMemoryError e) {
@@ -176,19 +187,19 @@ public class ViewPageAct extends FragmentActivity {
 	}
 
 	// 初始化动画
-//	private void InitImageView() {
-//
-//		bmpw = Conf.width;// 获取图片宽度
-//		DisplayMetrics dm = new DisplayMetrics();
-//		getWindowManager().getDefaultDisplay().getMetrics(dm);
-//		int screenW = dm.widthPixels; // 获取分辨率的宽度
-//		if (list.size() == 1) {
-//			offset = 0;
-//		} else
-//			offset = (screenW / list.size() - bmpw) / (list.size() - 1);// 计算偏移值
-//		Matrix matrix = new Matrix();
-//		matrix.postTranslate(offset, 0);
-//	}
+	// private void InitImageView() {
+	//
+	// bmpw = Conf.width;// 获取图片宽度
+	// DisplayMetrics dm = new DisplayMetrics();
+	// getWindowManager().getDefaultDisplay().getMetrics(dm);
+	// int screenW = dm.widthPixels; // 获取分辨率的宽度
+	// if (list.size() == 1) {
+	// offset = 0;
+	// } else
+	// offset = (screenW / list.size() - bmpw) / (list.size() - 1);// 计算偏移值
+	// Matrix matrix = new Matrix();
+	// matrix.postTranslate(offset, 0);
+	// }
 
 	// 实现页卡切换监听
 	public class MyOnPageChangeListener implements OnPageChangeListener {

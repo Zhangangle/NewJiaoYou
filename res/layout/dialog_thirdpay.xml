@@ -30,14 +30,14 @@
             android:src="@drawable/exit_close_icon" />
     </RelativeLayout>
 
-    <TextView
+    <!-- <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="3dip"
         android:text="@string/str_thirdpay_msg1"
         android:textColor="@color/darkgray"
-        android:textSize="16dip" />
+        android:textSize="16dip" /> -->
 
     <TextView
         android:layout_width="match_parent"
@@ -59,17 +59,17 @@
 
             <ImageView
                 android:id="@+id/img_dialog_one"
-                android:layout_width="75dip"
-                android:layout_height="75dip"
+                android:layout_width="72dip"
+                android:layout_height="72dip"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pay_dialog_2" />
+                android:src="@drawable/pay_dialog_1" />
 
             <TextView
                 android:id="@+id/tv_dialog_one"
-                android:layout_width="75dip"
-                android:layout_height="75dip"
+                android:layout_width="72dip"
+                android:layout_height="72dip"
                 android:layout_alignBottom="@+id/img_dialog_one"
                 android:layout_alignLeft="@+id/img_dialog_one"
                 android:background="@drawable/pay_dialog_bg"
@@ -97,17 +97,17 @@
 
             <ImageView
                 android:id="@+id/img_dialog_mon"
-                android:layout_width="75dip"
-                android:layout_height="75dip"
+                android:layout_width="72dip"
+                android:layout_height="72dip"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pay_dialog_1" />
+                android:src="@drawable/pay_dialog_2" />
 
             <TextView
                 android:id="@+id/tv_dialog_mon"
-                android:layout_width="75dip"
-                android:layout_height="75dip"
+                android:layout_width="72dip"
+                android:layout_height="72dip"
                 android:layout_alignBottom="@+id/img_dialog_mon"
                 android:layout_alignLeft="@+id/img_dialog_mon"
                 android:background="@drawable/pay_dialog_bg"

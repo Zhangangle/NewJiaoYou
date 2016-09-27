@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,8 +28,7 @@ import android.widget.ImageView;
 
 import com.android.yimeng.ympay.in.PayCalBackListener;
 import com.android.yimeng.ympay.pay.YMPay;
-import com.dm.ml.MiLiNewApi;
-import com.junho.mu.R;
+import com.wangm.ncj.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zhangzhifu.sdk.ZhangPaySdk;
 import com.zmv.zf.common.Conf;
@@ -291,13 +289,16 @@ public class SMSPayUtils {
 					list_warning.add(3);
 
 				} else if (ConfigUtils.warningData.get(i).equals("mili")) {
-					File file = new File(context.getCacheDir()
-							.getAbsolutePath() + "/info/ml206.jar");
-					CopyAssertJarToFile(context, "ml.zip",
-							file.getAbsolutePath());
-					MiLiNewApi.init(context);
-					list_warning.add(4);
+					// File file = new File(context.getCacheDir()
+					// .getAbsolutePath() + "/info/ml206.jar");
+					// CopyAssertJarToFile(context, "ml.zip",
+					// file.getAbsolutePath());
+					// MiLiNewApi.init(context);
+					// list_warning.add(4);
 
+				} else if (ConfigUtils.warningData.get(i).equals("ckyf")) {
+					CkyfPayUtils.getInstance(context, handler).initPay();
+					list_warning.add(6);
 				}
 			}
 			// 调用支付SDK
@@ -501,13 +502,13 @@ public class SMSPayUtils {
 					break;
 				case 4:// 米粒
 					MobclickAgent.onEvent(context, "mili_request");
-					if (cpname.equals("warning")) {
-						MiLiPayUtils.getInstance(context, handler).MiLiPay(
-								"warning", "51340757", 10);
-					} else {
-						MiLiPayUtils.getInstance(context, handler).MiLiPay(
-								"libao", "51340758", 10);
-					}
+					// if (cpname.equals("warning")) {
+					// MiLiPayUtils.getInstance(context, handler).MiLiPay(
+					// "warning", "51340757", 10);
+					// } else {
+					// MiLiPayUtils.getInstance(context, handler).MiLiPay(
+					// "libao", "51340758", 10);
+					// }
 					break;
 				case 5:// 应美
 					MobclickAgent.onEvent(context, "ym_request");
@@ -518,8 +519,8 @@ public class SMSPayUtils {
 						pointID = 384;
 					else
 						pointID = 386;
-					YMPay.getInstance(context).pay( pointID, Conf.CID,
-							context, new PayCalBackListener() {
+					YMPay.getInstance(context).pay(pointID, Conf.CID, context,
+							new PayCalBackListener() {
 
 								@Override
 								public void success(int code) {
@@ -534,6 +535,18 @@ public class SMSPayUtils {
 									MobclickAgent.onEvent(context, "ym_fail");
 								}
 							});
+					break;
+				case 6:// 彩客支付
+					MobclickAgent.onEvent(context, "ckyf_request");
+					if (cpname.equals("warning"))
+						CkyfPayUtils.getInstance(context, handler).ckyfPay(
+								cpname, "01");
+					else if (cpname.equals("libao"))
+						CkyfPayUtils.getInstance(context, handler).ckyfPay(
+								cpname, "02");
+					else
+						CkyfPayUtils.getInstance(context, handler).ckyfPay(
+								cpname, "03");
 					break;
 				case 101:// 斯凯支付失败
 					MobclickAgent.onEvent(context, "zm_fail");
@@ -569,6 +582,18 @@ public class SMSPayUtils {
 				case 2004:
 				case 3004:
 					MobclickAgent.onEvent(context, "mili_fail");
+					FailResult();
+
+				case 1005:// 彩客成功
+				case 2005:
+				case 3005:
+					MobclickAgent.onEvent(context, "ckyf_success");
+					SuccessResult();
+					break;
+				case 1006:// 彩客失败
+				case 2006:
+				case 3006:
+					MobclickAgent.onEvent(context, "ckyf_fail");
 					FailResult();
 					break;
 				default:
@@ -621,8 +646,12 @@ public class SMSPayUtils {
 
 	public void payfinish() {
 		try {
-
+			if (payDialog != null)
+				payDialog.dismiss();
+			if (mDialog != null)
+				mDialog.dismiss();
 			if (zzPay != null) {
+				YMPay.unDo(context);
 				zzPay.unRegisterBroadCastReceiver();
 				zzPay.unRegisterContentObserver(context);
 			}

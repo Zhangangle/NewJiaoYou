@@ -1,4 +1,4 @@
-package com.wzm.act;
+package com.yunkl.os;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -25,21 +27,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.umeng.analytics.MobclickAgent;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.adapter.PicGridAdapter;
 import com.zmv.zf.bean.BaseJson;
+import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.PersonDAO;
+import com.zmv.zf.database.UserDAO;
 import com.zmv.zf.database.VideoDAO;
+import com.zmv.zf.make.OrderUtils;
 import com.zmv.zf.utils.BasicUtils;
 import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;
 
 @SuppressLint("ResourceAsColor")
-public class PersonAct extends FragmentActivity implements
-		OnClickListener, OnItemClickListener {
+public class Person extends FragmentActivity implements OnClickListener,
+		OnItemClickListener {
 
 	private TextView tv_top_title, tv_per_name, tv_per_age, tv_per_say,
 			tv_per_playnums, tv_per_flower, tv_per_videos, tv_per_fans,
@@ -61,12 +66,12 @@ public class PersonAct extends FragmentActivity implements
 	private Button btn_per_msg, btn_per_guanzhu;
 	private BaseJson base_user;
 	private ImageLoader mImageLoader;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_person);
-		context = PersonAct.this;
+		context = Person.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
@@ -255,31 +260,43 @@ public class PersonAct extends FragmentActivity implements
 
 	private void setHotVaule() {
 		// TODO Auto-generated method stub
-		list_hot = new ArrayList<BaseJson>();
-		VideoDAO video = new VideoDAO(context);
-		list_hot = video.perData(base_user.getUid());
-		hotAdapter = new HotGridAdapter(context, list_hot);
-		gv_hot.setAdapter(hotAdapter);
+		try {
+			list_hot = new ArrayList<BaseJson>();
+			VideoDAO video = new VideoDAO(context);
+			list_hot = video.perData(base_user.getUid());
+			hotAdapter = new HotGridAdapter(context, list_hot);
+			gv_hot.setAdapter(hotAdapter);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 
 	private void setNewVaule() {
 		// TODO Auto-generated method stub
-		list_new = new ArrayList<BaseJson>();
-		VideoDAO video = new VideoDAO(context);
-		list_new = video.perData(base_user.getUid());
-		newAdapter = new HotGridAdapter(context, list_new);
-		gv_new.setAdapter(hotAdapter);
+		try {
+			list_new = new ArrayList<BaseJson>();
+			VideoDAO video = new VideoDAO(context);
+			list_new = video.perData(base_user.getUid());
+			newAdapter = new HotGridAdapter(context, list_new);
+			gv_new.setAdapter(hotAdapter);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 
 	private void setPicVaule() {
 		// TODO Auto-generated method stub
-		PersonDAO per = new PersonDAO(context);
-		base_pic = per.picData(base_user.getUid());
-		array_pic = base_pic.getPics().split(";");
-		picAdapter = new PicGridAdapter(context, array_pic);
-		gv_pic.setAdapter(picAdapter);
+		try {
+			PersonDAO per = new PersonDAO(context);
+			base_pic = per.picData(base_user.getUid());
+			array_pic = base_pic.getPics().split(";");
+			picAdapter = new PicGridAdapter(context, array_pic);
+			gv_pic.setAdapter(picAdapter);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 
@@ -324,23 +341,23 @@ public class PersonAct extends FragmentActivity implements
 		tv_per_flower.setText(base_user.getMsgnum() + "个送花");
 		tv_per_videos.setText(base_user.getVideonums() + "个视频");
 		tv_per_fans.setText(base_user.getFans() + "个关注");
-		tv_per_times.setText(base_user.getOnline());
+		tv_per_times.setText("在线");// base_user.getOnline());
 		mImageLoader.loadImage(base_user.getBigicon(), cimg_per_icon, true);
-//		ImageUtil.loadImage(
-//				ImageUtil.getCacheImgPath()
-//						+ base_user.getBigicon().substring(
-//								base_user.getBigicon().lastIndexOf("/") + 1,
-//								base_user.getBigicon().lastIndexOf(".")),
-//				base_user.getBigicon(), new ImageCallback() {
-//
-//					@Override
-//					public void loadImage(Bitmap bitmap, String imagePath) {
-//						// TODO Auto-generated method stub
-//						if (bitmap != null) {
-//							cimg_per_icon.setImageBitmap(bitmap);
-//						}
-//					}
-//				});
+		// ImageUtil.loadImage(
+		// ImageUtil.getCacheImgPath()
+		// + base_user.getBigicon().substring(
+		// base_user.getBigicon().lastIndexOf("/") + 1,
+		// base_user.getBigicon().lastIndexOf(".")),
+		// base_user.getBigicon(), new ImageCallback() {
+		//
+		// @Override
+		// public void loadImage(Bitmap bitmap, String imagePath) {
+		// // TODO Auto-generated method stub
+		// if (bitmap != null) {
+		// cimg_per_icon.setImageBitmap(bitmap);
+		// }
+		// }
+		// });
 	}
 
 	@Override
@@ -383,7 +400,11 @@ public class PersonAct extends FragmentActivity implements
 			Toast.makeText(context, "关注成功", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.btn_per_msg:
-			Intent intent = new Intent(context, TalkAct.class);
+			if (Main.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+				return;
+			}
+			Intent intent = new Intent(context, Talk.class);
 			base_user.setIcon(base_user.getBigicon());
 			intent.putExtra("person", base_user);
 			context.startActivity(intent);
@@ -409,19 +430,61 @@ public class PersonAct extends FragmentActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
 		// TODO Auto-generated method stub
+		if (Main.net_error) {
+			Toast.makeText(context, "网络未连接...", 1000).show();
+			return;
+		}
 		if (type == 0) {
-			Intent intent = new Intent(context, DetailAct.class);
+			Intent intent = new Intent(context, Detail.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else if (type == 1) {
-			Intent intent = new Intent(context, DetailAct.class);
+			Intent intent = new Intent(context, Detail.class);
 			intent.putExtra("person", hotAdapter.getAllData().get(pos));
 			context.startActivity(intent);
 		} else {
-			Intent intent = new Intent(context, ViewPageAct.class);
-			intent.putExtra("image", base_pic.getBigPics().split(";"));
-			intent.putExtra("pos", pos);
-			context.startActivity(intent);
+			if (Conf.VIP) {
+				Intent intent = new Intent(context, ViewPageAc.class);
+				intent.putExtra("image", base_pic.getBigPics().split(";"));
+				intent.putExtra("pos", pos);
+				context.startActivity(intent);
+			} else {
+				if (pos < 3) {
+					Intent intent = new Intent(context, ViewPageAc.class);
+					String[] pic = base_pic.getBigPics().split(";");
+					if (pic.length > 3) {
+						String[] pic2 = new String[3];
+						for (int i = 0; i < pic.length; i++) {
+							if (i > 2)
+								break;
+							pic2[i] = pic[i];
+						}
+						intent.putExtra("image", pic2);
+					} else
+						intent.putExtra("image", pic);
+					intent.putExtra("pos", pos);
+					context.startActivity(intent);
+				} else {
+					OrderUtils.getInstance().initOrder(context, "shiyong",
+							new Handler() {
+								public void handleMessage(Message msg) {
+									try {
+										switch (msg.what) {
+										case 0:// 失败
+											break;
+										case 1:// 成功
+											UserDAO user = new UserDAO(context);
+											user.updateVIP(2);
+											break;
+										default:
+											break;
+										}
+									} catch (Exception e) {
+									}
+								}
+							});
+				}
+			}
 		}
 	}
 

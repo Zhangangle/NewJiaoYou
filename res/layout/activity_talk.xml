@@ -40,13 +40,12 @@
         <EditText
             android:id="@+id/ed_talk"
             android:layout_width="match_parent"
-            android:layout_height="33dip"
+            android:layout_height="40dip"
             android:layout_marginLeft="8dip"
             android:layout_marginRight="5dip"
             android:layout_weight="1"
             android:background="@drawable/chat_edit_normal"
             android:ems="10"
-            android:hint="呵呵"
             android:padding="6dip"
             android:textSize="14dip" />
 

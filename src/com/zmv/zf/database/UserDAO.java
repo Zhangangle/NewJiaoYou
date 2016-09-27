@@ -65,13 +65,13 @@ public class UserDAO {
 						"insert into  "
 								+ TABLENAME
 								+ "(uid,nickname,isvip,isday,open,logintime) values(?,?,?,?,?,datetime(CURRENT_TIMESTAMP,'localtime'))",
-						new Object[] { Conf.IMEI + "2", "", 0, 0, 1 });
+						new Object[] { Conf.IMEI + "2", "", 0, 0, 0 });
 				user = new BaseJson();
 				user.setUid(Conf.IMEI + "2");
 				user.setName("");
 				user.setIsVip(0);
 				user.setDay(0);
-				user.setOpen(1);
+				user.setOpen(0);
 			}// 添加个人
 			db.execSQL("create table  if  not  exists  perinfo(id integer primary key autoincrement,"
 					+ "uid varchar(20),nickname varchar(50),"

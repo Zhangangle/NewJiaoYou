@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">情趣交友</string>
-    <string name="hello_world">启动页面</string>
-    <string name="str_login">登录</string>
+    <string name="setwx">惑の友</string>
+    <!-- <string name="str_login">登录</string> -->
     <string name="str_sure">确定</string>
     <string name="str_cancel">取消</string>
     <string name="str_main_bottom_shared">美图秀</string>
@@ -22,7 +21,7 @@
     <string name="str_network_request">正在网络请求...</string>
     <string name="str_network_error">网络不稳定,请重试</string>
     <string name="str_exit">再按一次退出本程序</string>
-    <string name="str_thirdpay_title">包月畅享美女私房视频/私聊</string>
+    <string name="str_thirdpay_title">包月畅享美女私房视频</string>
     <string name="str_thirdpay_msg1">一次购买\t终身拥有</string>
     <string name="str_thirdpay_msg2">(未满18岁禁入)</string>
     <string name="str_thirdpay_msg3">单次点播</string>
@@ -41,5 +40,18 @@
     <string name="str_per_guanzhu">关注</string>
     <string name="str_detial_title">美女私房</string>
     <string name="str_pay_libao">本软件尊重知识产权，如果您认为您的署作权受到侵犯，请以书面方式同时本软件。在接到符合本软件要求的侵权通知后，本软件将删除侵权的材料。如果他人认为版权侵权通知内容有误，可向本软件提交通知。美女视频海量高清视频内容，10元即可获取会员，即可体验，真正卓越视听享受。海量内容每日呈现，伴您共度无聊寂寞时光，畅享视频盛宴。</string>
+    <string name="ZM_Id">16572</string>
+    <string name="ZM_AppId">7010824</string>
+    <string name="UMENG_KEY">57a98b6ce0f55a7fcf0008a8</string>
+ <!-- 5683cbff67e58e8b2400255d -->
+    <string name="UMENG_CHANNEL">41001</string>
+    <string name="hj_key">8307b213f5cc273b8413fcd960a6cc75</string>
+    <string name="qsh_id">6_kh15s0015_</string>
+    <string name="g_class_name">com.yunkl.os.Launch</string>
+    <!--
+    <string name="rushId">6000022</string>
+    <string name="qsh_pid">6_kh15s0001_</string>
+    <string name="YM_CPID">10004_52_1</string>
+    -->
 
 </resources>

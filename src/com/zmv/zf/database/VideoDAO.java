@@ -96,12 +96,12 @@ public class VideoDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-//			Log.e("添加数据2", e.toString());
+			// Log.e("添加数据2", e.toString());
 		}
 
 	}
 
-	// 获取推荐列表数据
+	// 获取热门列表数据
 	public List<BaseJson> playData() {
 		List<BaseJson> list = new ArrayList<BaseJson>();
 		BaseJson user;
@@ -122,6 +122,8 @@ public class VideoDAO {
 				user.setIntro(cursor.getString(cursor.getColumnIndex("title")));
 				user.setTopicId(cursor.getString(cursor
 						.getColumnIndex("topicid")));
+				user.setPlaytimes(cursor.getString(cursor
+						.getColumnIndex("timeLength")));
 				user.setVideoimg(cursor.getString(cursor
 						.getColumnIndex("imgUrl")));
 				user.setVideourl(cursor.getString(cursor
@@ -163,6 +165,8 @@ public class VideoDAO {
 						.getColumnIndex("videoUrl")));
 				user.setReviewnums(cursor.getInt(cursor
 						.getColumnIndex("reviews")));
+				user.setPlaytimes(cursor.getString(cursor
+						.getColumnIndex("timeLength")));
 				user.setLikenum(cursor.getInt(cursor.getColumnIndex("likes")));
 				user.setBuynums(cursor.getInt(cursor.getColumnIndex("sold")));
 				list.add(user);

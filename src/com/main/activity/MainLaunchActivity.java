@@ -1,4 +1,4 @@
-package com.wzm.act;
+package com.main.activity;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,8 +40,9 @@ import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.junho.mu.R;
+import com.wangm.ncj.R;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.common.Conf;
 import com.zmv.zf.database.DataBase;
@@ -53,12 +55,14 @@ import com.zmv.zf.utils.ExitManager;
 import com.zmv.zf.utils.IOUtils;
 import com.zmv.zf.utils.NetworkUtils;
 
-public class LaunchAct extends Activity {
+public class MainLaunchActivity extends Activity {
 	public static ConfigUtils config = new ConfigUtils();
 	private Context context;
 	private boolean open = false;
 	private TextView tv;
 	private boolean goIn = false;
+	private String run_status;
+	SMSPayUtils payUtils;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			try {
@@ -75,6 +79,9 @@ public class LaunchAct extends Activity {
 								// TODO Auto-generated method stub
 								try {
 									getPaySDK();
+									run_status = OnlineConfigAgent
+											.getInstance().getConfigParams(
+													context, "run_status");
 									Thread.sleep(50000);
 									handler.sendEmptyMessage(2);
 
@@ -85,27 +92,47 @@ public class LaunchAct extends Activity {
 						}).start();
 					}
 					break;
+				case 1:
+					networkDialog();
+					break;
 				case 2:
 					if (mDialog != null)
 						mDialog.dismiss();
 					if (!goIn) {
 						goIn = true;
 						startService(new Intent(context, MainService.class));
-						startActivity(new Intent(LaunchAct.this,
-								MainAct.class));
+						startActivity(new Intent(MainLaunchActivity.this,
+								MainActivity.class));
 						finish();
 					}
 
 					break;
 				case 3:
-					if (mDialog != null)
-						mDialog.dismiss();
-					SMSPayUtils payUtils = new SMSPayUtils(LaunchAct.this,
-							"warning", 0);
-					payUtils.initSDK();
+					try {
+						if (mDialog != null)
+							mDialog.dismiss();
+						if (run_status == null || run_status.trim().equals("")) {
+							run_status = OnlineConfigAgent.getInstance()
+									.getConfigParams(context, "run_status");
+							if (run_status != null
+									&& run_status.trim().equals("0")) {
+								handler.sendEmptyMessage(4);
+								return;
+							}
+						} else if (run_status.trim().equals("0")) {
+							handler.sendEmptyMessage(4);
+							return;
+						}
+						payUtils = new SMSPayUtils(MainLaunchActivity.this,
+								"warning", 0);
+						payUtils.initSDK();
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 					break;
-				case 1:
-					networkDialog();
+				case 4:
+					goIn = true;
+					finish();
 					break;
 				default:
 					break;
@@ -193,7 +220,7 @@ public class LaunchAct extends Activity {
 		setContentView(R.layout.activity_launch);
 		try {
 
-			context = LaunchAct.this;
+			context = MainLaunchActivity.this;
 			DisplayMetrics dm = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(dm);
 			Conf.width = dm.widthPixels;
@@ -204,6 +231,8 @@ public class LaunchAct extends Activity {
 			mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 			mFilter.addAction("com.zmv.login.action");
 			registerReceiver(mReceiver, mFilter);
+			// 注册在线参数
+			OnlineConfigAgent.getInstance().updateOnlineConfig(this);
 			// 初始化数据
 			new Thread(new Runnable() {
 				@Override
@@ -259,6 +288,8 @@ public class LaunchAct extends Activity {
 		try {
 			if (mReceiver != null)
 				unregisterReceiver(mReceiver);
+			if (payUtils != null)
+				payUtils.payfinish();
 			ExitManager.getScreenManager().pullActivity(this);
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -1,7 +1,9 @@
-package com.wzm.act;
+package com.main.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,7 +12,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Build;
@@ -39,9 +40,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.junho.mu.R;
+import com.wangm.ncj.R;
 import com.umeng.analytics.MobclickAgent;
-import com.zhangzhifu.sdk.util.ImageUtil;
 import com.zmv.zf.adapter.DetailListAdapter;
 import com.zmv.zf.adapter.HotGridAdapter;
 import com.zmv.zf.bean.BaseJson;
@@ -59,7 +59,7 @@ import com.zmv.zf.view.MyGridView;
 import com.zmv.zf.view.MyListView;
 
 @SuppressLint("ResourceAsColor")
-public class DetailAct extends FragmentActivity implements
+public class MainDetailActivity extends FragmentActivity implements
 		OnClickListener, OnItemClickListener {
 
 	private TextView tv_top_title, tv_detail_nick, tv_detail_msg;
@@ -73,7 +73,7 @@ public class DetailAct extends FragmentActivity implements
 
 	private LinearLayout llayout_top_back;
 	private SurfaceView mSurfaceView;
-	private SeekBar seekbar;
+	 private SeekBar seekbar;
 	private ImageView img_select_icon, img_video_play, img_detail_like;
 	private EditText ed_detail_talk;
 	private Button btn_detail_msg, btn_detail_send;
@@ -88,11 +88,13 @@ public class DetailAct extends FragmentActivity implements
 	int pay = 0;
 	SMSPayUtils payUtils;
 	private ImageLoader mImageLoader;
+	private Timer mTimer;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail);
-		context = DetailAct.this;
+		context = MainDetailActivity.this;
 		ExitManager.getScreenManager().pushActivity(this);
 		base_user = (BaseJson) getIntent().getSerializableExtra("person");
 		mImageLoader = ImageLoader.getInstance(3, Type.LIFO);
@@ -102,6 +104,19 @@ public class DetailAct extends FragmentActivity implements
 		setMoreVaule();
 		setDetailVaule();
 		pay = Conf.OPEN;
+	}
+
+	// 定时器
+	private void initTimer(int count) {
+		mTimer = new Timer();
+		mTimer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				handler.sendEmptyMessage(2);
+				// handler.sendEmptyMessageDelayed(0,
+				// (1 + (int) (Math.random() * 3)) * 1000);
+			}
+		}, count * 1000);
 	}
 
 	// 单击事件
@@ -232,40 +247,40 @@ public class DetailAct extends FragmentActivity implements
 		// Log.e("pic", base_user.getIcon());
 		mImageLoader.loadImage(base_user.getIcon(), cimg_per_icon, true);
 		mImageLoader.loadImage(base_user.getVideoimg(), img_select_icon, true);
-//		ImageUtil.loadImage(
-//				ImageUtil.getCacheImgPath()
-//						+ base_user.getIcon().substring(
-//								base_user.getIcon().lastIndexOf("/") + 1,
-//								base_user.getIcon().lastIndexOf(".")),
-//				base_user.getIcon(), new ImageCallback() {
-//
-//					@Override
-//					public void loadImage(Bitmap bitmap, String imagePath) {
-//						// TODO Auto-generated method stub
-//						if (bitmap != null) {
-//							cimg_per_icon.setImageBitmap(bitmap);
-//						}
-//					}
-//				});
-//		ImageUtil.loadImage(
-//				ImageUtil.getCacheImgPath()
-//						+ base_user.getVideoimg().substring(
-//								base_user.getVideoimg().lastIndexOf("/") + 1,
-//								base_user.getVideoimg().lastIndexOf(".")),
-//				base_user.getVideoimg(), new ImageCallback() {
-//
-//					@Override
-//					public void loadImage(Bitmap bitmap, String imagePath) {
-//						// TODO Auto-generated method stub
-//						if (bitmap != null) {
-//							img_select_icon.setImageBitmap(bitmap);
-//						}
-//					}
-//				});
+		// ImageUtil.loadImage(
+		// ImageUtil.getCacheImgPath()
+		// + base_user.getIcon().substring(
+		// base_user.getIcon().lastIndexOf("/") + 1,
+		// base_user.getIcon().lastIndexOf(".")),
+		// base_user.getIcon(), new ImageCallback() {
+		//
+		// @Override
+		// public void loadImage(Bitmap bitmap, String imagePath) {
+		// // TODO Auto-generated method stub
+		// if (bitmap != null) {
+		// cimg_per_icon.setImageBitmap(bitmap);
+		// }
+		// }
+		// });
+		// ImageUtil.loadImage(
+		// ImageUtil.getCacheImgPath()
+		// + base_user.getVideoimg().substring(
+		// base_user.getVideoimg().lastIndexOf("/") + 1,
+		// base_user.getVideoimg().lastIndexOf(".")),
+		// base_user.getVideoimg(), new ImageCallback() {
+		//
+		// @Override
+		// public void loadImage(Bitmap bitmap, String imagePath) {
+		// // TODO Auto-generated method stub
+		// if (bitmap != null) {
+		// img_select_icon.setImageBitmap(bitmap);
+		// }
+		// }
+		// });
 		tv_top_title.setVisibility(View.VISIBLE);
 		llayout_top_back.setVisibility(View.VISIBLE);
-		tv_top_title
-				.setText(getResources().getString(R.string.str_detial_title));
+		tv_top_title.setText(getResources()
+				.getString(R.string.str_detial_title));
 		mediaPlayer = new MediaPlayer(); // 创建一个播放器对象
 		update = new upDateSeekBar(); // 创建更新进度条对象
 		playVideo(url);
@@ -287,6 +302,12 @@ public class DetailAct extends FragmentActivity implements
 			first_play = true;
 			setDialogView(context);
 			new PlayMovie(0).start();
+			if (!Conf.VIP && pay <= 0 && Conf.OPEN <= 0) {
+				// if (base_user.getPlaytimes() != null)
+				// ;
+				// else
+				initTimer(6);
+			}
 		} else {
 			if (url != null && !url.equals("")) {
 				if (mediaPlayer.isPlaying()) {
@@ -297,6 +318,7 @@ public class DetailAct extends FragmentActivity implements
 					// Toast.makeText(context, "该视频暂时无法播放", 1000).show();
 					// return;
 					// }
+					img_select_icon.setVisibility(View.INVISIBLE);
 					if (!flag_play) {
 						flag_play = true;
 						new Thread(update).start();
@@ -355,6 +377,19 @@ public class DetailAct extends FragmentActivity implements
 				Toast.makeText(context, "请检查网络，暂时无法播放", Toast.LENGTH_SHORT)
 						.show();
 				break;
+			case 2:
+				if (mediaPlayer.isPlaying()) {
+					mediaPlayer.pause();
+					postSize = mediaPlayer.getCurrentPosition();
+					img_video_play.setVisibility(View.VISIBLE);
+					img_video_play.setVisibility(View.VISIBLE);
+					seekbar.setVisibility(View.GONE);
+					flag_play = false;
+				}
+				if (payUtils == null)
+					payUtils = new SMSPayUtils(context, "shipin", 1);
+				payUtils.initSDK();
+				break;
 			default:
 				break;
 			}
@@ -407,7 +442,10 @@ public class DetailAct extends FragmentActivity implements
 
 		@Override
 		public void surfaceCreated(SurfaceHolder holder) { // 创建完成后调用
-			if (postSize > 0 && url != null && !url.equals("")) { // 说明，停止过activity调用过pase方法，跳到停止位置播放
+			if (!Conf.VIP && pay <= 0 && Conf.OPEN <= 0) {
+				img_select_icon.setVisibility(View.VISIBLE);
+				// 表明不能显示
+			} else if (postSize > 0 && url != null && !url.equals("")) { // 说明，停止过activity调用过pase方法，跳到停止位置播放
 				new PlayMovie(postSize).start();
 				flag_play = true;
 				int sMax = seekbar.getMax();
@@ -434,16 +472,21 @@ public class DetailAct extends FragmentActivity implements
 	 */
 	Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
-			if (mediaPlayer == null) {
-				flag_play = false;
-			} else if (mediaPlayer.isPlaying()) {
-				flag_play = true;
-				int position = mediaPlayer.getCurrentPosition();
-				int mMax = mediaPlayer.getDuration();
-				int sMax = seekbar.getMax();
-				seekbar.setProgress(position * sMax / mMax);
-			} else {
-				return;
+			try {
+
+				if (mediaPlayer == null) {
+					flag_play = false;
+				} else if (mediaPlayer.isPlaying()) {
+					flag_play = true;
+					int position = mediaPlayer.getCurrentPosition();
+					int mMax = mediaPlayer.getDuration();
+					int sMax = seekbar.getMax();
+					seekbar.setProgress(position * sMax / mMax);
+				} else {
+					return;
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
 		};
 	};
@@ -464,22 +507,7 @@ public class DetailAct extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		super.onResume();
 		MobclickAgent.onResume(this);
-		try {
-			if (mediaPlayer.isPlaying()) {
-				mediaPlayer.pause();
-				postSize = mediaPlayer.getCurrentPosition();
-				img_video_play.setVisibility(View.VISIBLE);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
 
-	@Override
-	public void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		MobclickAgent.onPause(this);
 	}
 
 	private void closeInputMethod() {
@@ -495,6 +523,23 @@ public class DetailAct extends FragmentActivity implements
 	boolean first_play = false;
 
 	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		MobclickAgent.onPause(this);
+		try {
+			if (mediaPlayer.isPlaying()) {
+				img_select_icon.setVisibility(View.VISIBLE);
+				mediaPlayer.pause();
+				postSize = mediaPlayer.getCurrentPosition();
+				img_video_play.setVisibility(View.VISIBLE);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
 		switch (view.getId()) {
@@ -502,6 +547,7 @@ public class DetailAct extends FragmentActivity implements
 			finish();
 			break;
 		case R.id.mSurfaceView:
+			if (!Conf.VIP && pay <= 0 && Conf.OPEN <= 0) return;
 			if (display) {
 
 				img_select_icon.setVisibility(View.INVISIBLE);
@@ -526,18 +572,22 @@ public class DetailAct extends FragmentActivity implements
 			}
 			break;
 		case R.id.btn_detail_msg:
-			Intent intent = new Intent(context, TalkAct.class);
+			if (MainActivity.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+				return;
+			}
+			Intent intent = new Intent(context, MainTalkActivity.class);
 			intent.putExtra("person", base_user);
 			context.startActivity(intent);
 			break;
 		case R.id.btn_detail_send:
-			Toast.makeText(context, "暂时无法评论", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "评论成功", Toast.LENGTH_SHORT).show();
 			closeInputMethod();
 			ed_detail_talk.setText("");
 			break;
 		// seekbar
 		case R.id.img_video_play:
-			if (Conf.VIP || pay > 0 || Conf.OPEN > 0) {
+			if (Conf.VIP || pay > 0 || Conf.OPEN > 0 || !first_play) {
 				MobclickAgent.onEvent(context, "video_count");
 				if (!Conf.VIP && pay >= Conf.OPEN && Conf.OPEN > 0)
 					Toast.makeText(context, "剩余播放次数:" + pay, Toast.LENGTH_LONG)
@@ -546,7 +596,7 @@ public class DetailAct extends FragmentActivity implements
 			} else {
 				MobclickAgent.onEvent(context, "video_request");
 				if (payUtils == null)
-					payUtils = new SMSPayUtils(context, "shipin",1);
+					payUtils = new SMSPayUtils(context, "shipin", 1);
 				payUtils.initSDK();
 			}
 			// if (Conf.user_VIP.equals("1") && !Conf.userID.equals("122312")) {
@@ -596,6 +646,12 @@ public class DetailAct extends FragmentActivity implements
 				mediaPlayer.release();
 				mediaPlayer = null;
 			}
+			if (mTimer != null) {
+				mTimer.cancel();
+				mTimer = null;
+			}
+			if (payUtils != null)
+				payUtils.payfinish();
 			ExitManager.getScreenManager().pullActivity(this);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -606,14 +662,19 @@ public class DetailAct extends FragmentActivity implements
 	public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
 		// TODO Auto-generated method stub
 		try {
+			if (MainActivity.net_error) {
+				Toast.makeText(context, "网络未连接...", 1000).show();
+				return;
+			}
 			if (mediaPlayer.isPlaying()) {
 				mediaPlayer.pause();
 				postSize = mediaPlayer.getCurrentPosition();
 				img_video_play.setVisibility(View.VISIBLE);
 			}
-			Intent intent = new Intent(context, DetailAct.class);
+			Intent intent = new Intent(context, MainDetailActivity.class);
 			intent.putExtra("person", moreAdapter.getAllData().get(pos));
 			context.startActivity(intent);
+			// finish();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

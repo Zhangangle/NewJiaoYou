@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.zmv.zf.bean.BaseJson;
 
 /**

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;
@@ -86,7 +86,7 @@ public class ShareListAdapter extends BaseAdapter {
 			final CircleImageView cimg_share_icon = BaseAdapterHelper.get(
 					convertView, R.id.cimg_share_icon);
 
-			tv_share_online.setText(list_share.get(pos).getOnline());
+			tv_share_online.setText("在线");//list_share.get(pos).getOnline());
 			tv_share_recevie.setText(list_share.get(pos).getReviewnums() + "");
 			tv_share_like.setText(list_share.get(pos).getLikenum() + "");
 			tv_share_name.setText(list_share.get(pos).getName());

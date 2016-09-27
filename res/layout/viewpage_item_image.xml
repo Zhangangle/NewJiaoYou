@@ -12,8 +12,8 @@
     <ImageView
         android:id="@+id/img_viewpage_icon"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:layout_gravity="center_horizontal|center_vertical" />
     

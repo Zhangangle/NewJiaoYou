@@ -37,6 +37,18 @@ public class BaseJson implements Serializable {
 	private String format_time;// 格式化的时间
 	private int open;
 	private String dialogId;// 对话ID
+	private String playtimes;// 播放时长
+	
+	
+	
+
+	public String getPlaytimes() {
+		return playtimes;
+	}
+
+	public void setPlaytimes(String playtimes) {
+		this.playtimes = playtimes;
+	}
 
 	public int getOpen() {
 		return open;

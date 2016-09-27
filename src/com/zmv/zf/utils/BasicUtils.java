@@ -19,10 +19,11 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
+
+import com.zmv.zf.common.Conf;
+import com.zmv.zf.database.UserDAO;
 
 /**
  * Function:工具类:
@@ -255,5 +256,13 @@ public class BasicUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(new java.util.Date());
 		return date;
+	}
+
+	
+
+	public static void updateOpen(Context context, int times) {
+		UserDAO user = new UserDAO(context);
+		Conf.OPEN += times;
+		user.updateOpen(Conf.OPEN);
 	}
 }

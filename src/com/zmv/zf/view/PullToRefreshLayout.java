@@ -17,7 +17,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 
 /**
  * 自定义的布局，用来管理三个子控件，其中一个是下拉头，一个是包含内容的pullableView（可以是实现Pullable接口的的任何View），
@@ -152,7 +152,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 				timer.cancel();
 				requestLayout();
 			}
-			//Log.d("handle", "handle");
+			// Log.d("handle", "handle");
 			// 刷新布局,会自动调用onLayout
 			requestLayout();
 			// 没有拖拉或者回弹完成
@@ -221,8 +221,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 			// 刷新失败
 			refreshStateImageView.setVisibility(View.VISIBLE);
 			refreshStateTextView.setText(R.string.str_refresh_failed);
-			refreshStateImageView
-					.setBackgroundResource(R.drawable.load_failed);
+			refreshStateImageView.setBackgroundResource(R.drawable.load_failed);
 			break;
 		}
 		if (pullDownY > 0) {
@@ -341,112 +340,118 @@ public class PullToRefreshLayout extends RelativeLayout {
 	 */
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
-		switch (ev.getActionMasked()) {
-		case MotionEvent.ACTION_DOWN:
-			downY = ev.getY();
-			lastY = downY;
-			timer.cancel();
-			mEvents = 0;
-			releasePull();
-			break;
-		case MotionEvent.ACTION_POINTER_DOWN:
-		case MotionEvent.ACTION_POINTER_UP:
-			// 过滤多点触碰
-			mEvents = -1;
-			break;
-		case MotionEvent.ACTION_MOVE:
-			if (mEvents == 0) {
-				if (pullDownY > 0
-						|| (((Pullable) pullableView).canPullDown()
-								&& canPullDown && state != LOADING)) {
-					// 可以下拉，正在加载时不能下拉
-					// 对实际滑动距离做缩小，造成用力拉的感觉
-					pullDownY = pullDownY + (ev.getY() - lastY) / radio;
-					if (pullDownY < 0) {
-						pullDownY = 0;
-						canPullDown = false;
-						canPullUp = true;
-					}
-					if (pullDownY > getMeasuredHeight())
-						pullDownY = getMeasuredHeight();
-					if (state == REFRESHING) {
-						// 正在刷新的时候触摸移动
-						isTouch = true;
-					}
-				} else if (pullUpY < 0
-						|| (((Pullable) pullableView).canPullUp() && canPullUp && state != REFRESHING)) {
-					// 可以上拉，正在刷新时不能上拉
-					pullUpY = pullUpY + (ev.getY() - lastY) / radio;
-					if (pullUpY > 0) {
-						pullUpY = 0;
-						canPullDown = true;
-						canPullUp = false;
-					}
-					if (pullUpY < -getMeasuredHeight())
-						pullUpY = -getMeasuredHeight();
-					if (state == LOADING) {
-						// 正在加载的时候触摸移动
-						isTouch = true;
-					}
-				} else
-					releasePull();
-			} else
+		try {
+			switch (ev.getActionMasked()) {
+			case MotionEvent.ACTION_DOWN:
+				downY = ev.getY();
+				lastY = downY;
+				timer.cancel();
 				mEvents = 0;
-			lastY = ev.getY();
-			// 根据下拉距离改变比例
-			radio = (float) (2 + 2 * Math.tan(Math.PI / 2 / getMeasuredHeight()
-					* (pullDownY + Math.abs(pullUpY))));
-			if (pullDownY > 0 || pullUpY < 0)
-				requestLayout();
-			if (pullDownY > 0) {
-				if (pullDownY <= refreshDist
-						&& (state == RELEASE_TO_REFRESH || state == DONE)) {
-					// 如果下拉距离没达到刷新的距离且当前状态是释放刷新，改变状态为下拉刷新
-					changeState(INIT);
-				}
-				if (pullDownY >= refreshDist && state == INIT) {
-					// 如果下拉距离达到刷新的距离且当前状态是初始状态刷新，改变状态为释放刷新
-					changeState(RELEASE_TO_REFRESH);
-				}
-			} else if (pullUpY < 0) {
-				// 下面是判断上拉加载的，同上，注意pullUpY是负值
-				if (-pullUpY <= loadmoreDist
-						&& (state == RELEASE_TO_LOAD || state == DONE)) {
-					changeState(INIT);
-				}
-				// 上拉操作
-				if (-pullUpY >= loadmoreDist && state == INIT) {
-					changeState(RELEASE_TO_LOAD);
-				}
+				releasePull();
+				break;
+			case MotionEvent.ACTION_POINTER_DOWN:
+			case MotionEvent.ACTION_POINTER_UP:
+				// 过滤多点触碰
+				mEvents = -1;
+				break;
+			case MotionEvent.ACTION_MOVE:
+				if (mEvents == 0) {
+					if (pullDownY > 0
+							|| (((Pullable) pullableView).canPullDown()
+									&& canPullDown && state != LOADING)) {
+						// 可以下拉，正在加载时不能下拉
+						// 对实际滑动距离做缩小，造成用力拉的感觉
+						pullDownY = pullDownY + (ev.getY() - lastY) / radio;
+						if (pullDownY < 0) {
+							pullDownY = 0;
+							canPullDown = false;
+							canPullUp = true;
+						}
+						if (pullDownY > getMeasuredHeight())
+							pullDownY = getMeasuredHeight();
+						if (state == REFRESHING) {
+							// 正在刷新的时候触摸移动
+							isTouch = true;
+						}
+					} else if (pullUpY < 0
+							|| (((Pullable) pullableView).canPullUp()
+									&& canPullUp && state != REFRESHING)) {
+						// 可以上拉，正在刷新时不能上拉
+						pullUpY = pullUpY + (ev.getY() - lastY) / radio;
+						if (pullUpY > 0) {
+							pullUpY = 0;
+							canPullDown = true;
+							canPullUp = false;
+						}
+						if (pullUpY < -getMeasuredHeight())
+							pullUpY = -getMeasuredHeight();
+						if (state == LOADING) {
+							// 正在加载的时候触摸移动
+							isTouch = true;
+						}
+					} else
+						releasePull();
+				} else
+					mEvents = 0;
+				lastY = ev.getY();
+				// 根据下拉距离改变比例
+				radio = (float) (2 + 2 * Math
+						.tan(Math.PI / 2 / getMeasuredHeight()
+								* (pullDownY + Math.abs(pullUpY))));
+				if (pullDownY > 0 || pullUpY < 0)
+					requestLayout();
+				if (pullDownY > 0) {
+					if (pullDownY <= refreshDist
+							&& (state == RELEASE_TO_REFRESH || state == DONE)) {
+						// 如果下拉距离没达到刷新的距离且当前状态是释放刷新，改变状态为下拉刷新
+						changeState(INIT);
+					}
+					if (pullDownY >= refreshDist && state == INIT) {
+						// 如果下拉距离达到刷新的距离且当前状态是初始状态刷新，改变状态为释放刷新
+						changeState(RELEASE_TO_REFRESH);
+					}
+				} else if (pullUpY < 0) {
+					// 下面是判断上拉加载的，同上，注意pullUpY是负值
+					if (-pullUpY <= loadmoreDist
+							&& (state == RELEASE_TO_LOAD || state == DONE)) {
+						changeState(INIT);
+					}
+					// 上拉操作
+					if (-pullUpY >= loadmoreDist && state == INIT) {
+						changeState(RELEASE_TO_LOAD);
+					}
 
+				}
+				// 因为刷新和加载操作不能同时进行，所以pullDownY和pullUpY不会同时不为0，因此这里用(pullDownY +
+				// Math.abs(pullUpY))就可以不对当前状态作区分了
+				if ((pullDownY + Math.abs(pullUpY)) > 8) {
+					// 防止下拉过程中误触发长按事件和点击事件
+					ev.setAction(MotionEvent.ACTION_CANCEL);
+				}
+				break;
+			case MotionEvent.ACTION_UP:
+				if (pullDownY > refreshDist || -pullUpY > loadmoreDist)
+				// 正在刷新时往下拉（正在加载时往上拉），释放后下拉头（上拉头）不隐藏
+				{
+					isTouch = false;
+				}
+				if (state == RELEASE_TO_REFRESH) {
+					changeState(REFRESHING);
+					// 刷新操作
+					if (mListener != null)
+						mListener.onRefresh(this);
+				} else if (state == RELEASE_TO_LOAD) {
+					changeState(LOADING);
+					// 加载操作
+					if (mListener != null)
+						mListener.onLoadMore(this);
+				}
+				hide();
+			default:
+				break;
 			}
-			// 因为刷新和加载操作不能同时进行，所以pullDownY和pullUpY不会同时不为0，因此这里用(pullDownY +
-			// Math.abs(pullUpY))就可以不对当前状态作区分了
-			if ((pullDownY + Math.abs(pullUpY)) > 8) {
-				// 防止下拉过程中误触发长按事件和点击事件
-				ev.setAction(MotionEvent.ACTION_CANCEL);
-			}
-			break;
-		case MotionEvent.ACTION_UP:
-			if (pullDownY > refreshDist || -pullUpY > loadmoreDist)
-			// 正在刷新时往下拉（正在加载时往上拉），释放后下拉头（上拉头）不隐藏
-			{
-				isTouch = false;
-			}
-			if (state == RELEASE_TO_REFRESH) {
-				changeState(REFRESHING);
-				// 刷新操作
-				if (mListener != null)
-					mListener.onRefresh(this);
-			} else if (state == RELEASE_TO_LOAD) {
-				changeState(LOADING);
-				// 加载操作
-				if (mListener != null)
-					mListener.onLoadMore(this);
-			}
-			hide();
-		default:
-			break;
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		// 事件分发交给父类
 		super.dispatchTouchEvent(ev);
@@ -529,7 +534,7 @@ public class PullToRefreshLayout extends RelativeLayout {
 
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
-	//	Log.d("Test", "Test");
+		// Log.d("Test", "Test");
 		if (!isLayout) {
 			// 这里是第一次进来的时候做一些初始化
 			refreshView = getChildAt(0);

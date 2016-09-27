@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_margin="5dip"
         android:padding="5dip"
-        android:src="@drawable/logo1" />
+        android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"

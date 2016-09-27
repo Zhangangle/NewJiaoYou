@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.junho.mu.R;
+import com.Mei.sdl.wpkg.R;
 import com.zmv.zf.bean.BaseJson;
 import com.zmv.zf.utils.ImageLoader;
 import com.zmv.zf.utils.ImageLoader.Type;

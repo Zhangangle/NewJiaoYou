@@ -60,6 +60,7 @@
 
             <RelativeLayout
                 style="@style/layout_full_wrap"
+                android:layout_width="match_parent"
                 android:background="@color/white"
                 android:paddingBottom="5dip"
                 android:paddingLeft="10dip"
@@ -174,6 +175,7 @@
                 android:scrollbars="none"
                 android:visibility="gone" />
         </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout
@@ -196,7 +198,7 @@
         <EditText
             android:id="@+id/ed_detail_talk"
             android:layout_width="match_parent"
-            android:layout_height="33dip"
+            android:layout_height="40dip"
             android:layout_marginLeft="8dip"
             android:layout_marginRight="5dip"
             android:layout_weight="1"
